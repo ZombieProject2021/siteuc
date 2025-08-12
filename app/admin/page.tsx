@@ -89,7 +89,7 @@ export default function AdminPage() {
     status: 'DRAFT' as const,
     maxStudents: 20,
     schedule: '',
-    level: 'Средний',
+    level: 'Сред��ий',
     format: 'Дистанционно',
     imageSrc: '',
     targetAudience: [] as string[],
@@ -102,6 +102,7 @@ export default function AdminPage() {
     { id: 'courses', label: 'Курсы', icon: BookOpen },
     { id: 'leads', label: 'Заявки', icon: Users },
     { id: 'content', label: 'Контент', icon: FileText },
+    { id: 'documents', label: 'Сведения об организации', icon: FileText },
     { id: 'settings', label: 'Настройки', icon: Settings },
     { id: 'reports', label: 'Отчёты', icon: Database },
   ]
@@ -127,7 +128,7 @@ export default function AdminPage() {
       const data = await response.json()
       setLeads(data.leads || [])
     } catch (error) {
-      toast.error('Ошибка загру��ки заявок')
+      toast.error('Ошибка за��ру��ки заявок')
     } finally {
       setLoading(false)
     }
@@ -913,7 +914,7 @@ export default function AdminPage() {
                   Курс
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  С��атус
+                  С����тус
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Дата
