@@ -15,7 +15,7 @@ const safetyCourses = [
     avgRating: 4.7,
     reviewsCount: 15,
     schedule: 'Еженедельно: Пн, Ср с 18:00 до 21:00',
-    level: 'Для работников, выполняющих работы повышенной опасности',
+    level: 'Для работников, вы��олняющих работы повышенной опасности',
     format: 'Очно-заочное обучение с практическими занятиями'
   },
   {
@@ -133,7 +133,7 @@ const safetyCourses = [
   {
     title: 'Программа В. Водолазные работы',
     slug: 'programma-v-vodolaznyye-raboty',
-    description: 'Обучение безопасным методам выполнения водолазных работ. Специальная программа для работников, выполняющих подводные работы.',
+    description: 'Обучение безопасным методам выполнения водолазных работ. Специальная п��ограмма для работников, выполняющих подводные работы.',
     category: 'Охрана труда',
     duration: '40 ак.ч.',
     price: 35000,
@@ -159,8 +159,8 @@ const safetyCourses = [
     avgRating: 4.6,
     reviewsCount: 19,
     schedule: 'Еженедельно: Вт, Чт с 14:00 до 18:00',
-    level: 'Для работников газоопасных объектов',
-    format: 'Очное обучение с практи��ескими занятиями'
+    level: 'Для работников газо��пасных объектов',
+    format: 'Очное обучение с практическими занятиями'
   },
   {
     title: 'Программа В. Земляные работы',
@@ -182,7 +182,7 @@ const safetyCourses = [
     title: 'Программа В. Огневые работы',
     slug: 'programma-v-ognevyye-raboty',
     description: 'Обучение безопасным методам выполнения огневых работ. Требования пожарной безопасности при проведении сварочных и других огневых работ.',
-    category: 'Охрана труда',
+    category: 'О��рана труда',
     duration: '24 ак.ч.',
     price: 15000,
     status: 'ACTIVE' as const,
@@ -261,7 +261,7 @@ const safetyCourses = [
   {
     title: 'Общие вопросы охраны труда и функционирования СУОТ',
     slug: 'obshchiye-voprosy-ohrany-truda-suot',
-    description: 'Общие вопросы охраны труда и функционирования системы управления охраной труда (ПП № 2464 от 24.12.2021, п. 46, подпункт «а»). Программа «А»',
+    description: 'Общие вопросы охраны труда и функционирования системы управления охраной труда (ПП № 2464 от 24.12.2021, п. 46, по��пункт «а»). Программа «А»',
     category: 'Охрана труда',
     duration: '16 ак.ч.',
     price: 8000,
@@ -340,7 +340,7 @@ const safetyCourses = [
     format: 'Очно-заочное обучение с дипломом'
   },
   {
-    title: 'Система управления охраной труда (повышение квалификации)',
+    title: 'Система ��правления охраной труда (повышение квалификации)',
     slug: 'sistema-upravleniya-ohranoy-truda-pk',
     description: 'Система управления охраной труда и обеспечение безопасных условий труда (повышение квалификации). Современные подходы к управлению охраной труда.',
     category: 'Охрана труда',
@@ -373,7 +373,7 @@ export async function POST() {
     
     if (existingSafetyCourses > 0) {
       return NextResponse.json({
-        message: 'Курсы по охране труда уже существ��ют в базе данных',
+        message: 'Курсы по охране труда уже существуют в базе данных',
         count: existingSafetyCourses
       })
     }
@@ -403,8 +403,14 @@ export async function POST() {
 
   } catch (error) {
     console.error('Error seeding safety courses:', error)
+    console.error('Error details:', error instanceof Error ? error.message : String(error))
+    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace')
+
     return NextResponse.json(
-      { error: 'Ошибка при создании курсов по охране труда' },
+      {
+        error: 'Ошибка при создании курсов п�� охране труда',
+        details: error instanceof Error ? error.message : String(error)
+      },
       { status: 500 }
     )
   }
