@@ -144,6 +144,7 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
   }
 
   const handleEditContent = (content: Content) => {
+    console.log('handleEditContent called with:', content)
     setEditingContent(content)
     setContentForm({
       key: content.key,
@@ -155,6 +156,7 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
       isActive: content.isActive
     })
     setShowAddForm(true)
+    console.log('Edit form should be visible now')
   }
 
   // Filter contents
@@ -183,7 +185,7 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
             className="bg-edu-blue hover:bg-edu-navy text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Добавить контен��
+            Добавить контент
           </button>
           {onClose && (
             <button
