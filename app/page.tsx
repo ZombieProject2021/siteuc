@@ -22,10 +22,10 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState('programs')
 
   const stats = [
-    { label: 'Лет на рынке', value: '15+', icon: TrendingUp },
-    { label: 'Выпускников', value: '5000+', icon: Users },
-    { label: 'Программ обучения', value: '50+', icon: BookOpen },
-    { label: 'Преподавателей', value: '30+', icon: Award },
+    { label: 'Лет на рынке', valueKey: 'homepage.stats.years', defaultValue: '15+', icon: TrendingUp },
+    { label: 'Выпускников', valueKey: 'homepage.stats.graduates', defaultValue: '5000+', icon: Users },
+    { label: 'Программ обучения', valueKey: 'homepage.stats.programs', defaultValue: '50+', icon: BookOpen },
+    { label: 'Преподавателей', valueKey: 'homepage.stats.teachers', defaultValue: '30+', icon: Award },
   ]
 
   const programs = [
@@ -88,7 +88,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.hero.description"
-              defaultContent="Дополнительное п��офессиональное образование с выдачей документов государственного образца"
+              defaultContent="Дополнительное профессиональное образование с выдачей документов государственного образца"
               tag="p"
               className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto"
             />
