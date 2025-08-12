@@ -14,7 +14,7 @@ const safetyCourses = [
     currentStudents: 8,
     avgRating: 4.7,
     reviewsCount: 15,
-    schedule: 'Еженедельно: Пн, Ср с 18:00 д�� 21:00',
+    schedule: 'Еженедельно: Пн, Ср с 18:00 до 21:00',
     level: 'Для работников, выполняющих работы повышенной опасности',
     format: 'Очно-заочное обучение с практическими занятиями'
   },
@@ -160,7 +160,7 @@ const safetyCourses = [
     reviewsCount: 19,
     schedule: 'Еженедельно: Вт, Чт с 14:00 до 18:00',
     level: 'Для работников газоопасных объектов',
-    format: 'Очное обучение с практическими занятиями'
+    format: 'Очное обучение с практи��ескими занятиями'
   },
   {
     title: 'Программа В. Земляные работы',
@@ -259,7 +259,7 @@ const safetyCourses = [
     format: 'Очное обучение с выездом на объекты'
   },
   {
-    title: 'Общие вопросы охраны труда и функционирования СУО��',
+    title: 'Общие вопросы охраны труда и функционирования СУОТ',
     slug: 'obshchiye-voprosy-ohrany-truda-suot',
     description: 'Общие вопросы охраны труда и функционирования системы управления охраной труда (ПП № 2464 от 24.12.2021, п. 46, подпункт «а»). Программа «А»',
     category: 'Охрана труда',
@@ -337,7 +337,7 @@ const safetyCourses = [
     reviewsCount: 45,
     schedule: 'Вечерние занятия: Пн, Ср, Пт с 18:00 до 22:00',
     level: 'Профессиональная переподготовка',
-    format: 'Очно-заочное обучение с ��ипломом'
+    format: 'Очно-заочное обучение с дипломом'
   },
   {
     title: 'Система управления охраной труда (повышение квалификации)',
@@ -373,19 +373,23 @@ export async function POST() {
     
     if (existingSafetyCourses > 0) {
       return NextResponse.json({
-        message: 'Курсы по охране труда уже существуют в базе данных',
+        message: 'Курсы по охране труда уже существ��ют в базе данных',
         count: existingSafetyCourses
       })
     }
 
     // Create safety courses
+    console.log('Creating safety courses...')
     const createdCourses = await Promise.all(
-      safetyCourses.map(course => 
-        prisma.course.create({
+      safetyCourses.map(async (course, index) => {
+        console.log(`Creating course ${index + 1}/${safetyCourses.length}: ${course.title}`)
+        return await prisma.course.create({
           data: course
         })
-      )
+      })
     )
+
+    console.log('Successfully created', createdCourses.length, 'safety courses')
 
     return NextResponse.json({
       message: `Успешно создано ${createdCourses.length} курсов по охране труда`,
