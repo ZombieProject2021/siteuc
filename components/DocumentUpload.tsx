@@ -1,269 +1,202 @@
 'use client'
 
-import { useState, useRef } from 'react'
-import { Upload, FileText, Shield, Check, X, AlertCircle } from 'lucide-react'
+import { useState } from 'react'
+import { Upload, FileText, X, Plus, Download } from 'lucide-react'
+
+interface DocumentItem {
+  name: string
+  file?: string
+}
 
 interface DocumentUploadProps {
-  onUpload: (file: File, signature?: File) => void
-  acceptedTypes?: string[]
-  maxSize?: number
-  requireSignature?: boolean
+  value: DocumentItem[]
+  onChange: (documents: DocumentItem[]) => void
+  maxDocuments?: number
+  courseId?: string
 }
 
 export default function DocumentUpload({ 
-  onUpload, 
-  acceptedTypes = ['.pdf'], 
-  maxSize = 10 * 1024 * 1024, // 10MB
-  requireSignature = true 
+  value = [], 
+  onChange, 
+  maxDocuments = 5,
+  courseId = 'general'
 }: DocumentUploadProps) {
-  const [dragActive, setDragActive] = useState(false)
-  const [uploading, setUploading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
-  
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const signatureInputRef = useRef<HTMLInputElement>(null)
+  const [uploading, setUploading] = useState<number | null>(null)
 
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
-  const [selectedSignature, setSelectedSignature] = useState<File | null>(null)
+  const addDocument = () => {
+    if (value.length < maxDocuments) {
+      onChange([...value, { name: '' }])
+    }
+  }
 
-  const validateFile = (file: File): string | null => {
+  const removeDocument = (index: number) => {
+    const newDocuments = value.filter((_, i) => i !== index)
+    onChange(newDocuments)
+  }
+
+  const updateDocumentName = (index: number, name: string) => {
+    const newDocuments = [...value]
+    newDocuments[index] = { ...newDocuments[index], name }
+    onChange(newDocuments)
+  }
+
+  const handleFileUpload = async (index: number, file: File) => {
+    // Validate file type
+    const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png']
+    if (!allowedTypes.includes(file.type)) {
+      alert('Разрешены только PDF и изображения (JPEG, PNG)')
+      return
+    }
+
+    // Validate file size (10MB limit)
+    const maxSize = 10 * 1024 * 1024
     if (file.size > maxSize) {
-      return `Размер файла превышает ${Math.round(maxSize / 1024 / 1024)} МБ`
-    }
-
-    const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase()
-    if (!acceptedTypes.includes(fileExtension)) {
-      return `Допустимые форматы: ${acceptedTypes.join(', ')}`
-    }
-
-    return null
-  }
-
-  const handleDrag = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (e.type === 'dragenter' || e.type === 'dragover') {
-      setDragActive(true)
-    } else if (e.type === 'dragleave') {
-      setDragActive(false)
-    }
-  }
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setDragActive(false)
-
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      const file = e.dataTransfer.files[0]
-      const validationError = validateFile(file)
-      
-      if (validationError) {
-        setError(validationError)
-        return
-      }
-
-      setSelectedFile(file)
-      setError(null)
-    }
-  }
-
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0]
-      const validationError = validateFile(file)
-      
-      if (validationError) {
-        setError(validationError)
-        return
-      }
-
-      setSelectedFile(file)
-      setError(null)
-    }
-  }
-
-  const handleSignatureSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setSelectedSignature(e.target.files[0])
-    }
-  }
-
-  const handleUpload = async () => {
-    if (!selectedFile) {
-      setError('Выберите файл для загрузки')
+      alert('Размер файла не должен превышать 10 МБ')
       return
     }
 
-    if (requireSignature && !selectedSignature) {
-      setError('Необходимо приложить файл с электронной подписью')
-      return
-    }
-
-    setUploading(true)
-    setError(null)
+    setUploading(index)
 
     try {
-      // Simulate upload process
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('courseId', courseId)
+      formData.append('folder', 'documents')
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Ошибка загрузки')
+      }
+
+      const result = await response.json()
       
-      onUpload(selectedFile, selectedSignature || undefined)
-      setSuccess(true)
-      setSelectedFile(null)
-      setSelectedSignature(null)
-      
-      // Reset form
-      if (fileInputRef.current) fileInputRef.current.value = ''
-      if (signatureInputRef.current) signatureInputRef.current.value = ''
-      
-      setTimeout(() => setSuccess(false), 3000)
-    } catch (err) {
-      setError('Ошибка при загрузке файла')
+      const newDocuments = [...value]
+      newDocuments[index] = { 
+        ...newDocuments[index], 
+        file: result.url 
+      }
+      onChange(newDocuments)
+
+    } catch (error) {
+      console.error('Upload error:', error)
+      alert('Ошибка при загрузке файла')
     } finally {
-      setUploading(false)
+      setUploading(null)
     }
   }
 
   return (
-    <div className="space-y-6">
-      {/* File Upload Area */}
-      <div
-        className={`relative border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-          dragActive
-            ? 'border-edu-blue bg-blue-50'
-            : selectedFile
-            ? 'border-green-500 bg-green-50'
-            : 'border-gray-300 hover:border-gray-400'
-        }`}
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-      >
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept={acceptedTypes.join(',')}
-          onChange={handleFileSelect}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        />
-        
-        <div className="space-y-4">
-          {selectedFile ? (
-            <div className="flex items-center justify-center space-x-3">
-              <FileText className="h-8 w-8 text-green-600" />
-              <div>
-                <p className="font-medium text-green-900">{selectedFile.name}</p>
-                <p className="text-sm text-green-700">
-                  {Math.round(selectedFile.size / 1024)} КБ
-                </p>
-              </div>
-              <Check className="h-6 w-6 text-green-600" />
-            </div>
-          ) : (
-            <>
-              <Upload className="h-12 w-12 text-gray-400 mx-auto" />
-              <div>
-                <p className="text-lg font-medium text-gray-900 mb-2">
-                  Перетащите файл или нажмите для выбора
-                </p>
-                <p className="text-sm text-gray-600">
-                  Допустимые форматы: {acceptedTypes.join(', ')} • 
-                  Максимальный размер: {Math.round(maxSize / 1024 / 1024)} МБ
-                </p>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* Signature Upload */}
-      {requireSignature && (
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6">
-          <div className="flex items-start space-x-3 mb-4">
-            <Shield className="h-6 w-6 text-amber-600 mt-1 flex-shrink-0" />
-            <div>
-              <h3 className="font-semibold text-amber-900 mb-2">
-                Электронная цифровая подпись (ЭЦП)
-              </h3>
-              <p className="text-sm text-amber-800">
-                В соответствии с требованиями законодательства РФ, все документы должны быть 
-                подписаны усиленной квалифицированной электронной подписью.
-              </p>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-amber-900 mb-2">
-                Файл подписи (.sig, .p7s)
-              </label>
-              <input
-                ref={signatureInputRef}
-                type="file"
-                accept=".sig,.p7s"
-                onChange={handleSignatureSelect}
-                className="block w-full text-sm text-amber-900 border border-amber-300 rounded-lg cursor-pointer bg-amber-50 focus:outline-none focus:border-amber-500"
-              />
-            </div>
-
-            {selectedSignature && (
-              <div className="flex items-center space-x-2 text-sm text-amber-700">
-                <Check className="h-4 w-4 text-green-600" />
-                <span>Подпись: {selectedSignature.name}</span>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Error Display */}
-      {error && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-          <div className="flex items-center space-x-2">
-            <AlertCircle className="h-5 w-5 text-red-600" />
-            <p className="text-red-800">{error}</p>
-          </div>
-        </div>
-      )}
-
-      {/* Success Display */}
-      {success && (
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-          <div className="flex items-center space-x-2">
-            <Check className="h-5 w-5 text-green-600" />
-            <p className="text-green-800">Документ успешно загружен и проверен!</p>
-          </div>
-        </div>
-      )}
-
-      {/* Upload Button */}
-      <div className="flex justify-end">
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <label className="block text-sm font-medium text-gray-700">
+          Виды выдаваемых документов
+        </label>
         <button
-          onClick={handleUpload}
-          disabled={!selectedFile || uploading || (requireSignature && !selectedSignature)}
-          className={`px-6 py-3 font-medium rounded-lg transition-colors ${
-            uploading
-              ? 'bg-gray-400 text-white cursor-not-allowed'
-              : selectedFile && (!requireSignature || selectedSignature)
-              ? 'bg-edu-blue text-white hover:bg-edu-navy'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-          }`}
+          type="button"
+          onClick={addDocument}
+          disabled={value.length >= maxDocuments}
+          className="inline-flex items-center px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {uploading ? 'Загружается...' : 'Загрузить документ'}
+          <Plus className="h-4 w-4 mr-1" />
+          Добавить ({value.length}/{maxDocuments})
         </button>
       </div>
 
-      {/* Information */}
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-        <h4 className="font-semibold text-gray-900 mb-2">Требования к документам:</h4>
-        <ul className="text-sm text-gray-700 space-y-1">
-          <li>• Документы должны быть в формате PDF</li>
-          <li>• Максимальный размер файла: {Math.round(maxSize / 1024 / 1024)} МБ</li>
-          <li>• Обязательна электронная цифровая подпись (ЭЦП)</li>
-          <li>• Все тексты должны быть читаемыми</li>
-          <li>• Документы должны соответствовать оригиналам</li>
+      {value.length === 0 && (
+        <div className="text-center py-8 text-gray-500">
+          <FileText className="h-12 w-12 mx-auto mb-2 text-gray-400" />
+          <p>Нет добавленных документов</p>
+          <p className="text-sm">Н��жмите "Добавить" чтобы начать</p>
+        </div>
+      )}
+
+      <div className="space-y-3">
+        {value.map((document, index) => (
+          <div key={index} className="border border-gray-200 rounded-lg p-4">
+            <div className="flex items-start space-x-4">
+              <div className="flex-1 space-y-3">
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                    Название документа *
+                  </label>
+                  <input
+                    type="text"
+                    value={document.name}
+                    onChange={(e) => updateDocumentName(index, e.target.value)}
+                    placeholder="Например: Диплом о профессиональной переподготовке"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-gray-600 mb-1">
+                    Образец документа (необязательно)
+                  </label>
+                  <div className="flex items-center space-x-2">
+                    <label className="flex-1 cursor-pointer">
+                      <div className="flex items-center justify-center px-3 py-2 border border-dashed border-gray-300 rounded-md text-sm text-gray-600 hover:border-gray-400 hover:bg-gray-50">
+                        <Upload className="h-4 w-4 mr-2" />
+                        {uploading === index ? 'Загружается...' : 'Выбрать файл'}
+                      </div>
+                      <input
+                        type="file"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (file) {
+                            handleFileUpload(index, file)
+                          }
+                        }}
+                        className="hidden"
+                        disabled={uploading === index}
+                      />
+                    </label>
+                    
+                    {document.file && (
+                      <a
+                        href={document.file}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-3 py-2 text-sm text-blue-600 hover:text-blue-800"
+                      >
+                        <Download className="h-4 w-4 mr-1" />
+                        Открыть
+                      </a>
+                    )}
+                  </div>
+                  {document.file && (
+                    <p className="text-xs text-green-600 mt-1">
+                      ✓ Файл загружен
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => removeDocument(index)}
+                className="flex-shrink-0 p-1 text-red-600 hover:text-red-800 hover:bg-red-50 rounded"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+        <h4 className="font-semibold text-gray-900 mb-2 text-sm">Рекомендации:</h4>
+        <ul className="text-xs text-gray-700 space-y-1">
+          <li>• Максимум {maxDocuments} документов</li>
+          <li>• Поддерживаемые форматы: PDF, JPEG, PNG</li>
+          <li>• Максимальный размер файла: 10 ��Б</li>
+          <li>• Загружайте образцы документов для демонстрации студентам</li>
         </ul>
       </div>
     </div>
