@@ -69,7 +69,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.hero.title',
       title: 'Заголовок главной страницы',
-      content: 'Образовательный центр дополнительного профессионального образования',
+      content: 'Получите новую профессию за 2-6 месяцев',
       type: 'TEXT',
       page: 'homepage',
       section: 'hero'
