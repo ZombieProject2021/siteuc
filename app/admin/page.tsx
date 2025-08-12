@@ -73,6 +73,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false)
   const [editingCourse, setEditingCourse] = useState<Course | null>(null)
   const [showCourseForm, setShowCourseForm] = useState(false)
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
+  const [showLeadModal, setShowLeadModal] = useState(false)
 
   // Course form state
   const [courseForm, setCourseForm] = useState({
@@ -173,7 +175,7 @@ export default function AdminPage() {
       resetCourseForm()
       fetchCourses()
     } catch (error) {
-      toast.error('Ошибка сохранения курса')
+      toast.error('Ошибка ��охранения курса')
     } finally {
       setLoading(false)
     }
@@ -251,6 +253,34 @@ export default function AdminPage() {
     } catch (error) {
       toast.error('Ошибка загруз��и данных курса')
     }
+  }
+
+  // Lead management
+  const handleUpdateLeadStatus = async (leadId: number, newStatus: string) => {
+    try {
+      setLoading(true)
+      const response = await fetch(`/api/leads/${leadId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus })
+      })
+
+      if (!response.ok) {
+        throw new Error('Ошибка обновления статуса')
+      }
+
+      toast.success('Статус обновлен')
+      fetchLeads()
+    } catch (error) {
+      toast.error('Ошибка обновления статуса')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleViewLead = (lead: Lead) => {
+    setSelectedLead(lead)
+    setShowLeadModal(true)
   }
 
   // Settings management
@@ -372,7 +402,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ��н��циализация'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -897,7 +927,7 @@ export default function AdminPage() {
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {leads.map((lead) => (
-                <tr key={lead.id}>
+                <tr key={lead.id} className="hover:bg-gray-50 cursor-pointer" onClick={() => handleViewLead(lead)}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div>
                       <div className="text-sm font-medium text-gray-900">{lead.name}</div>
@@ -927,10 +957,11 @@ export default function AdminPage() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <select
                       value={lead.status}
-                      onChange={async (e) => {
-                        // TODO: Update lead status
-                        console.log('Update lead status:', lead.id, e.target.value)
+                      onChange={(e) => {
+                        e.stopPropagation()
+                        handleUpdateLeadStatus(lead.id, e.target.value)
                       }}
+                      onClick={(e) => e.stopPropagation()}
                       className="text-sm border-gray-300 rounded-md"
                     >
                       <option value="NEW">Новая</option>
