@@ -233,7 +233,7 @@ export default function CoursesPage() {
 
               {/* Format Filter */}
               <div className="mb-6">
-                <h4 className="font-medium text-gray-900 mb-3">Формат обучения</h4>
+                <h4 className="font-medium text-gray-900 mb-3">Форма�� обучения</h4>
                 <div className="space-y-2">
                   {formats.map((format) => (
                     <label key={format} className="flex items-center cursor-pointer">
@@ -351,7 +351,7 @@ export default function CoursesPage() {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {courses.map((course) => (
-                  <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                  <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col h-full">
                     <div className="relative">
                       {course.imageSrc ? (
                         <img
@@ -376,7 +376,7 @@ export default function CoursesPage() {
                       )}
                     </div>
 
-                    <div className="p-6">
+                    <div className="p-6 flex flex-col flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-blue-600 font-medium">{course.category}</span>
                         <div className="flex items-center">
