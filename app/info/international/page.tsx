@@ -1,4 +1,4 @@
-import { Globe, Users, FileText, Handshake, AlertCircle, TrendingUp } from 'lucide-react'
+import { Globe, Users, FileText, HandHeart, AlertCircle, TrendingUp } from 'lucide-react'
 
 export default function InternationalPage() {
   const partnerships = [
@@ -21,7 +21,7 @@ export default function InternationalPage() {
       activities: [
         'Академические обмены преподавателей',
         'Совместные исследовательские проекты',
-        'Обмен учебно-методическими материалами'
+        'Обмен учебно-методическим�� материалами'
       ],
       since: '2023',
       status: 'Активное'
@@ -49,7 +49,7 @@ export default function InternationalPage() {
 
   const exchangePrograms = {
     available: false,
-    reason: 'В настоящее время программы академических обменов не реализуются в связи со спецификой дополнительного профессионального образования',
+    reason: 'В настоящее время программы а��адемических обменов не реализуются в связи со спецификой дополнительного профессионального образования',
     alternatives: [
       'Участие в международных онлайн-конференциях',
       'Дистанционное участие в зарубежных образовательных программах',
