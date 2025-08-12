@@ -33,7 +33,7 @@ model Course {
   outcomes     Json?    // JSON array of learning outcomes
   targetAudience Json?  // JSON array of target audience (кому подходит)
   learningFormat String? @db.VarChar(255) // Формат обучения
-  documentTypes Json?   // JSON array of document types (виды документов)
+  documentTypes Json?   // JSON array of document types with files: {name: string, file?: string}
   imageSrc     String?  @db.VarChar(255)
   certificate  Boolean  @default(true)
   createdAt    DateTime @default(now())
