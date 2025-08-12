@@ -205,7 +205,7 @@ export default function AdminPage() {
       title: '',
       slug: '',
       description: '',
-      category: 'Профессиональная переподготовка',
+      category: 'Професси��нальная переподготовка',
       duration: '',
       price: 0,
       oldPrice: 0,
@@ -214,7 +214,10 @@ export default function AdminPage() {
       schedule: '',
       level: '',
       format: '',
-      imageSrc: ''
+      imageSrc: '',
+      targetAudience: [] as string[],
+      learningFormat: '',
+      documentTypes: [] as string[]
     })
   }
 
@@ -242,7 +245,7 @@ export default function AdminPage() {
       })
       setShowCourseForm(true)
     } catch (error) {
-      toast.error('Ошибка загрузки данных курса')
+      toast.error('Ошибка загруз��и данных курса')
     }
   }
 
@@ -351,7 +354,7 @@ export default function AdminPage() {
 
       {/* Content Management */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Уп���авление контентом</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Уп��авление контентом</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div>
@@ -641,7 +644,7 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                   required
                 >
-                  <option value="">Выберите формат</option>
+                  <option value="">Вы��ерите формат</option>
                   <option value="Дистанционно">Дистанционно</option>
                   <option value="Очно">Очно</option>
                   <option value="Смешанный">С��ешанный</option>
@@ -698,7 +701,7 @@ export default function AdminPage() {
                   Клиенты
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Де��с��вия
+                  Дейс��вия
                 </th>
               </tr>
             </thead>
@@ -1028,7 +1031,7 @@ export default function AdminPage() {
       {/* Mobile Header */}
       <div className="lg:hidden bg-white shadow-md border-b border-gray-200 p-4">
         <div className="flex items-center justify-between">
-          <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
+          <h1 className="text-xl font-bold text-edu-navy">Админ-панел��</h1>
           <select
             value={activeSection}
             onChange={(e) => setActiveSection(e.target.value as AdminSection)}
