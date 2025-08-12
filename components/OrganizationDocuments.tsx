@@ -210,7 +210,7 @@ export default function OrganizationDocuments() {
                   required
                 />
                 <p className="text-xs text-gray-500 mt-1">
-                  Поддерживаются: PDF, DOC, DOCX, XLS, XLSX
+                  Поддерживаются: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG
                 </p>
               </div>
 
