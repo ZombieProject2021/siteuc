@@ -104,7 +104,7 @@ export default function AdminPage() {
       const data = await response.json()
       setCourses(data.courses || [])
     } catch (error) {
-      toast.error('Ошибка загрузки курсов')
+      toast.error('Ошибка загрузки курс��в')
     } finally {
       setLoading(false)
     }
@@ -199,7 +199,7 @@ export default function AdminPage() {
       title: '',
       slug: '',
       description: '',
-      category: 'Профессиональная переподготовка',
+      category: 'Проф��ссиональная переподготовка',
       duration: '',
       price: 0,
       oldPrice: 0,
@@ -254,7 +254,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('Настройк��� сохранены')
+      toast.success('Настройк�� сохранены')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -324,7 +324,7 @@ export default function AdminPage() {
           <div className="flex items-center">
             <Users className="h-8 w-8 text-purple-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Студент��</p>
+              <p className="text-sm font-medium text-gray-600">Студенты</p>
               <p className="text-2xl font-bold text-gray-900">
                 {courses.reduce((sum, course) => sum + course.currentStudents, 0)}
               </p>
@@ -352,14 +352,23 @@ export default function AdminPage() {
               <h4 className="font-medium text-gray-900">Инициализация контента</h4>
               <p className="text-sm text-gray-600">Заполнить базу данных начальным контентом для главной страницы</p>
             </div>
-            <button
-              onClick={handleInitializeContent}
-              disabled={loading}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
-            >
-              <Database className="h-4 w-4 mr-2" />
-              {loading ? 'Инициализация...' : 'Инициализировать'}
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={handleInitializeContent}
+                disabled={loading}
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+              >
+                <Database className="h-4 w-4 mr-2" />
+                {loading ? 'Инициализация...' : 'Быстрая инициализация'}
+              </button>
+              <a
+                href="/admin/seed-content"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Подробнее
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -505,7 +514,7 @@ export default function AdminPage() {
                 >
                   <option>Профессиональная переподготовка</option>
                   <option>Повышение квалификации</option>
-                  <option>Корпоративное обуч��ние</option>
+                  <option>Корпоративное обучение</option>
                 </select>
               </div>
 
