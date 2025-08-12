@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Car, Bus, Users, MessageCircle } from 'lucide-react'
+import { MapPin, Phone, Mail, Clock, Car, Bus, Users, MessageCircle, BookOpen } from 'lucide-react'
 
 export default function ContactsPage() {
   return (
@@ -105,7 +105,7 @@ export default function ContactsPage() {
               <div className="flex items-start space-x-4">
                 <Car className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-2">На автомобиле</h3>
+                  <h3 className="font-semibold text-gray-900 mb-2">На автомобил��</h3>
                   <p className="text-gray-700 mb-2">
                     Бесплатная парковка во дворе здания
                   </p>
