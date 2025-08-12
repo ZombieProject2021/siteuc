@@ -37,9 +37,9 @@ const infoSections = [
     icon: Award,
     description: 'Стандарты и требования'
   },
-  { 
-    href: '/info/leadership', 
-    label: 'Руководство', 
+  {
+    href: '/info/management',
+    label: 'Руководство',
     icon: Users,
     description: 'Руководство образовательной организации'
   },
