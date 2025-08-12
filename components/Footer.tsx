@@ -10,10 +10,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Organization Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">CMS UC</h3>
+            <h3 className="text-lg font-semibold mb-4">ООО Учебный Центр</h3>
             <p className="text-gray-300 text-sm mb-4">
-              Система управления контентом для учебных центров с полным соблюдением 
-              требований российского законодательства
+              Дополнительное профессиональное образование с выдачей документов
+              государственного образца. Лицензированные программы с 2008 года.
             </p>
           </div>
 
@@ -22,23 +22,23 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Быстрые ссылки</h3>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/courses" className="text-gray-300 hover:text-white transition-colors">
+                  Курсы обучения
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-300 hover:text-white transition-colors">
+                  О нас
+                </Link>
+              </li>
+              <li>
+                <Link href="/reviews" className="text-gray-300 hover:text-white transition-colors">
+                  Отзывы студентов
+                </Link>
+              </li>
+              <li>
                 <Link href="/info" className="text-gray-300 hover:text-white transition-colors">
                   Сведения об организации
-                </Link>
-              </li>
-              <li>
-                <Link href="/education" className="text-gray-300 hover:text-white transition-colors">
-                  Образование
-                </Link>
-              </li>
-              <li>
-                <Link href="/documents" className="text-gray-300 hover:text-white transition-colors">
-                  Документы
-                </Link>
-              </li>
-              <li>
-                <Link href="/staff" className="text-gray-300 hover:text-white transition-colors">
-                  Педагогический состав
                 </Link>
               </li>
             </ul>
