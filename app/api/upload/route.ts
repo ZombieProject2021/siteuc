@@ -17,11 +17,17 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate file type
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+    // Validate file type based on folder
+    const allowedTypes = folder === 'documents'
+      ? ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png']
+      : ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
+
     if (!allowedTypes.includes(file.type)) {
+      const allowedFormats = folder === 'documents'
+        ? 'PDF, JPEG, PNG'
+        : 'JPEG, PNG, WebP'
       return NextResponse.json(
-        { error: 'Недопустимый тип файла. Разрешены: JPEG, PNG, WebP' },
+        { error: `Недопустимый тип файла. Разрешены: ${allowedFormats}` },
         { status: 400 }
       )
     }
