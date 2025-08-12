@@ -20,12 +20,13 @@ export default function SafetyCoursesPage() {
       const response = await fetch('/api/courses/seed-safety', {
         method: 'POST'
       })
-      
-      const data = await response.json()
-      
+
       if (!response.ok) {
-        throw new Error(data.error || 'Ошибка при создании курсов')
+        const errorData = await response.json().catch(() => ({ error: 'Неизвестная ошибка' }))
+        throw new Error(errorData.error || 'Ошибка при создании курсов')
       }
+
+      const data = await response.json()
       
       setResults(data)
       toast.success('Курсы по охране труда успешно созданы!', { id: 'safety-courses' })
