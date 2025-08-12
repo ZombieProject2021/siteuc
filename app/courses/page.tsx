@@ -423,7 +423,7 @@ export default function CoursesPage() {
                           </div>
                         </div>
 
-                        <div className="flex gap-3">
+                        <div className="flex flex-row gap-3">
                           <Link 
                             href={`/courses/${course.slug}`}
                             className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-4 rounded-lg font-medium text-center transition-colors"
