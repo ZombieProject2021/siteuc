@@ -90,15 +90,23 @@ export default function ImageUpload({
       }
       reader.readAsDataURL(file)
 
-      // Simulate upload to a storage service
-      // In a real implementation, you'd upload to your storage service (AWS S3, Cloudinary, etc.)
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      // For now, we'll use the preview URL as the image source
-      // In production, replace this with the actual uploaded URL from your storage service
-      const imageUrl = URL.createObjectURL(file)
-      
-      onUpload(imageUrl)
+      // Upload to server
+      const formData = new FormData()
+      formData.append('file', file)
+      formData.append('courseId', courseId)
+
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Ошибка загрузки')
+      }
+
+      const result = await response.json()
+      onUpload(result.url)
       
     } catch (err) {
       setError('Ошибка при загрузке изображения')
