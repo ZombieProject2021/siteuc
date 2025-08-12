@@ -165,7 +165,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                   }`}
                   disabled={course.status !== 'ACTIVE'}
                 >
-                  {course.status === 'ACTIVE' ? 'Записаться на курс' : 'Набор закрыт'}
+                  {course.status === 'ACTIVE' ? 'Записаться на курс' : 'Наб��р закрыт'}
                 </button>
                 <a
                   href="/consultation"
@@ -194,7 +194,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               {/* Features */}
               {course.features && course.features.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-lg p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Что включено</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Чт�� включено</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {course.features.map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
@@ -320,7 +320,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               {course.reviews && course.reviews.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Отзывы студенто�� ({course.reviewsCount})
+                    Отзывы студен��о�� ({course.reviewsCount})
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {course.reviews.map((review) => (
@@ -427,7 +427,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-6">
                 <h3 className="text-lg font-semibold mb-4">Есть вопросы?</h3>
                 <p className="text-blue-100 mb-4 text-sm">
-                  Свяжитесь с нами для получения подробной ин��ормации о курсе
+                  Свяжитесь с нами для получения подробн��й ин��ормации о курсе
                 </p>
                 <div className="space-y-3">
                   <a
@@ -435,14 +435,14 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                     className="flex items-center space-x-2 text-sm hover:text-yellow-200 transition-colors"
                   >
                     <Phone className="h-4 w-4" />
-                    <span>+7 (495) 123-45-67</span>
+                    <span className="font-semibold">+7 (495) 123-45-67</span>
                   </a>
                   <a
                     href="mailto:info@uchebnycentr.ru"
                     className="flex items-center space-x-2 text-sm hover:text-yellow-200 transition-colors"
                   >
                     <Mail className="h-4 w-4" />
-                    <span>info@uchebnycentr.ru</span>
+                    <span className="font-semibold">info@uchebnycentr.ru</span>
                   </a>
                 </div>
               </div>
@@ -453,7 +453,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                   Важная информация
                 </h3>
                 <ul className="text-sm text-amber-800 space-y-2">
-                  <li>• {course.certificate ? 'Диплом государственного образца' : 'Сертификат об окончании'}</li>
+                  <li>• {course.certificate ? 'Диплом государственного образ��а' : 'Сертификат об окончании'}</li>
                   <li>• Доступ к материалам на 6 месяцев</li>
                   <li>• Поддержка преподавателя</li>
                   <li>• Практические задания</li>
