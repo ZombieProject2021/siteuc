@@ -34,12 +34,12 @@ export default function DocumentUpload({
   }
 
   const removeDocument = (index: number) => {
-    const newDocuments = value.filter((_, i) => i !== index)
+    const newDocuments = currentDocuments.filter((_, i) => i !== index)
     onChange(newDocuments)
   }
 
   const updateDocumentName = (index: number, name: string) => {
-    const newDocuments = [...value]
+    const newDocuments = [...currentDocuments]
     newDocuments[index] = { ...newDocuments[index], name }
     onChange(newDocuments)
   }
@@ -79,7 +79,7 @@ export default function DocumentUpload({
 
       const result = await response.json()
       
-      const newDocuments = [...value]
+      const newDocuments = [...currentDocuments]
       newDocuments[index] = { 
         ...newDocuments[index], 
         file: result.url 
