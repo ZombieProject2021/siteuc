@@ -33,6 +33,8 @@ export async function GET(request: NextRequest) {
     const format = searchParams.get('format')
     const status = searchParams.get('status')
     const search = searchParams.get('search')
+    const priceRanges = searchParams.get('priceRanges')
+    const sortBy = searchParams.get('sortBy') || 'popularity'
     const page = parseInt(searchParams.get('page') || '1')
     const limit = parseInt(searchParams.get('limit') || '10')
     const offset = (page - 1) * limit
