@@ -147,7 +147,9 @@ export async function PUT(
       }
     })
 
-    return NextResponse.json(course)
+    const response = NextResponse.json(course)
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
