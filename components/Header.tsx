@@ -24,38 +24,39 @@ export default function Header() {
     <header className="bg-white shadow-md border-b border-gray-200">
       <div className="container mx-auto px-4">
         {/* Accessibility Bar */}
-        <div className="bg-edu-light-gray py-2 text-sm border-b border-gray-300">
+        <div className="bg-gray-900 py-2 text-sm">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-600">Версия для слабовидящих:</span>
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={toggleAccessibility}
-                  className={`flex items-center space-x-2 px-3 py-1 rounded ${
-                    isAccessibilityMode
-                      ? 'bg-yellow-400 text-black'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                  aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
-                >
-                  <Eye className="h-4 w-4" />
-                  <span>{isAccessibilityMode ? 'Обычная версия' : 'Для слабовидящих'}</span>
-                </button>
+            <div className="flex items-center space-x-3">
+              <button
+                onClick={toggleAccessibility}
+                className={`flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  isAccessibilityMode
+                    ? 'bg-yellow-400 text-black shadow-md'
+                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                }`}
+                aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
+              >
+                <Eye className="h-4 w-4" />
+                <span>{isAccessibilityMode ? 'Обычная версия' : 'Версия для слабовидящих'}</span>
+              </button>
 
-                <button
-                  onClick={() => setIsAccessibilitySettingsOpen(true)}
-                  className="flex items-center space-x-1 px-3 py-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded"
-                  aria-label="Настройки доступности"
-                >
-                  <Settings className="h-4 w-4" />
-                  <span>Настройки</span>
-                </button>
-              </div>
+              <button
+                onClick={() => setIsAccessibilitySettingsOpen(true)}
+                className="flex items-center space-x-1 px-3 py-1.5 bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white rounded-full text-xs font-medium transition-all"
+                aria-label="Настройки доступности"
+              >
+                <Settings className="h-3 w-3" />
+                <span className="hidden sm:inline">Настройки</span>
+              </button>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="/admin" className="flex items-center space-x-1 text-gray-600 hover:text-edu-blue">
-                <Settings className="h-4 w-4" />
-                <span>Админ-панель</span>
+              <div className="hidden md:flex items-center space-x-4 text-gray-400 text-xs">
+                <span>📞 +7 (495) 123-45-67</span>
+                <span>✉️ info@uchebnycentr.ru</span>
+              </div>
+              <Link href="/admin" className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 transition-colors text-xs">
+                <Settings className="h-3 w-3" />
+                <span className="hidden sm:inline">Админ</span>
               </Link>
             </div>
           </div>
