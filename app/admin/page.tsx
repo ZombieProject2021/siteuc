@@ -722,7 +722,7 @@ export default function AdminPage() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Конт��кт
+                  Контакт
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Курс
@@ -885,15 +885,24 @@ export default function AdminPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
         <p className="text-blue-800 text-sm mb-3">
-          Если это первый запуск, создайте начальный набор редактируемых текстов.
+          Если это первый запуск или есть ошибки 400/404, инициализируйте базу данных.
         </p>
-        <a
-          href="/admin/seed-content"
-          className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-        >
-          <Database className="h-4 w-4 mr-2" />
-          Создать начальный контент
-        </a>
+        <div className="flex gap-3">
+          <a
+            href="/admin/fix-courses"
+            className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <Database className="h-4 w-4 mr-2" />
+            Инициализировать БД
+          </a>
+          <a
+            href="/admin/seed-content"
+            className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <Database className="h-4 w-4 mr-2" />
+            Только контент
+          </a>
+        </div>
       </div>
 
       <ContentEditor />
