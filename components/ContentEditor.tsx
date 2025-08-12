@@ -183,7 +183,7 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
             className="bg-edu-blue hover:bg-edu-navy text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
           >
             <Plus className="h-4 w-4 mr-2" />
-            Добавить контент
+            Добавить контен��
           </button>
           {onClose && (
             <button
@@ -437,16 +437,28 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex space-x-2">
                       <button
-                        onClick={() => handleEditContent(content)}
-                        className="text-indigo-600 hover:text-indigo-900"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          console.log('Edit button clicked for content:', content.id)
+                          handleEditContent(content)
+                        }}
+                        className="p-2 text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 rounded-md transition-colors"
                         title="Редактировать"
+                        style={{ minWidth: '32px', minHeight: '32px' }}
                       >
                         <Edit className="h-4 w-4" />
                       </button>
                       <button
-                        onClick={() => handleDeleteContent(content.id)}
-                        className="text-red-600 hover:text-red-900"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          e.stopPropagation()
+                          console.log('Delete button clicked for content:', content.id)
+                          handleDeleteContent(content.id)
+                        }}
+                        className="p-2 text-red-600 hover:text-red-900 hover:bg-red-50 rounded-md transition-colors"
                         title="Удалить"
+                        style={{ minWidth: '32px', minHeight: '32px' }}
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
