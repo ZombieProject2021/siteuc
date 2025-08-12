@@ -199,7 +199,7 @@ export const seedInitialContent = async () => {
     {
       key: 'about.description',
       title: 'Описание на странице О нас',
-      content: 'Мы специализируемся на предоставлении качественного дополнительного профессионального образования для специалистов различных сфер деятельности.',
+      content: 'Мы специализируемся на предоставлении качественного дополнительного профессионального образования для специали��тов различных сфер деятельности.',
       type: 'TEXT',
       page: 'about',
       section: 'main'
@@ -219,6 +219,55 @@ export const seedInitialContent = async () => {
       type: 'TEXT',
       page: 'contacts',
       section: 'info'
+    },
+    // Преимущества
+    {
+      key: 'homepage.benefit.1',
+      title: 'Преимущество 1',
+      content: 'Лицензированные программы',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefit.2',
+      title: 'Преимущество 2',
+      content: 'Государственные дипломы',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefit.3',
+      title: 'Преимущество 3',
+      content: 'Рассрочка без переплат',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefit.4',
+      title: 'Преимущество 4',
+      content: 'Помощь в трудоустройстве',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefit.5',
+      title: 'Преимущество 5',
+      content: 'Гибкий график обучения',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefit.6',
+      title: 'Преимущество 6',
+      content: 'Практикующие преподаватели',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
     }
   ]
 
