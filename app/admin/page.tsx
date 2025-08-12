@@ -595,7 +595,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Расписание *
+                  Расписа��ие *
                 </label>
                 <input
                   type="text"
@@ -971,6 +971,13 @@ export default function AdminPage() {
           >
             <Database className="h-4 w-4 mr-2" />
             Исправить курсы
+          </a>
+          <a
+            href="/admin/safety-courses"
+            className="inline-flex items-center bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <Shield className="h-4 w-4 mr-2" />
+            Курсы охраны труда
           </a>
         </div>
       </div>
