@@ -103,15 +103,15 @@ export default function DocumentUpload({
         <button
           type="button"
           onClick={addDocument}
-          disabled={value.length >= maxDocuments}
+          disabled={currentDocuments.length >= maxDocuments}
           className="inline-flex items-center px-3 py-1 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="h-4 w-4 mr-1" />
-          Добавить ({value.length}/{maxDocuments})
+          Добавить ({currentDocuments.length}/{maxDocuments})
         </button>
       </div>
 
-      {value.length === 0 && (
+      {currentDocuments.length === 0 && (
         <div className="text-center py-8 text-gray-500">
           <FileText className="h-12 w-12 mx-auto mb-2 text-gray-400" />
           <p>Нет добавленных документов</p>
@@ -120,7 +120,7 @@ export default function DocumentUpload({
       )}
 
       <div className="space-y-3">
-        {value.map((document, index) => (
+        {currentDocuments.map((document, index) => (
           <div key={index} className="border border-gray-200 rounded-lg p-4">
             <div className="flex items-start space-x-4">
               <div className="flex-1 space-y-3">
@@ -200,7 +200,7 @@ export default function DocumentUpload({
           <li>• Максимум {maxDocuments} документов</li>
           <li>• Поддерживаемые форматы: PDF, JPEG, PNG</li>
           <li>• Максимальный размер файла: 10 ��Б</li>
-          <li>• Загружайте образцы документов для демонстрации студентам</li>
+          <li>• Загружайте ��бразцы документов для демонстрации студентам</li>
         </ul>
       </div>
     </div>
