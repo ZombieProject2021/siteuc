@@ -518,6 +518,7 @@ export default function AdminPage() {
                   currentImage={courseForm.imageSrc}
                   onUpload={(imageUrl) => setCourseForm({ ...courseForm, imageSrc: imageUrl })}
                   aspectRatio="wide"
+                  courseId={editingCourse?.id.toString() || 'new'}
                   maxSize={5 * 1024 * 1024}
                 />
               </div>
