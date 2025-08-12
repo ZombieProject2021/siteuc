@@ -24,7 +24,7 @@ import ContentEditor from '@/components/ContentEditor'
 import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
 
-type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'reports'
+type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'reports'
 
 interface Course {
   id: number
@@ -596,7 +596,7 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 >
                   <option>Профессиональная переподготовка</option>
-                  <option>Повышение квалификации</option>
+                  <option>Повыш��ние квалификации</option>
                   <option>Корпоративное обучение</option>
                 </select>
               </div>
