@@ -1,167 +1,269 @@
+'use client'
+
 import Link from 'next/link'
-import { BookOpen, Users, FileText, Shield, Settings, Phone } from 'lucide-react'
+import { useState } from 'react'
+import { 
+  BookOpen, 
+  Users, 
+  Award, 
+  Shield, 
+  Phone, 
+  Mail, 
+  ArrowRight, 
+  CheckCircle, 
+  Star,
+  Clock,
+  Target,
+  TrendingUp
+} from 'lucide-react'
 
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState('programs')
+
+  const stats = [
+    { label: 'Лет на рынке', value: '15+', icon: TrendingUp },
+    { label: 'Выпускников', value: '5000+', icon: Users },
+    { label: 'Программ обучения', value: '50+', icon: BookOpen },
+    { label: 'Преподавателей', value: '30+', icon: Award },
+  ]
+
+  const programs = [
+    {
+      id: 1,
+      title: 'Управление персоналом',
+      duration: '520 ак.ч.',
+      price: '45000',
+      oldPrice: '55000',
+      level: 'Профессиональная переподготовка',
+      students: 156,
+      rating: 4.8,
+      features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
+    },
+    {
+      id: 2,
+      title: 'Бухгалтерский учет и налогообложение',
+      duration: '256 ак.ч.',
+      price: '32000',
+      oldPrice: '38000',
+      level: 'Профессиональная переподготовка',
+      students: 89,
+      rating: 4.9,
+      features: ['Диплом гос. образца', 'Очно-заочно', '1С:Бухгалтерия']
+    },
+    {
+      id: 3,
+      title: 'Проектное управление',
+      duration: '144 ак.ч.',
+      price: '25000',
+      oldPrice: '',
+      level: 'Повышение квалификации',
+      students: 67,
+      rating: 4.7,
+      features: ['Удостоверение', 'Онлайн', 'Международные стандарты']
+    }
+  ]
+
+  const benefits = [
+    'Лицензированные программы',
+    'Государственные дипломы',
+    'Рассрочка без переплат',
+    'Помощь в трудоустройстве',
+    'Гибкий график обучения',
+    'Практикующие преподаватели'
+  ]
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <a href="#main-content" className="skip-link">
-        Перейти к основному содержанию
-      </a>
-      
-      <div id="main-content">
-        {/* Hero Section */}
-        <section className="text-center py-12 bg-gradient-to-r from-edu-blue to-edu-light-blue text-white rounded-lg mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            CMS UC
-          </h1>
-          <p className="text-xl md:text-2xl mb-6">
-            Система управления контентом для учебных центров
-          </p>
-          <p className="text-lg opacity-90 max-w-3xl mx-auto">
-            Полное соответствие требованиям российского законодательства 
-            для образовательных организаций
-          </p>
-        </section>
-
-        {/* Quick Navigation */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-bold text-edu-navy mb-6">
-            Быстрая навигация
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Link 
-              href="/info" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <FileText className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Сведения об организации
-              </h3>
-              <p className="text-gray-600">
-                Обязательная информация согласно законодательству РФ
-              </p>
-            </Link>
-
-            <Link 
-              href="/education" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <BookOpen className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Образовательные программы
-              </h3>
-              <p className="text-gray-600">
-                Информация о курсах и образовательных услугах
-              </p>
-            </Link>
-
-            <Link 
-              href="/documents" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <Shield className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Документы
-              </h3>
-              <p className="text-gray-600">
-                Нормативные документы и положения
-              </p>
-            </Link>
-
-            <Link 
-              href="/staff" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <Users className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Педагогический состав
-              </h3>
-              <p className="text-gray-600">
-                Информация о преподава��елях и сотрудниках
-              </p>
-            </Link>
-
-            <Link 
-              href="/admin" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <Settings className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Управление
-              </h3>
-              <p className="text-gray-600">
-                Административная панель
-              </p>
-            </Link>
-
-            <Link 
-              href="/contacts" 
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-            >
-              <Phone className="h-12 w-12 text-edu-blue mb-4" />
-              <h3 className="text-lg font-semibold mb-2">
-                Контакты
-              </h3>
-              <p className="text-gray-600">
-                Контактная информация и адреса
-              </p>
-            </Link>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="bg-edu-light-gray p-8 rounded-lg">
-          <h2 className="text-2xl font-bold text-edu-navy mb-6">
-            Особенности CMS UC
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex items-start space-x-4">
-              <div className="bg-edu-blue text-white p-2 rounded-full">
-                <Shield className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Соответствие законодательству РФ</h3>
-                <p className="text-gray-600">
-                  Все обязательные разделы и документы согласно требованиям
-                </p>
-              </div>
+    <div>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Получите новую профессию
+              <span className="text-yellow-400"> за 2-6 месяцев</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              Дополнительное профессиональное образование с выдачей документов государственного образца
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link 
+                href="/courses" 
+                className="bg-yellow-500 hover:bg-yellow-600 text-black px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center"
+              >
+                Выбрать курс
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <Link 
+                href="/consultation" 
+                className="border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+              >
+                Бесплатная консультация
+              </Link>
             </div>
-            <div className="flex items-start space-x-4">
-              <div className="bg-edu-blue text-white p-2 rounded-full">
-                <Users className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Версия для слабовидящих</h3>
-                <p className="text-gray-600">
-                  Полная поддержка доступности и адаптивности
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="bg-edu-blue text-white p-2 rounded-full">
-                <FileText className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Управление документами</h3>
-                <p className="text-gray-600">
-                  Загрузка PDF с ЭЦП и автоматическая организация
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start space-x-4">
-              <div className="bg-edu-blue text-white p-2 rounded-full">
-                <Settings className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Удобная админ-панель</h3>
-                <p className="text-gray-600">
-                  Интуитивное управление всем контентом сайта
-                </p>
-              </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="flex justify-center mb-2">
+                    <stat.icon className="h-8 w-8 text-yellow-400" />
+                  </div>
+                  <div className="text-2xl md:text-3xl font-bold">{stat.value}</div>
+                  <div className="text-blue-200 text-sm">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Popular Programs */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Популярные программы обучения
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Выберите направление, которое поможет вам достичь карьерных целей
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {programs.map((program) => (
+              <div key={program.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                      {program.level}
+                    </span>
+                    <div className="flex items-center">
+                      <Star className="h-4 w-4 text-yellow-400 fill-current" />
+                      <span className="ml-1 text-sm text-gray-600">{program.rating}</span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {program.title}
+                  </h3>
+                  
+                  <div className="flex items-center text-gray-600 mb-4">
+                    <Clock className="h-4 w-4 mr-2" />
+                    <span className="text-sm">{program.duration}</span>
+                    <Users className="h-4 w-4 ml-4 mr-2" />
+                    <span className="text-sm">{program.students} студентов</span>
+                  </div>
+
+                  <div className="space-y-2 mb-6">
+                    {program.features.map((feature, index) => (
+                      <div key={index} className="flex items-center text-sm text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between mb-6">
+                    <div>
+                      <div className="flex items-center">
+                        <span className="text-2xl font-bold text-gray-900">
+                          {parseInt(program.price).toLocaleString('ru-RU')} ₽
+                        </span>
+                        {program.oldPrice && (
+                          <span className="ml-2 text-lg text-gray-500 line-through">
+                            {parseInt(program.oldPrice).toLocaleString('ru-RU')} ₽
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-sm text-gray-600">или в рассрочку</div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-3">
+                    <Link 
+                      href={`/courses/${program.id}`}
+                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium text-center transition-colors"
+                    >
+                      Подробнее
+                    </Link>
+                    <button className="bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-4 rounded-lg font-medium transition-colors">
+                      Записаться
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/courses"
+              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+            >
+              Все программы обучения
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Почему выбирают нас
+              </h2>
+              <p className="text-xl text-gray-600">
+                Более 15 лет готовим квалифицированных специалистов
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center p-6 bg-gray-50 rounded-lg">
+                  <CheckCircle className="h-6 w-6 text-green-500 mr-4 flex-shrink-0" />
+                  <span className="font-medium text-gray-900">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-600">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Готовы начать обучение?
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              Получите бесплатную консультацию и узнайте, какая программа подходит именно вам
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a 
+                href="tel:+74951234567"
+                className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                +7 (495) 123-45-67
+              </a>
+              <a 
+                href="mailto:info@uchebnycentr.ru"
+                className="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Написать нам
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
