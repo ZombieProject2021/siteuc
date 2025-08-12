@@ -337,12 +337,12 @@ export default function CoursesPage() {
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
-                        {course.title}
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 overflow-hidden">
+                        <span className="block">{course.title}</span>
                       </h3>
 
-                      <p className="text-gray-600 mb-4 line-clamp-2">
-                        {course.description}
+                      <p className="text-gray-600 mb-4 overflow-hidden text-ellipsis">
+                        {course.description.length > 120 ? course.description.substring(0, 120) + '...' : course.description}
                       </p>
 
                       <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-gray-600">
@@ -372,7 +372,7 @@ export default function CoursesPage() {
                               )}
                             </div>
                             <div className="text-sm text-gray-600">
-                              или в рассрочку от {Math.round(course.price / 12).toLocaleString('ru-RU')} ₽/мес
+                              или в расср��чку от {Math.round(course.price / 12).toLocaleString('ru-RU')} ₽/мес
                             </div>
                           </div>
                         </div>
