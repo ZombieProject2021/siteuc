@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, Eye, Settings } from 'lucide-react'
 import { useAccessibility } from '@/components/AccessibilityProvider'
+import AccessibilitySettings from '@/components/AccessibilitySettings'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
