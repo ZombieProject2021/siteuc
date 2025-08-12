@@ -19,7 +19,7 @@ export default function SafetyCoursesPage() {
 
       console.log('Starting fetch to /api/courses/seed-safety')
 
-      const response = await fetch('/api/courses/seed-safety', {
+      const response = await fetch('/api/courses/seed-safety-clean', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
