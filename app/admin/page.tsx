@@ -124,7 +124,7 @@ export default function AdminPage() {
       const data = await response.json()
       setLeads(data.leads || [])
     } catch (error) {
-      toast.error('Ошибка загрузки заявок')
+      toast.error('Ошибка загру��ки заявок')
     } finally {
       setLoading(false)
     }
@@ -372,7 +372,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ��н��циализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -433,17 +433,44 @@ export default function AdminPage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold text-edu-navy">Управление курсами</h2>
-        <button
-          onClick={() => {
-            resetCourseForm()
-            setEditingCourse(null)
-            setShowCourseForm(true)
-          }}
-          className="bg-edu-blue hover:bg-edu-navy text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
-        >
-          <Plus className="h-4 w-4 mr-2" />
-          Добавить курс
-        </button>
+        <div className="flex gap-3">
+          <button
+            onClick={async () => {
+              try {
+                setLoading(true)
+                const response = await fetch('/api/courses/fill-content', { method: 'POST' })
+                const result = await response.json()
+
+                if (result.success) {
+                  toast.success(`${result.message}`)
+                  fetchCourses() // Refresh courses list
+                } else {
+                  toast.error('Ошибка при заполнении контента')
+                }
+              } catch (error) {
+                toast.error('Ошибка при заполнении контента')
+              } finally {
+                setLoading(false)
+              }
+            }}
+            disabled={loading}
+            className="bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
+          >
+            <FileText className="h-4 w-4 mr-2" />
+            {loading ? 'Заполнение...' : 'Заполнить контент'}
+          </button>
+          <button
+            onClick={() => {
+              resetCourseForm()
+              setEditingCourse(null)
+              setShowCourseForm(true)
+            }}
+            className="bg-edu-blue hover:bg-edu-navy text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center"
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            Добавить курс
+          </button>
+        </div>
       </div>
 
       {showCourseForm && (
@@ -638,7 +665,7 @@ export default function AdminPage() {
                   <option value="">Выберите уровень</option>
                   <option value="Начальный">Начальный</option>
                   <option value="Средний">Средний</option>
-                  <option value="Продвинутый">Пр��дв��нутый</option>
+                  <option value="Продвинутый">Пр��двинутый</option>
                   <option value="Профессиональный">Профессиональный</option>
                 </select>
               </div>
