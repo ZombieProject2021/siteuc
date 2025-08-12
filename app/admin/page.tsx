@@ -324,7 +324,7 @@ export default function AdminPage() {
           <div className="flex items-center">
             <Users className="h-8 w-8 text-purple-600" />
             <div className="ml-4">
-              <p className="text-sm font-medium text-gray-600">Студенты</p>
+              <p className="text-sm font-medium text-gray-600">Клиенты</p>
               <p className="text-2xl font-bold text-gray-900">
                 {courses.reduce((sum, course) => sum + course.currentStudents, 0)}
               </p>
@@ -382,7 +382,7 @@ export default function AdminPage() {
 
       {/* Recent Leads */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние ��аявки</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние заявки</h3>
         <div className="space-y-3">
           {leads.slice(0, 5).map((lead) => (
             <div key={lead.id} className="flex items-center justify-between py-2 border-b border-gray-100">
@@ -868,7 +868,7 @@ export default function AdminPage() {
         <div className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Название сайта
+              Название са��та
             </label>
             <input
               type="text"
