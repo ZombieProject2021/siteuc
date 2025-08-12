@@ -108,8 +108,8 @@ export async function GET(request: NextRequest) {
     ])
 
     // Calculate average rating for each course
-    const coursesWithRating = courses.map(course => {
-      const avgRating = course.reviews.length > 0 
+    let coursesWithRating = courses.map(course => {
+      const avgRating = course.reviews.length > 0
         ? course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length
         : 0
 
@@ -122,6 +122,11 @@ export async function GET(request: NextRequest) {
         _count: undefined
       }
     })
+
+    // Sort by rating if needed (after calculation)
+    if (sortBy === 'rating') {
+      coursesWithRating.sort((a, b) => b.avgRating - a.avgRating)
+    }
 
     return NextResponse.json({
       courses: coursesWithRating,
