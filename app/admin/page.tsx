@@ -382,7 +382,7 @@ export default function AdminPage() {
 
       {/* Recent Leads */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние заявки</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние заяв��и</h3>
         <div className="space-y-3">
           {leads.slice(0, 5).map((lead) => (
             <div key={lead.id} className="flex items-center justify-between py-2 border-b border-gray-100">
@@ -978,6 +978,13 @@ export default function AdminPage() {
           >
             <Shield className="h-4 w-4 mr-2" />
             Курсы охраны труда
+          </a>
+          <a
+            href="/admin/enrich-courses"
+            className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <BookOpen className="h-4 w-4 mr-2" />
+            Обогащение курсов
           </a>
         </div>
       </div>
