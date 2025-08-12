@@ -141,10 +141,18 @@ export default function AdminPage() {
       const method = editingCourse ? 'PUT' : 'POST'
       const url = editingCourse ? `/api/courses/${editingCourse.id}` : '/api/courses'
       
+      // Convert string fields to proper types before sending
+      const formData = {
+        ...courseForm,
+        price: Number(courseForm.price) || 0,
+        oldPrice: courseForm.oldPrice ? Number(courseForm.oldPrice) : undefined,
+        maxStudents: Number(courseForm.maxStudents) || 20
+      }
+
       const response = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(courseForm)
+        body: JSON.stringify(formData)
       })
 
       if (!response.ok) {
