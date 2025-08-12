@@ -21,6 +21,12 @@ const courseUpdateSchema = z.object({
   features: z.array(z.string()).optional(),
   requirements: z.array(z.string()).optional(),
   outcomes: z.array(z.string()).optional(),
+  targetAudience: z.array(z.string()).optional(),
+  learningFormat: z.string().optional(),
+  documentTypes: z.array(z.object({
+    name: z.string(),
+    file: z.string().optional()
+  })).optional(),
   imageSrc: z.string().optional(),
   certificate: z.boolean().optional()
 })
