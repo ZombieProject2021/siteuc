@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { 
-  Settings, 
-  Users, 
-  FileText, 
-  BookOpen, 
-  Upload, 
-  BarChart3, 
-  Shield, 
+import {
+  Settings,
+  Users,
+  FileText,
+  BookOpen,
+  Upload,
+  BarChart3,
+  Shield,
   Database,
   Plus,
   Edit,
@@ -18,6 +18,7 @@ import {
   Eye
 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
+import ImageUpload from '@/components/ImageUpload'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'reports'
 
