@@ -115,6 +115,8 @@ export async function GET(request: NextRequest) {
 
       return {
         ...course,
+        price: Number(course.price),
+        oldPrice: course.oldPrice ? Number(course.oldPrice) : null,
         avgRating: Number(avgRating.toFixed(1)),
         reviewsCount: course._count.reviews,
         enrollmentsCount: course._count.enrollments,
