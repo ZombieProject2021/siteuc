@@ -297,7 +297,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('Настройк�� сохранены')
+      toast.success('Настройк�� сохране��ы')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -393,7 +393,7 @@ export default function AdminPage() {
           <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div>
               <h4 className="font-medium text-gray-900">Инициализация контента</h4>
-              <p className="text-sm text-gray-600">Заполнить базу данных начальным контентом для главной страницы</p>
+              <p className="text-sm text-gray-600">Заполнить базу данных начальным контентом для главно�� страницы</p>
             </div>
             <div className="flex gap-3">
               <button
@@ -738,7 +738,7 @@ export default function AdminPage() {
               {/* Learning Format */}
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Формат обучения (подробное описание)
+                  Форма�� обучения (подробное описание)
                 </label>
                 <textarea
                   value={courseForm.learningFormat}
@@ -751,9 +751,6 @@ export default function AdminPage() {
 
               {/* Document Types */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Виды выдаваемых документов
-                </label>
                 <DocumentUpload
                   documents={courseForm.documentTypes}
                   onChange={(documents) => setCourseForm({ ...courseForm, documentTypes: documents })}
