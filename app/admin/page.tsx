@@ -885,22 +885,29 @@ export default function AdminPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
         <p className="text-blue-800 text-sm mb-3">
-          Если это первый запуск или есть ошибки 400/404, инициализируйте базу данных.
+          Если контент не отображается или нет курсов, выполните полную инициализацию системы.
         </p>
-        <div className="flex gap-3">
+        <div className="flex gap-3 flex-wrap">
           <a
-            href="/admin/fix-courses"
-            className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-          >
-            <Database className="h-4 w-4 mr-2" />
-            Инициализировать БД
-          </a>
-          <a
-            href="/admin/seed-content"
+            href="/admin/seed-all"
             className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             <Database className="h-4 w-4 mr-2" />
+            Полная инициализация
+          </a>
+          <a
+            href="/admin/seed-content"
+            className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <Database className="h-4 w-4 mr-2" />
             Только контент
+          </a>
+          <a
+            href="/admin/fix-courses"
+            className="inline-flex items-center bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+          >
+            <Database className="h-4 w-4 mr-2" />
+            Исправить курсы
           </a>
         </div>
       </div>
