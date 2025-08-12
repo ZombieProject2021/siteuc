@@ -7,7 +7,7 @@ export default function InternationalPage() {
       country: 'Республика Беларусь',
       type: 'Соглашение о сотрудничестве',
       activities: [
-        'Обмен опытом в области дополнительного профессионального образования',
+        'О��мен опытом в области дополнительного профессионального образования',
         'Совместная разработка образовательных программ',
         'Участие в научно-практических конференциях'
       ],
@@ -21,7 +21,7 @@ export default function InternationalPage() {
       activities: [
         'Академические обмены преподавателей',
         'Совместные исследовательские проекты',
-        'Обмен учебно-методическим�� материалами'
+        'Обмен учебно-методическими материалами'
       ],
       since: '2023',
       status: 'Активное'
@@ -49,7 +49,7 @@ export default function InternationalPage() {
 
   const exchangePrograms = {
     available: false,
-    reason: 'В настоящее время программы а��адемических обменов не реализуются в связи со спецификой дополнительного профессионального образования',
+    reason: 'В настоящее время программы академических обменов не реализуются в связи со спецификой дополнительного профессионального образования',
     alternatives: [
       'Участие в международных онлайн-конференциях',
       'Дистанционное участие в зарубежных образовательных программах',
@@ -108,7 +108,7 @@ export default function InternationalPage() {
       {/* Международные партнеры */}
       <div className="bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-bold text-edu-navy mb-6 flex items-center">
-          <Handshake className="h-6 w-6 mr-3 text-edu-blue" />
+          <HandHeart className="h-6 w-6 mr-3 text-edu-blue" />
           Международные партнеры
         </h2>
         
@@ -249,7 +249,7 @@ export default function InternationalPage() {
                 <div className="md:col-span-2">
                   <h3 className="font-semibold text-gray-900 mb-2">{event.name}</h3>
                   <div className="text-sm text-gray-600">
-                    <div><strong>Роль:</strong> {event.role}</div>
+                    <div><strong>Рол��:</strong> {event.role}</div>
                   </div>
                 </div>
                 <div>
@@ -304,7 +304,7 @@ export default function InternationalPage() {
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
           <h3 className="font-semibold text-blue-900 mb-3">Планы по международной аккредитации</h3>
           <p className="text-blue-800 mb-4">
-            Образовательная организация рассматривает возможность получения международной 
+            Образовате��ьная организация рассматривает возможность получения международной 
             аккредитации образовательных программ в области менеджмента образования и 
             педагогической деятельности в соответствии с европейскими стандартами качества.
           </p>
