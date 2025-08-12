@@ -41,7 +41,7 @@ export default function HomePage() {
     },
     {
       id: 2,
-      title: 'Бухгалтерский учет и налогообложение',
+      title: 'Бухгалтерский учет и налог��обложение',
       duration: '256 ак.ч.',
       price: '32000',
       oldPrice: '38000',
@@ -77,7 +77,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative container mx-auto px-4 py-20">
+        <div className="relative container mx-auto px-4 py-16 md:py-20">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Получите новую профессию
