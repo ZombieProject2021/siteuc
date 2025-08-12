@@ -54,7 +54,7 @@ export default function HomePage() {
       duration: '520 ак.ч.',
       price: '45000',
       oldPrice: '55000',
-      level: 'Профессиональная переподготовка',
+      level: 'Профессиональная переп��дготовка',
       students: 156,
       rating: 4.8,
       features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
@@ -86,7 +86,7 @@ export default function HomePage() {
   const benefits = [
     { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
-    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без перепла��', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
     { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения', icon: Clock },
     { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели', icon: Users },
@@ -133,7 +133,7 @@ export default function HomePage() {
       position: 'Проект-менеджер, IT-компания',
       photo: '/api/placeholder/60/60',
       rating: 5,
-      text: 'Курс по проектному управлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
+      text: 'Курс по проектному управлению дал все ��еобходимые знания для работы. Получила международный сертификат и новую должность.'
     }
   ]
 
@@ -152,7 +152,7 @@ export default function HomePage() {
     },
     {
       question: 'Есть ли поддержка во время обучения?',
-      answer: 'Каждому студенту назначается персональный куратор, который помогает с организационными вопросами и учебным процессом.'
+      answer: 'Каждому клиенту назначается персональный куратор, который помогает с организационными вопросами и учебным процессом.'
     }
   ]
 
@@ -173,7 +173,7 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto text-center">
             <DynamicContent
               contentKey="homepage.hero.title"
-              defaultContent="Получите новую п��офессию за 2-6 месяцев"
+              defaultContent="Получите новую профессию за 2-6 месяцев"
               tag="h1"
               className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             />
@@ -196,7 +196,7 @@ export default function HomePage() {
                 href="/consultation" 
                 className="border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
               >
-                Бесплатная консуль��ация
+                Бесплатная консультация
               </Link>
             </div>
 
@@ -388,7 +388,7 @@ export default function HomePage() {
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
                       {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
                       {benefit.defaultText === 'Помощь в трудоустройстве' && 'Содействие в поиске работы'}
-                      {benefit.defaultText === 'Гибкий график обучения' && 'Учите��ь в удобное время'}
+                      {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
                     </p>
                   </div>
