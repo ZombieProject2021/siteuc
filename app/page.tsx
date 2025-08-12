@@ -142,7 +142,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Выберите направление, которое поможет вам достичь карьерных целей"
+              defaultContent="Выберите направление, которое поможет вам достичь карьерных целе��"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
@@ -266,12 +266,18 @@ export default function HomePage() {
       <section className="py-20 bg-blue-600">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Готовы начать обучение?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Получите бесплатную консультацию и узнайте, какая программа подходит именно вам
-            </p>
+            <DynamicContent
+              contentKey="homepage.cta.title"
+              defaultContent="Готовы начать обучение?"
+              tag="h2"
+              className="text-3xl md:text-4xl font-bold text-white mb-6"
+            />
+            <DynamicContent
+              contentKey="homepage.cta.subtitle"
+              defaultContent="Получите бесплатную консультацию и узнайте, какая программа подходит именно вам"
+              tag="p"
+              className="text-xl text-blue-100 mb-8"
+            />
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
