@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import ImageUpload from '@/components/ImageUpload'
+import ContentEditor from '@/components/ContentEditor'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'reports'
 
@@ -236,7 +237,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('На��тройк�� сохранены')
+      toast.success('Настройк�� сохранены')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -337,7 +338,7 @@ export default function AdminPage() {
             </div>
           ))}
           {leads.length === 0 && (
-            <p className="text-gray-500 text-center py-4">Нет заявок</p>
+            <p className="text-gray-500 text-center py-4">Не�� заявок</p>
           )}
         </div>
       </div>
@@ -455,7 +456,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Длител��ность *
+                  Длительность *
                 </label>
                 <input
                   type="text"
@@ -910,7 +911,7 @@ export default function AdminPage() {
             </div>
             <div className="p-3 bg-purple-50 rounded">
               <div className="font-medium text-purple-900">Логотипы и иконки</div>
-              <div className="text-sm text-purple-700">Графи��еские элементы сайта</div>
+              <div className="text-sm text-purple-700">Графические элементы сайта</div>
             </div>
           </div>
         </div>
@@ -934,7 +935,7 @@ export default function AdminPage() {
             </div>
             <div className="p-3 bg-green-50 rounded">
               <div className="font-medium text-green-900">Производительность</div>
-              <div className="text-sm text-green-700">Опти��изация загрузки</div>
+              <div className="text-sm text-green-700">Оптимизация загрузки</div>
             </div>
           </div>
         </div>
@@ -1010,7 +1011,7 @@ export default function AdminPage() {
             <div className="flex items-center space-x-3">
               <Settings className="h-5 w-5 text-orange-600" />
               <div>
-                <div className="font-medium text-gray-900">Настройки ��айта</div>
+                <div className="font-medium text-gray-900">Настройки сайта</div>
                 <div className="text-sm text-gray-600">Обновлена контактная информация</div>
               </div>
             </div>
