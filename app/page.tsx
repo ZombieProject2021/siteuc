@@ -80,13 +80,18 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-20">
           <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Получите новую профессию
-              <span className="text-yellow-400"> за 2-6 месяцев</span>
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
-              Дополнительное профессиональное образование с выдачей документов государственного образца
-            </p>
+            <DynamicContent
+              contentKey="homepage.hero.title"
+              defaultContent="Получите новую профессию за 2-6 месяцев"
+              tag="h1"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            />
+            <DynamicContent
+              contentKey="homepage.hero.description"
+              defaultContent="Дополнительное п��офессиональное образование с выдачей документов государственного образца"
+              tag="p"
+              className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto"
+            />
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link 
