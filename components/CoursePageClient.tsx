@@ -236,6 +236,44 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                 </div>
               )}
 
+              {/* Target Audience */}
+              {course.targetAudience && course.targetAudience.length > 0 && (
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Кому подходит?</h2>
+                  <ul className="space-y-3">
+                    {course.targetAudience.map((audience, index) => (
+                      <li key={index} className="flex items-start space-x-3">
+                        <Users className="h-5 w-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{audience}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Learning Format */}
+              {course.learningFormat && (
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Формат обучения</h2>
+                  <p className="text-gray-700">{course.learningFormat}</p>
+                </div>
+              )}
+
+              {/* Document Types */}
+              {course.documentTypes && course.documentTypes.length > 0 && (
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Виды выдаваемых документов</h2>
+                  <ul className="space-y-3">
+                    {course.documentTypes.map((docType, index) => (
+                      <li key={index} className="flex items-start space-x-3">
+                        <Award className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{docType}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Lessons Preview */}
               {course.lessons && course.lessons.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-lg p-8">
@@ -405,7 +443,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                   <li>• {course.certificate ? 'Диплом государственного образца' : 'Сертификат об окончании'}</li>
                   <li>• Доступ к материалам на 6 месяцев</li>
                   <li>• Поддержка преподавателя</li>
-                  <li>• Практические задания</li>
+                  <li>�� Практические задания</li>
                   <li>• Помощь в трудоустройстве</li>
                 </ul>
               </div>
