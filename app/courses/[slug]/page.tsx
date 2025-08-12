@@ -42,6 +42,8 @@ async function getCourse(slug: string) {
 
     return {
       ...course,
+      price: Number(course.price),
+      oldPrice: course.oldPrice ? Number(course.oldPrice) : null,
       avgRating: Number(avgRating.toFixed(1)),
       enrollmentsCount: course._count.enrollments,
       reviewsCount: course._count.reviews,
