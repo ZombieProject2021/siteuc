@@ -147,8 +147,29 @@ model Setting {
   id    Int    @id @default(autoincrement())
   key   String @unique @db.VarChar(100)
   value String @db.Text
-  
+
   @@map("settings")
+}
+
+model Content {
+  id          Int      @id @default(autoincrement())
+  key         String   @unique @db.VarChar(200)
+  title       String   @db.VarChar(255)
+  content     String   @db.LongText
+  type        ContentType @default(TEXT)
+  page        String   @db.VarChar(100)
+  section     String?  @db.VarChar(100)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("contents")
+}
+
+enum ContentType {
+  TEXT
+  HTML
+  MARKDOWN
 }
 
 enum CourseStatus {
