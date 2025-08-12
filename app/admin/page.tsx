@@ -81,7 +81,8 @@ export default function AdminPage() {
     maxStudents: 20,
     schedule: '',
     level: 'Средний',
-    format: 'Дистанционно'
+    format: 'Дистанционно',
+    imageSrc: ''
   })
 
   const menuItems = [
@@ -744,7 +745,7 @@ export default function AdminPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Теле��он
+                Телефон
               </label>
               <input
                 type="text"
