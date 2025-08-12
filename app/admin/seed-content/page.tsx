@@ -1,21 +1,28 @@
 'use client'
 
 import { useState } from 'react'
+import { Database, RefreshCw, CheckCircle, AlertCircle } from 'lucide-react'
+import { toast } from 'react-hot-toast'
 import { seedInitialContent } from '@/components/DynamicContent'
-import { ArrowLeft, Database, CheckCircle } from 'lucide-react'
-import Link from 'next/link'
 
 export default function SeedContentPage() {
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [completed, setCompleted] = useState(false)
 
   const handleSeedContent = async () => {
-    setLoading(true)
     try {
+      setLoading(true)
+      setCompleted(false)
+      
+      toast.loading('Инициализация контента...', { id: 'seed-content' })
+      
       await seedInitialContent()
-      setSuccess(true)
+      
+      toast.success('Контент успешно инициализирован!', { id: 'seed-content' })
+      setCompleted(true)
     } catch (error) {
-      console.error('Error seeding content:', error)
+      console.error('Content seeding error:', error)
+      toast.error('Ошибка при инициализации контента', { id: 'seed-content' })
     } finally {
       setLoading(false)
     }
@@ -23,67 +30,111 @@ export default function SeedContentPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto px-4">
-        <div className="mb-6">
-          <Link 
-            href="/admin"
-            className="inline-flex items-center text-edu-blue hover:text-edu-navy"
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Назад в админ-панель
-          </Link>
-        </div>
-
+      <div className="max-w-4xl mx-auto px-4">
         <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="text-center">
-            <Database className="h-16 w-16 mx-auto mb-4 text-edu-blue" />
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-8">
+            <Database className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               Инициализация контента
             </h1>
-            <p className="text-gray-600 mb-8">
-              Создать начальный набор редактируемых текстов для сайта. 
-              Это позволит вам управлять всеми текстами через админ-панель.
+            <p className="text-gray-600 text-lg">
+              Заполнение базы данных начальным контентом для главной страницы
             </p>
+          </div>
 
-            {success ? (
-              <div className="text-center">
-                <CheckCircle className="h-16 w-16 mx-auto mb-4 text-green-500" />
-                <h2 className="text-xl font-semibold text-green-900 mb-4">
-                  Контент успешно создан!
-                </h2>
-                <p className="text-green-700 mb-6">
-                  Начальный ��абор контента добавлен в базу данных. 
-                  Теперь вы можете редактировать тексты в разделе "Контент".
-                </p>
-                <Link 
-                  href="/admin"
-                  className="bg-edu-blue hover:bg-edu-navy text-white px-6 py-3 rounded-lg font-medium transition-colors"
-                >
-                  Перейти к редактированию
-                </Link>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+              <h2 className="text-lg font-semibold text-blue-900 mb-3">
+                ��то будет создано:
+              </h2>
+              <ul className="space-y-2 text-blue-800">
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Контент для героя главной страницы
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Статистические данные
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Заголовки разделов программ и преимуществ
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Описания преимуществ (6 пунктов)
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Призыв к действию
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-2 text-blue-600" />
+                  Контактная информация
+                </li>
+              </ul>
+            </div>
+
+            {completed && (
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+                <div className="flex items-center">
+                  <CheckCircle className="h-8 w-8 text-green-600 mr-3" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-green-900">
+                      Контент успешно инициализирован!
+                    </h3>
+                    <p className="text-green-700">
+                      Все необходимые записи контента созданы в базе данных.
+                    </p>
+                  </div>
+                </div>
               </div>
-            ) : (
+            )}
+
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
+              <div className="flex items-start">
+                <AlertCircle className="h-6 w-6 text-yellow-600 mr-3 mt-0.5" />
+                <div>
+                  <h3 className="text-lg font-semibold text-yellow-900 mb-2">
+                    Важно:
+                  </h3>
+                  <ul className="text-yellow-800 space-y-1">
+                    <li>• Если контент уже существует, он не будет перезаписан</li>
+                    <li>• Процесс может занять несколько секунд</li>
+                    <li>• Убедитесь, что база данных доступна</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center">
               <button
                 onClick={handleSeedContent}
                 disabled={loading}
-                className="bg-edu-blue hover:bg-edu-navy text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors disabled:opacity-50"
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center"
               >
-                {loading ? 'Создание контента...' : 'Создать начальный контент'}
+                {loading ? (
+                  <>
+                    <RefreshCw className="h-5 w-5 mr-3 animate-spin" />
+                    Инициализация...
+                  </>
+                ) : (
+                  <>
+                    <Database className="h-5 w-5 mr-3" />
+                    Запустить инициализацию
+                  </>
+                )}
               </button>
-            )}
-          </div>
+            </div>
 
-          <div className="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h3 className="font-semibold text-blue-900 mb-2">
-              Что будет создано:
-            </h3>
-            <ul className="text-blue-800 text-sm space-y-1">
-              <li>• Заголовки и опи��ания главной страницы</li>
-              <li>• Статистические показатели</li>
-              <li>• Тексты страницы "О нас"</li>
-              <li>• Контактная информация</li>
-              <li>• Информация в футере сайта</li>
-            </ul>
+            <div className="mt-8 text-center">
+              <a
+                href="/admin"
+                className="text-blue-600 hover:text-blue-700 font-medium"
+              >
+                ← Вернуться в админ-панель
+              </a>
+            </div>
           </div>
         </div>
       </div>
