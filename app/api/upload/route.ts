@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create upload directory structure
-    const uploadDir = join(process.cwd(), 'public', 'uploads', 'courses', courseId)
+    const uploadDir = join(process.cwd(), 'public', 'uploads', 'courses', courseId, folder)
     
     // Ensure directory exists
     if (!existsSync(uploadDir)) {
