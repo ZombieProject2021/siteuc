@@ -160,7 +160,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения курса')
       }
 
-      toast.success(editingCourse ? 'Курс обновлен' : 'Курс создан')
+      toast.success(editingCourse ? 'Ку��с обновлен' : 'Курс создан')
       setShowCourseForm(false)
       setEditingCourse(null)
       resetCourseForm()
@@ -582,7 +582,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Макс. студентов *
+                  Макс. клиентов *
                 </label>
                 <input
                   type="number"
@@ -868,7 +868,7 @@ export default function AdminPage() {
         <div className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Название са��та
+              Название сайта
             </label>
             <input
               type="text"
