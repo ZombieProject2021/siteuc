@@ -211,7 +211,7 @@ export default function AdminPage() {
       title: '',
       slug: '',
       description: '',
-      category: 'Професси��нальная переподготовка',
+      category: 'Професси��н��льная переподготовка',
       duration: '',
       price: 0,
       oldPrice: 0,
@@ -1225,6 +1225,10 @@ export default function AdminPage() {
     </div>
   )
 
+  const renderDocuments = () => (
+    <OrganizationDocuments />
+  )
+
   const renderContent = () => {
     switch (activeSection) {
       case 'overview':
@@ -1235,6 +1239,8 @@ export default function AdminPage() {
         return renderLeads()
       case 'content':
         return renderContentManagement()
+      case 'documents':
+        return renderDocuments()
       case 'settings':
         return renderSettings()
       default:
