@@ -259,7 +259,7 @@ export default function AdminPage() {
       <h2 className="text-2xl font-bold text-edu-navy">Обзор системы</h2>
       
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
           <div className="flex items-center">
             <BookOpen className="h-8 w-8 text-edu-blue" />
@@ -441,7 +441,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Длительность *
+                  Дл��тельность *
                 </label>
                 <input
                   type="text"
@@ -545,7 +545,7 @@ export default function AdminPage() {
                   Категория
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Ста��ус
+                  Статус
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Цена
