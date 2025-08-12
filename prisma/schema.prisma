@@ -31,6 +31,9 @@ model Course {
   features     Json?    // JSON array of course features
   requirements Json?    // JSON array of requirements
   outcomes     Json?    // JSON array of learning outcomes
+  targetAudience Json?  // JSON array of target audience (кому подходит)
+  learningFormat String? @db.VarChar(255) // Формат обучения
+  documentTypes Json?   // JSON array of document types (виды документов)
   imageSrc     String?  @db.VarChar(255)
   certificate  Boolean  @default(true)
   createdAt    DateTime @default(now())
