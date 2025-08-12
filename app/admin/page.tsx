@@ -104,7 +104,7 @@ export default function AdminPage() {
       const data = await response.json()
       setCourses(data.courses || [])
     } catch (error) {
-      toast.error('Ошибка загрузки курс��в')
+      toast.error('Ошибка загрузки курсов')
     } finally {
       setLoading(false)
     }
@@ -199,7 +199,7 @@ export default function AdminPage() {
       title: '',
       slug: '',
       description: '',
-      category: 'Проф��ссиональная переподготовка',
+      category: 'Профессиональная переподготовка',
       duration: '',
       price: 0,
       oldPrice: 0,
@@ -366,7 +366,14 @@ export default function AdminPage() {
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Settings className="h-4 w-4 mr-2" />
-                Подробнее
+                Контент
+              </a>
+              <a
+                href="/admin/seed-all"
+                className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
+              >
+                <Database className="h-4 w-4 mr-2" />
+                Всё
               </a>
             </div>
           </div>
@@ -613,7 +620,7 @@ export default function AdminPage() {
                   <option value="">Выберите уровень</option>
                   <option value="Начальный">Начальный</option>
                   <option value="Средний">Средний</option>
-                  <option value="Продвинутый">Продвинутый</option>
+                  <option value="Продвинутый">Пр��двинутый</option>
                   <option value="Профессиональный">Профессиональный</option>
                 </select>
               </div>
@@ -784,7 +791,7 @@ export default function AdminPage() {
                   Курс
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Статус
+                  С��атус
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Дата
@@ -928,7 +935,7 @@ export default function AdminPage() {
               className="bg-edu-blue hover:bg-edu-navy text-white px-6 py-2 rounded-lg font-medium transition-colors disabled:opacity-50 flex items-center"
             >
               <Save className="h-4 w-4 mr-2" />
-              {loading ? 'Сохранение...' : 'Сохранить настройки'}
+              {loading ? 'Сохранение...' : 'Сохранить на��тройки'}
             </button>
           </div>
         </div>
