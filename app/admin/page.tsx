@@ -71,7 +71,7 @@ export default function AdminPage() {
     title: '',
     slug: '',
     description: '',
-    category: 'Профессиональная переподготовка',
+    category: 'Профессио��альная переподготовка',
     duration: '',
     price: 0,
     oldPrice: 0,
@@ -160,7 +160,7 @@ export default function AdminPage() {
   }
 
   const handleDeleteCourse = async (courseId: number) => {
-    if (!confirm('Вы уверены, что хотите удалить этот курс?')) return
+    if (!confirm('Вы уверены, ч��о хотите удалить этот курс?')) return
 
     try {
       setLoading(true)
@@ -534,7 +534,7 @@ export default function AdminPage() {
 
       {/* Courses List */}
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto scrollbar-hide">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
