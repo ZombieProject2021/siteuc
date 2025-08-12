@@ -21,7 +21,7 @@ export default function Header() {
   ]
 
   return (
-    <header className="bg-white shadow-md border-b border-gray-200">
+    <header className="bg-white shadow-lg relative z-50">
       <div className="container mx-auto px-4">
         {/* Accessibility Bar */}
         <div className="bg-gray-900 py-3 text-sm border-b border-gray-700">
@@ -34,7 +34,7 @@ export default function Header() {
                     ? 'bg-yellow-400 text-black shadow-md'
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
                 }`}
-                aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
+                aria-label={isAccessibilityMode ? 'Отключит�� версию для слабовидящих' : 'Включить версию для слабовидящих'}
               >
                 <Eye className="h-4 w-4" />
                 <span>{isAccessibilityMode ? 'Обычная версия' : 'Версия для слабовидящих'}</span>
