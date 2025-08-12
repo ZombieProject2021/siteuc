@@ -371,7 +371,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая инициализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -652,6 +652,56 @@ export default function AdminPage() {
                   <option value="Очно">Очно</option>
                   <option value="Смешанный">С��ешанный</option>
                 </select>
+              </div>
+
+              {/* Target Audience */}
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Кому подходит?
+                </label>
+                <textarea
+                  value={courseForm.targetAudience.join('\n')}
+                  onChange={(e) => setCourseForm({
+                    ...courseForm,
+                    targetAudience: e.target.value.split('\n').filter(item => item.trim())
+                  })}
+                  rows={3}
+                  placeholder="Начинающим специалистам&#10;Опытным профессионалам&#10;Руководителям"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                />
+                <p className="text-xs text-gray-500 mt-1">Каждый пункт с новой строки</p>
+              </div>
+
+              {/* Learning Format */}
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Формат обучения (подробное описание)
+                </label>
+                <textarea
+                  value={courseForm.learningFormat}
+                  onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
+                  rows={2}
+                  placeholder="Описание формата обучения, особенностей проведения..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                />
+              </div>
+
+              {/* Document Types */}
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Виды выдаваемых документов
+                </label>
+                <textarea
+                  value={courseForm.documentTypes.join('\n')}
+                  onChange={(e) => setCourseForm({
+                    ...courseForm,
+                    documentTypes: e.target.value.split('\n').filter(item => item.trim())
+                  })}
+                  rows={3}
+                  placeholder="Диплом о профессиональной переподготовке&#10;Удостоверение о повышении квалификации&#10;Сертификат"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                />
+                <p className="text-xs text-gray-500 mt-1">Каждый документ с новой строки</p>
               </div>
             </div>
 
