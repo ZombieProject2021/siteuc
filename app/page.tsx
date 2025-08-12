@@ -142,7 +142,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Выберите направ��ение, которое поможет вам достичь карьерных целей"
+              defaultContent="Выберите направление, которое поможет вам достичь карьерных целей"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
@@ -249,7 +249,12 @@ export default function HomePage() {
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center p-6 bg-gray-50 rounded-lg">
                   <CheckCircle className="h-6 w-6 text-green-500 mr-4 flex-shrink-0" />
-                  <span className="font-medium text-gray-900">{benefit}</span>
+                  <DynamicContent
+                    contentKey={benefit.key}
+                    defaultContent={benefit.defaultText}
+                    tag="span"
+                    className="font-medium text-gray-900"
+                  />
                 </div>
               ))}
             </div>
