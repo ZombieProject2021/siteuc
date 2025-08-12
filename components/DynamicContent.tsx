@@ -115,6 +115,80 @@ export const seedInitialContent = async () => {
       section: 'stats'
     },
     {
+      key: 'homepage.stats.teachers',
+      title: 'Статистика: преподавателей',
+      content: '30+',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'stats'
+    },
+    // Главная страница - заголовки секций
+    {
+      key: 'homepage.programs.title',
+      title: 'Заголовок секции популярных программ',
+      content: 'Популярные программы обучения',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'programs'
+    },
+    {
+      key: 'homepage.programs.subtitle',
+      title: 'Подзаголовок секции программ',
+      content: 'Выберите направление, которое поможет вам достичь карьерных целей',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'programs'
+    },
+    {
+      key: 'homepage.benefits.title',
+      title: 'Заголовок секции преимуществ',
+      content: 'Почему выбирают нас',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.benefits.subtitle',
+      title: 'Подзаголовок секции преимуществ',
+      content: 'Более 15 лет готовим квалифицированных специалистов',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'benefits'
+    },
+    {
+      key: 'homepage.cta.title',
+      title: 'Заголовок призыва к действию',
+      content: 'Готовы начать обучение?',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'cta'
+    },
+    {
+      key: 'homepage.cta.subtitle',
+      title: 'Подзаголовок призыва к действию',
+      content: 'Получите бесплатную консультацию и узнайте, какая программа подходит именно вам',
+      type: 'TEXT',
+      page: 'homepage',
+      section: 'cta'
+    },
+    // Контактная информация
+    {
+      key: 'contacts.phone',
+      title: 'Номер телефона',
+      content: '+7 (495) 123-45-67',
+      type: 'TEXT',
+      page: 'contacts',
+      section: 'info'
+    },
+    {
+      key: 'contacts.email',
+      title: 'Email адрес',
+      content: 'info@uchebnycentr.ru',
+      type: 'TEXT',
+      page: 'contacts',
+      section: 'info'
+    },
+    {
       key: 'about.title',
       title: 'Заголовок страницы О нас',
       content: 'О нашем образовательном центре',
