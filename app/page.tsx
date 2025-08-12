@@ -142,7 +142,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Выберите направление, которое поможет вам достичь карьерных целе��"
+              defaultContent="Выберите направление, которое поможет вам достичь карьерных целей"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
@@ -280,12 +280,16 @@ export default function HomePage() {
             />
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
+              <a
                 href="tel:+74951234567"
                 className="bg-white hover:bg-gray-100 text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg transition-colors inline-flex items-center justify-center"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                +7 (495) 123-45-67
+                <DynamicContent
+                  contentKey="contacts.phone"
+                  defaultContent="+7 (495) 123-45-67"
+                  tag="span"
+                />
               </a>
               <a 
                 href="mailto:info@uchebnycentr.ru"
