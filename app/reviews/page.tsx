@@ -37,7 +37,7 @@ const reviewsData: Review[] = [
   {
     id: 3,
     studentName: 'Елена Козлова',
-    courseTitle: 'Бух��алтерский учет и налогообложение',
+    courseTitle: 'Бухгалтерский учет и налогообложение',
     rating: 5,
     comment: 'Очень довольна обучением! Теперь уверенно работаю в 1С и веду полный цикл бухгалтерского учета. Программа курса составлена очень грамотно - от простого к сложному.',
     createdAt: '2024-01-08',
@@ -57,7 +57,7 @@ const reviewsData: Review[] = [
     studentName: 'Светлана Морозова',
     courseTitle: 'Цифровой маркетинг',
     rating: 5,
-    comment: 'Превосходный курс! Изучили все актуальные инструменты digital-маркетинга. Преподаватель делился реальным опытом рабо��ы с крупными клиентами. Получила сертификаты Google и Яндекс.',
+    comment: 'Превосходный курс! Изучили все актуальные инструменты digital-маркетинга. Преподаватель делился реальным опытом работы с крупными клиентами. Получила сертификаты Google и Яндекс.',
     createdAt: '2024-01-02',
     courseDuration: '350 ак.ч.'
   },
@@ -159,7 +159,7 @@ export default function ReviewsPage() {
                 <div className="text-3xl font-bold mb-2">
                   {Math.round((reviews.filter(r => r.rating >= 4).length / reviews.length) * 100)}%
                 </div>
-                <div className="text-blue-200">Довольных студентов</div>
+                <div className="text-blue-200">Довольных клиентов</div>
               </div>
             </div>
           </div>
