@@ -14,7 +14,7 @@ const safetyCourses = [
     currentStudents: 8,
     avgRating: 4.7,
     reviewsCount: 15,
-    schedule: 'Еженедельно: Пн, Ср с 18:00 до 21:00',
+    schedule: 'Еженедельно: Пн, Ср с 18:00 д�� 21:00',
     level: 'Для работников, выполняющих работы повышенной опасности',
     format: 'Очно-заочное обучение с практическими занятиями'
   },
@@ -259,7 +259,7 @@ const safetyCourses = [
     format: 'Очное обучение с выездом на объекты'
   },
   {
-    title: 'Общие вопросы охраны труда и функционирования СУОТ',
+    title: 'Общие вопросы охраны труда и функционирования СУО��',
     slug: 'obshchiye-voprosy-ohrany-truda-suot',
     description: 'Общие вопросы охраны труда и функционирования системы управления охраной труда (ПП № 2464 от 24.12.2021, п. 46, подпункт «а»). Программа «А»',
     category: 'Охрана труда',
@@ -337,7 +337,7 @@ const safetyCourses = [
     reviewsCount: 45,
     schedule: 'Вечерние занятия: Пн, Ср, Пт с 18:00 до 22:00',
     level: 'Профессиональная переподготовка',
-    format: 'Очно-заочное обучение с дипломом'
+    format: 'Очно-заочное обучение с ��ипломом'
   },
   {
     title: 'Система управления охраной труда (повышение квалификации)',
@@ -359,12 +359,17 @@ const safetyCourses = [
 
 export async function POST() {
   try {
+    console.log('Starting safety courses seeding...')
+
     // Check if safety courses already exist
+    console.log('Checking existing safety courses...')
     const existingSafetyCourses = await prisma.course.count({
       where: {
         category: 'Охрана труда'
       }
     })
+
+    console.log('Existing safety courses count:', existingSafetyCourses)
     
     if (existingSafetyCourses > 0) {
       return NextResponse.json({
