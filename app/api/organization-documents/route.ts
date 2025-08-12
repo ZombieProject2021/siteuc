@@ -12,13 +12,8 @@ const createDocumentSchema = z.object({
 // GET /api/organization-documents - Get all documents
 export async function GET() {
   try {
-    const documents = await prisma.organizationDocument.findMany({
-      orderBy: [
-        { category: 'asc' },
-        { createdAt: 'desc' }
-      ]
-    })
-
+    // Return empty array until database table is created
+    const documents: any[] = []
     return NextResponse.json({ documents })
   } catch (error) {
     console.error('Error fetching organization documents:', error)
