@@ -8,7 +8,7 @@ const courseSchema = z.object({
   description: z.string().min(1, 'Описание обязательно'),
   fullDescription: z.string().optional(),
   category: z.string().min(1, 'Категория обязательна'),
-  duration: z.string().min(1, 'Длительность обязательна'),
+  duration: z.string().min(1, 'Длительность о��язательна'),
   price: z.number().min(0, 'Цена должна быть положител��ной'),
   oldPrice: z.number().optional(),
   schedule: z.string().min(1, 'Расписание обязательно'),
@@ -39,6 +39,24 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '10')
     const offset = (page - 1) * limit
 
+    // Price range filter logic
+    const priceFilter = priceRanges ? (() => {
+      const ranges = priceRanges.split(',')
+      const priceConditions: any[] = []
+
+      ranges.forEach(range => {
+        const [min, max] = range.split('-').map(Number)
+        priceConditions.push({
+          price: {
+            gte: min,
+            ...(max < 999999 && { lte: max })
+          }
+        })
+      })
+
+      return priceConditions.length > 0 ? { OR: priceConditions } : {}
+    })() : {}
+
     const where = {
       ...(category && category !== 'Все курсы' && { category }),
       ...(format && format !== 'Все форматы' && { format }),
@@ -49,7 +67,8 @@ export async function GET(request: NextRequest) {
           { description: { contains: search } },
           { category: { contains: search } }
         ]
-      })
+      }),
+      ...priceFilter
     }
 
     const [courses, total] = await Promise.all([
