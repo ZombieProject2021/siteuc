@@ -25,6 +25,9 @@ interface Course {
   features?: string[]
   requirements?: string[]
   outcomes?: string[]
+  targetAudience?: string[]
+  learningFormat?: string
+  documentTypes?: string[]
   imageSrc?: string
   certificate: boolean
   avgRating: number
@@ -266,7 +269,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               {course.reviews && course.reviews.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                    Отзывы студентов ({course.reviewsCount})
+                    Отзывы студенто�� ({course.reviewsCount})
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {course.reviews.map((review) => (
@@ -373,7 +376,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-6">
                 <h3 className="text-lg font-semibold mb-4">Есть вопросы?</h3>
                 <p className="text-blue-100 mb-4 text-sm">
-                  Свяжитесь с нами для получения подробной информации о курсе
+                  Свяжитесь с нами для получения подробной ин��ормации о курсе
                 </p>
                 <div className="space-y-3">
                   <a
