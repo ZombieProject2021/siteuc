@@ -25,7 +25,7 @@ interface Course {
   features?: string[]
   targetAudience?: string[]
   learningFormat?: string
-  documentTypes?: string[]
+  documentTypes?: Array<{name: string, file?: string}>
 }
 
 interface CoursesResponse {
@@ -213,7 +213,7 @@ export default function CoursesPage() {
 
               {/* Category Filter */}
               <div className="mb-6">
-                <h4 className="font-medium text-gray-900 mb-3">К��тегория</h4>
+                <h4 className="font-medium text-gray-900 mb-3">Категория</h4>
                 <div className="space-y-2">
                   {categories.map((category) => (
                     <label key={category} className="flex items-center cursor-pointer">
