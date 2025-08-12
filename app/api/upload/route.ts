@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     await writeFile(filePath, buffer)
 
     // Return the public URL
-    const publicUrl = `/uploads/courses/${courseId}/${fileName}`
+    const publicUrl = `/uploads/courses/${courseId}/${folder}/${fileName}`
     
     return NextResponse.json({
       url: publicUrl,
