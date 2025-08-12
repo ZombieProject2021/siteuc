@@ -584,6 +584,19 @@ export default function AdminPage() {
                       <div className="text-sm text-gray-500">{course.duration}</div>
                     </div>
                   </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {course.imageSrc ? (
+                      <img
+                        src={course.imageSrc}
+                        alt={course.title}
+                        className="h-12 w-20 object-cover rounded-md border border-gray-200"
+                      />
+                    ) : (
+                      <div className="h-12 w-20 bg-gray-100 rounded-md border border-gray-200 flex items-center justify-center">
+                        <BookOpen className="h-6 w-6 text-gray-400" />
+                      </div>
+                    )}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {course.category}
                   </td>
