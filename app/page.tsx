@@ -126,7 +126,7 @@ export default function HomePage() {
       position: 'Главный бухгалтер, ЗАО "Финансы"',
       photo: '/api/placeholder/60/60',
       rating: 5,
-      text: 'Программа переподготовки по бухучету превзошла ожидания. Преподаватели-практики, актуальные материалы, отличная поддержка студентов.'
+      text: 'Программа переподготовки по бухучету превзошла ожидания. Преподаватели-практики, актуальные материалы, отличная поддержка клиентов.'
     },
     {
       name: 'Елена Сидорова',
@@ -173,7 +173,7 @@ export default function HomePage() {
           <div className="max-w-5xl mx-auto text-center">
             <DynamicContent
               contentKey="homepage.hero.title"
-              defaultContent="Получите новую профессию за 2-6 месяцев"
+              defaultContent="Получите новую п��офессию за 2-6 месяцев"
               tag="h1"
               className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             />
@@ -196,7 +196,7 @@ export default function HomePage() {
                 href="/consultation" 
                 className="border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
               >
-                Бесплатная консультация
+                Бесплатная консуль��ация
               </Link>
             </div>
 
@@ -388,7 +388,7 @@ export default function HomePage() {
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
                       {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
                       {benefit.defaultText === 'Помощь в трудоустройстве' && 'Содействие в поиске работы'}
-                      {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
+                      {benefit.defaultText === 'Гибкий график обучения' && 'Учите��ь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
                     </p>
                   </div>
