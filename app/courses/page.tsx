@@ -326,13 +326,13 @@ export default function CoursesPage() {
                 <option value="popularity">Сортировать по популярности</option>
                 <option value="price_asc">Сортировать по цене (по возрастанию)</option>
                 <option value="price_desc">Сортировать по цене (по убыванию)</option>
-                <option value="rating">Сортировать по рейтингу</option>
+                <option value="rating">С��ртировать по рейтингу</option>
                 <option value="date">Сортировать по дате</option>
               </select>
             </div>
 
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[...Array(6)].map((_, i) => (
                   <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden animate-pulse">
                     <div className="h-48 bg-gray-300"></div>
@@ -346,7 +346,7 @@ export default function CoursesPage() {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {courses.map((course) => (
                   <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     <div className="relative">
