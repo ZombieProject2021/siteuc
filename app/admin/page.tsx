@@ -175,7 +175,7 @@ export default function AdminPage() {
       resetCourseForm()
       fetchCourses()
     } catch (error) {
-      toast.error('Ошибка ��охранения курса')
+      toast.error('Ошибка сохранения курса')
     } finally {
       setLoading(false)
     }
@@ -402,7 +402,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ��н��циализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -693,7 +693,7 @@ export default function AdminPage() {
                   required
                 >
                   <option value="">Выберите уровень</option>
-                  <option value="Начальный">Начальный</option>
+                  <option value="Начал��ный">Начальный</option>
                   <option value="Средний">Средний</option>
                   <option value="Продвинутый">Пр��двинутый</option>
                   <option value="Профессиональный">Профессиональный</option>
@@ -744,7 +744,7 @@ export default function AdminPage() {
                   value={courseForm.learningFormat}
                   onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
                   rows={2}
-                  placeholder="Описание формата обучения, особенностей проведения..."
+                  placeholder="Описание формата обучения, особенностей п��оведения..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 />
               </div>
@@ -982,6 +982,106 @@ export default function AdminPage() {
           )}
         </div>
       </div>
+
+      {/* Lead Detail Modal */}
+      {showLeadModal && selectedLead && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b border-gray-200">
+              <h3 className="text-lg font-semibold text-gray-900">Детали заявк��</h3>
+              <button
+                onClick={() => {
+                  setShowLeadModal(false)
+                  setSelectedLead(null)
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="p-6 space-y-6">
+              {/* Contact Information */}
+              <div>
+                <h4 className="font-medium text-gray-900 mb-3">Контактная информация</h4>
+                <div className="bg-gray-50 rounded-lg p-4 space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Имя:</span>
+                    <span className="font-medium">{selectedLead.name}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Email:</span>
+                    <a href={`mailto:${selectedLead.email}`} className="font-medium text-blue-600 hover:text-blue-800">
+                      {selectedLead.email}
+                    </a>
+                  </div>
+                  {selectedLead.phone && (
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Телефон:</span>
+                      <a href={`tel:${selectedLead.phone}`} className="font-medium text-blue-600 hover:text-blue-800">
+                        {selectedLead.phone}
+                      </a>
+                    </div>
+                  )}
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Дата:</span>
+                    <span className="font-medium">{new Date(selectedLead.createdAt).toLocaleString('ru-RU')}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Course Information */}
+              <div>
+                <h4 className="font-medium text-gray-900 mb-3">Курс</h4>
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <span className="font-medium">{selectedLead.course?.title || 'Общая заявка'}</span>
+                </div>
+              </div>
+
+              {/* Message */}
+              {selectedLead.message && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-3">Сообщение</h4>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <p className="text-gray-700 whitespace-pre-wrap">{selectedLead.message}</p>
+                  </div>
+                </div>
+              )}
+
+              {/* Status Update */}
+              <div>
+                <h4 className="font-medium text-gray-900 mb-3">Статус заявки</h4>
+                <select
+                  value={selectedLead.status}
+                  onChange={(e) => {
+                    handleUpdateLeadStatus(selectedLead.id, e.target.value)
+                    setSelectedLead({ ...selectedLead, status: e.target.value as any })
+                  }}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                >
+                  <option value="NEW">Новая</option>
+                  <option value="CONTACTED">Связались</option>
+                  <option value="QUALIFIED">Квалифицирована</option>
+                  <option value="CONVERTED">Конвертирована</option>
+                  <option value="LOST">Потеряна</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex justify-end space-x-3 p-6 border-t border-gray-200">
+              <button
+                onClick={() => {
+                  setShowLeadModal(false)
+                  setSelectedLead(null)
+                }}
+                className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
+              >
+                Закрыть
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 
