@@ -811,7 +811,7 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
+        <div className="hidden lg:block w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
             <p className="text-sm text-gray-500 mt-1">Управление контентом</p>
