@@ -23,7 +23,10 @@ const courseSchema = z.object({
   outcomes: z.array(z.string()).optional(),
   targetAudience: z.array(z.string()).optional(),
   learningFormat: z.string().optional(),
-  documentTypes: z.array(z.string()).optional(),
+  documentTypes: z.array(z.object({
+    name: z.string(),
+    file: z.string().optional()
+  })).optional(),
   imageSrc: z.string().optional(),
   certificate: z.boolean().optional()
 })
