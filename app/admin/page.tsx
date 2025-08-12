@@ -429,6 +429,15 @@ export default function AdminPage() {
                 />
               </div>
 
+              <div className="md:col-span-2">
+                <ImageUpload
+                  currentImage={courseForm.imageSrc}
+                  onUpload={(imageUrl) => setCourseForm({ ...courseForm, imageSrc: imageUrl })}
+                  aspectRatio="wide"
+                  maxSize={5 * 1024 * 1024}
+                />
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Категория *
@@ -695,7 +704,7 @@ export default function AdminPage() {
                     >
                       <option value="NEW">Новая</option>
                       <option value="CONTACTED">Связались</option>
-                      <option value="QUALIFIED">Квалифици��ована</option>
+                      <option value="QUALIFIED">Квалифицирована</option>
                       <option value="CONVERTED">Конвертирована</option>
                       <option value="LOST">Потеряна</option>
                     </select>
@@ -837,7 +846,7 @@ export default function AdminPage() {
         <div className="hidden lg:block w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
           <div className="p-6 border-b border-gray-200">
             <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
-            <p className="text-sm text-gray-500 mt-1">Управление к��нтентом</p>
+            <p className="text-sm text-gray-500 mt-1">Управление контентом</p>
           </div>
           
           <nav className="mt-6">
