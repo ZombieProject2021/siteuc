@@ -9,18 +9,22 @@ interface DocumentItem {
 }
 
 interface DocumentUploadProps {
-  value: DocumentItem[]
+  documents?: DocumentItem[]
+  value?: DocumentItem[]
   onChange: (documents: DocumentItem[]) => void
   maxDocuments?: number
   courseId?: string
 }
 
-export default function DocumentUpload({ 
-  value = [], 
-  onChange, 
+export default function DocumentUpload({
+  documents,
+  value,
+  onChange,
   maxDocuments = 5,
   courseId = 'general'
 }: DocumentUploadProps) {
+  // Support both 'documents' and 'value' props for backward compatibility
+  const currentDocuments = documents || value || []
   const [uploading, setUploading] = useState<number | null>(null)
 
   const addDocument = () => {
@@ -111,7 +115,7 @@ export default function DocumentUpload({
         <div className="text-center py-8 text-gray-500">
           <FileText className="h-12 w-12 mx-auto mb-2 text-gray-400" />
           <p>Нет добавленных документов</p>
-          <p className="text-sm">Н��жмите "Добавить" чтобы начать</p>
+          <p className="text-sm">Н��жмите "Добавить" чтобы нач��ть</p>
         </div>
       )}
 
@@ -196,7 +200,7 @@ export default function DocumentUpload({
           <li>• Максимум {maxDocuments} документов</li>
           <li>• Поддерживаемые форматы: PDF, JPEG, PNG</li>
           <li>• Максимальный размер файла: 10 ��Б</li>
-          <li>• Загружайте образцы документов для демонстрации студентам</li>
+          <li>• Загружайт�� образцы документов для демонстрации студентам</li>
         </ul>
       </div>
     </div>
