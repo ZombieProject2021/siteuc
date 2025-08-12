@@ -407,7 +407,7 @@ export default function CoursesPage() {
                         <div>Уровень: {course.level}</div>
                       </div>
 
-                      <div className="border-t pt-4">
+                      <div className="mt-auto border-t pt-4">
                         <div className="flex items-center justify-between mb-4">
                           <div>
                             <div className="flex items-center">
