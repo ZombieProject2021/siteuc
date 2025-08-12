@@ -21,6 +21,13 @@ export default function SeedAllPage() {
       name: 'Примеры курсов',
       description: 'Создание демонстрационных курсов',
       endpoint: '/api/courses/seed'
+    },
+    {
+      id: 'safety-courses',
+      name: 'Курсы охраны труда',
+      description: 'Создание полного каталога курсов по охране труда',
+      endpoint: '/api/courses/seed-safety',
+      url: '/admin/safety-courses'
     }
   ]
 
