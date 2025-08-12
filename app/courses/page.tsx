@@ -253,15 +253,51 @@ export default function CoursesPage() {
                 <h4 className="font-medium text-gray-900 mb-3">Стоимость</h4>
                 <div className="space-y-2">
                   <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      checked={filters.priceRanges.includes('0-30000')}
+                      onChange={(e) => {
+                        const range = '0-30000'
+                        if (e.target.checked) {
+                          setFilters(prev => ({ ...prev, priceRanges: [...prev.priceRanges, range] }))
+                        } else {
+                          setFilters(prev => ({ ...prev, priceRanges: prev.priceRanges.filter(r => r !== range) }))
+                        }
+                      }}
+                    />
                     <span className="ml-2 text-gray-700">До 30 000 ₽</span>
                   </label>
                   <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      checked={filters.priceRanges.includes('30000-50000')}
+                      onChange={(e) => {
+                        const range = '30000-50000'
+                        if (e.target.checked) {
+                          setFilters(prev => ({ ...prev, priceRanges: [...prev.priceRanges, range] }))
+                        } else {
+                          setFilters(prev => ({ ...prev, priceRanges: prev.priceRanges.filter(r => r !== range) }))
+                        }
+                      }}
+                    />
                     <span className="ml-2 text-gray-700">30 000 - 50 000 ₽</span>
                   </label>
                   <label className="flex items-center cursor-pointer">
-                    <input type="checkbox" className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" />
+                    <input
+                      type="checkbox"
+                      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      checked={filters.priceRanges.includes('50000-999999')}
+                      onChange={(e) => {
+                        const range = '50000-999999'
+                        if (e.target.checked) {
+                          setFilters(prev => ({ ...prev, priceRanges: [...prev.priceRanges, range] }))
+                        } else {
+                          setFilters(prev => ({ ...prev, priceRanges: prev.priceRanges.filter(r => r !== range) }))
+                        }
+                      }}
+                    />
                     <span className="ml-2 text-gray-700">Свыше 50 000 ₽</span>
                   </label>
                 </div>
