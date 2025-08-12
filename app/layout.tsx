@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { AccessibilityProvider } from '@/components/AccessibilityProvider'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import CookieBanner from '@/components/CookieBanner'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
