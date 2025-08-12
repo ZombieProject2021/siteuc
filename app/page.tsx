@@ -15,11 +15,30 @@ import {
   Star,
   Clock,
   Target,
-  TrendingUp
+  TrendingUp,
+  PlayCircle,
+  Download,
+  FileText,
+  Briefcase,
+  GraduationCap,
+  Calendar,
+  MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  MapPin,
+  Globe,
+  Laptop,
+  UserCheck,
+  Building,
+  CreditCard,
+  HeadphonesIcon,
+  VideoIcon
 } from 'lucide-react'
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState('programs')
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   const stats = [
     { label: 'Лет на рынке', valueKey: 'homepage.stats.years', defaultValue: '15+', icon: TrendingUp },
@@ -65,13 +84,85 @@ export default function HomePage() {
   ]
 
   const benefits = [
-    { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы' },
-    { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы' },
-    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат' },
-    { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве' },
-    { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения' },
-    { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели' },
+    { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы', icon: Shield },
+    { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
+    { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
+    { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения', icon: Clock },
+    { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели', icon: Users },
   ]
+
+  const learningFormats = [
+    {
+      title: 'Дистанционное обучение',
+      description: 'Изучайте материалы в удобное время из любой точки мира',
+      icon: Laptop,
+      features: ['Онлайн-лекции', 'Интерактивные задания', 'Персональный куратор']
+    },
+    {
+      title: 'Очно-заочное обучение',
+      description: 'Сочетание онлайн-формата с практическими занятиями',
+      icon: Building,
+      features: ['Вебинары с экспертами', 'Практические семинары', 'Нетворкинг']
+    },
+    {
+      title: 'Корпоративное обучение',
+      description: 'Индивидуальные программы для команд и организаций',
+      icon: Users,
+      features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
+    }
+  ]
+
+  const testimonials = [
+    {
+      name: 'Анна Петрова',
+      position: 'HR-директор, ООО "Технологии"',
+      photo: '/api/placeholder/60/60',
+      rating: 5,
+      text: 'Прошла курс по управлению персоналом. Отличная программа, много практических кейсов. После обучения получила повышение и увеличение зарплаты на 40%.'
+    },
+    {
+      name: 'Дмитрий Иванов',
+      position: 'Главный бухгалтер, ЗАО "Финансы"',
+      photo: '/api/placeholder/60/60',
+      rating: 5,
+      text: 'Программа переподготовки по бухучету превзошла ожидания. Преподаватели-практики, актуальные материалы, отличная поддержка студентов.'
+    },
+    {
+      name: 'Елена Сидорова',
+      position: 'Проект-менеджер, IT-компания',
+      photo: '/api/placeholder/60/60',
+      rating: 5,
+      text: 'Курс по проектному управлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
+    }
+  ]
+
+  const faqs = [
+    {
+      question: 'Какие документы я получу после обучения?',
+      answer: 'По программам профессиональной переподготовки (от 250 часов) выдается диплом государственного образца. По программам повышения квалификации (от 16 часов) - удостоверение государственного образца.'
+    },
+    {
+      question: 'Можно ли учиться в рассрочку?',
+      answer: 'Да, мы предоставляем рассрочку до 12 месяцев без процентов и переплат. Для оформления рассрочки нужен только паспорт.'
+    },
+    {
+      question: 'Сколько времени занимает обучение?',
+      answer: 'Длительность зависит от программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
+    },
+    {
+      question: 'Есть ли поддержка во время обучения?',
+      answer: 'Каждому студенту назначается персональный куратор, который помогает с организационными вопросами и учебным процессом.'
+    }
+  ]
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+  }
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
 
   return (
     <div>
@@ -226,8 +317,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Learning Formats */}
       <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Форматы обучения
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Выберите удобный для вас формат обучения
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {learningFormats.map((format, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
+                  <format.icon className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{format.title}</h3>
+                <p className="text-gray-600 mb-6">{format.description}</p>
+                <div className="space-y-3">
+                  {format.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center justify-center text-sm text-gray-600">
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -247,16 +372,190 @@ export default function HomePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center p-6 bg-gray-50 rounded-lg">
-                  <CheckCircle className="h-6 w-6 text-green-500 mr-4 flex-shrink-0" />
-                  <DynamicContent
-                    contentKey={benefit.key}
-                    defaultContent={benefit.defaultText}
-                    tag="span"
-                    className="font-medium text-gray-900"
-                  />
+                <div key={index} className="flex items-start p-6 bg-white rounded-lg shadow-sm">
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                    <benefit.icon className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <DynamicContent
+                      contentKey={benefit.key}
+                      defaultContent={benefit.defaultText}
+                      tag="h3"
+                      className="font-semibold text-gray-900 mb-2"
+                    />
+                    <p className="text-gray-600 text-sm">
+                      {benefit.defaultText === 'Лицензированные программы' && 'Все программы имеют государственную лицензию'}
+                      {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
+                      {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
+                      {benefit.defaultText === 'Помощь в трудоустройстве' && 'Содействие в поиске работы'}
+                      {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
+                      {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
+                    </p>
+                  </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Отзывы наших выпускников
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Узнайте, как наше обучение помогло достичь карьерных целей
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-2xl shadow-lg">
+              <div className="flex items-center justify-between mb-8">
+                <button 
+                  onClick={prevTestimonial}
+                  className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                
+                <div className="flex-1 text-center">
+                  <Quote className="h-8 w-8 text-blue-600 mx-auto mb-4" />
+                  <p className="text-lg text-gray-700 mb-6 italic">
+                    "{testimonials[currentTestimonial].text}"
+                  </p>
+                  
+                  <div className="flex items-center justify-center mb-4">
+                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                    <div>
+                      <h4 className="font-semibold text-gray-900">
+                        {testimonials[currentTestimonial].name}
+                      </h4>
+                      <p className="text-gray-600 text-sm">
+                        {testimonials[currentTestimonial].position}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <button 
+                  onClick={nextTestimonial}
+                  className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div>
+              
+              <div className="flex justify-center space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-colors ${
+                      index === currentTestimonial ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Часто задаваемые вопросы
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Ответы на популярные вопросы о наших программах обучения
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                    {faq.question}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/consultation"
+              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
+            >
+              <MessageSquare className="mr-2 h-5 w-5" />
+              Задать свой вопрос
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Resources */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Полезные материалы
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Бесплатные ресурсы для развития профессиональных навыков
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <VideoIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-gray-900 mb-2">Вебинары</h3>
+              <p className="text-gray-600 text-sm mb-4">Еженедельные открытые лекции экспертов</p>
+              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Смотреть →
+              </button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-gray-900 mb-2">Статьи</h3>
+              <p className="text-gray-600 text-sm mb-4">Актуальные материалы по различным направлениям</p>
+              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Читать →
+              </button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <Download className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-gray-900 mb-2">Методички</h3>
+              <p className="text-gray-600 text-sm mb-4">Практические руководства и чек-листы</p>
+              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Скачать →
+              </button>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
+              <Calendar className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-gray-900 mb-2">События</h3>
+              <p className="text-gray-600 text-sm mb-4">Семинары, конференции и мастер-классы</p>
+              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                Календарь →
+              </button>
             </div>
           </div>
         </div>
@@ -274,7 +573,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.cta.subtitle"
-              defaultContent="Получите бесплатную консультацию и узнайте, какая программа подходит именно вам"
+              defaultContent="Получите бесплатную консу��ьтацию и узнайте, какая программа подходит именно вам"
               tag="p"
               className="text-xl text-blue-100 mb-8"
             />
