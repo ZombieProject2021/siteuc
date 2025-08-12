@@ -545,7 +545,7 @@ export default function AdminPage() {
                   Категория
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Статус
+                  Ста��ус
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Цена
@@ -813,7 +813,7 @@ export default function AdminPage() {
         {/* Sidebar */}
         <div className="w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
           <div className="p-6 border-b border-gray-200">
-            <h1 className="text-xl font-bold text-edu-navy">Админ-пан��ль</h1>
+            <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
             <p className="text-sm text-gray-500 mt-1">Управление контентом</p>
           </div>
           
@@ -839,14 +839,16 @@ export default function AdminPage() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 p-8">
-          {loading && activeSection === 'overview' ? (
-            <div className="flex items-center justify-center h-64">
-              <div className="text-gray-500">Загрузка...</div>
-            </div>
-          ) : (
-            renderContent()
-          )}
+        <div className="flex-1 overflow-x-hidden">
+          <div className="p-6 lg:p-8 max-w-7xl mx-auto">
+            {loading && activeSection === 'overview' ? (
+              <div className="flex items-center justify-center h-64">
+                <div className="text-gray-500">Загрузка...</div>
+              </div>
+            ) : (
+              renderContent()
+            )}
+          </div>
         </div>
       </div>
     </div>
