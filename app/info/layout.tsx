@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
-import { FileText, Building, Users, BookOpen, Award, DollarSign, MapPin, Heart, Globe } from 'lucide-react'
+import { FileText, Building, Users, BookOpen, Award, DollarSign, MapPin, Heart, Globe, Utensils } from 'lucide-react'
 
 interface InfoLayoutProps {
   children: ReactNode
@@ -11,7 +11,7 @@ const infoSections = [
     href: '/info/basic', 
     label: 'Основные сведения', 
     icon: Building,
-    description: 'Основная информация об организации'
+    description: 'Основная инфор��ация об организации'
   },
   { 
     href: '/info/structure', 
@@ -47,11 +47,11 @@ const infoSections = [
     href: '/info/staff', 
     label: 'Педагогический состав', 
     icon: Users,
-    description: 'Информа��ия о педагогических работниках'
+    description: 'Информация о педагогических работниках'
   },
   { 
     href: '/info/facilities', 
-    label: 'Материально-техническое обеспечение', 
+    label: 'Материально-техническое ��беспечение', 
     icon: Building,
     description: 'Оснащённость образовательного процесса'
   },
@@ -87,7 +87,7 @@ const infoSections = [
   },
   {
     href: '/info/food',
-    label: 'Ор��анизация питания',
+    label: 'Организация питания',
     icon: Heart,
     description: 'Питание в образовательной организации'
   }
