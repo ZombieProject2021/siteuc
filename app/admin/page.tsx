@@ -91,7 +91,7 @@ export default function AdminPage() {
     imageSrc: '',
     targetAudience: [] as string[],
     learningFormat: '',
-    documentTypes: [] as string[]
+    documentTypes: [] as Array<{name: string, file?: string}>
   })
 
   const menuItems = [
@@ -282,7 +282,7 @@ export default function AdminPage() {
       toast.loading('Инициализация контента...')
       await seedInitialContent()
       toast.dismiss()
-      toast.success('Контент успешно и��ициализирован!')
+      toast.success('Контент успешно инициализирован!')
     } catch (error) {
       toast.dismiss()
       toast.error('Ошибка при инициализации кон��ента')
