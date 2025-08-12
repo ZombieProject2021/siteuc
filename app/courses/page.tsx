@@ -312,9 +312,17 @@ export default function CoursesPage() {
                 {courses.map((course) => (
                   <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     <div className="relative">
-                      <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
-                        <BookOpen className="h-16 w-16 text-white opacity-50" />
-                      </div>
+                      {course.imageSrc ? (
+                        <img
+                          src={course.imageSrc}
+                          alt={course.title}
+                          className="h-48 w-full object-cover"
+                        />
+                      ) : (
+                        <div className="h-48 bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center">
+                          <BookOpen className="h-16 w-16 text-white opacity-50" />
+                        </div>
+                      )}
                       <div className="absolute top-4 left-4">
                         <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(course.status)}`}>
                           {getStatusText(course.status)}
