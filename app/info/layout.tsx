@@ -47,7 +47,7 @@ const infoSections = [
     href: '/info/staff', 
     label: 'Педагогический состав', 
     icon: Users,
-    description: 'Информация о пед��гогических работниках'
+    description: 'Информа��ия о педагогических работниках'
   },
   { 
     href: '/info/facilities', 
@@ -85,9 +85,9 @@ const infoSections = [
     icon: Globe,
     description: 'Международная деятельность'
   },
-  { 
-    href: '/info/catering', 
-    label: 'Организ��ция питания', 
+  {
+    href: '/info/food',
+    label: 'Ор��анизация питания',
     icon: Heart,
     description: 'Питание в образовательной организации'
   }
@@ -144,7 +144,7 @@ export default function InfoLayout({ children }: InfoLayoutProps) {
             </h3>
             <p className="text-sm text-yellow-700">
               Все документы представлены в формате PDF и подписаны электронной цифровой подписью (ЭЦП) 
-              в соответствии с т��ебованиями законодательства.
+              в соответствии с требованиями законодательства.
             </p>
           </div>
         </aside>
