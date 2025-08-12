@@ -318,18 +318,16 @@ export default function CoursesPage() {
               <h2 className="text-2xl font-bold text-gray-900">
                 {loading ? 'Загрузка...' : `Найдено курсов: ${pagination.total}`}
               </h2>
-              <select 
+              <select
                 className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                onChange={(e) => {
-                  // TODO: Implement sorting
-                  console.log('Sort by:', e.target.value)
-                }}
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
               >
-                <option>Сортировать по популярности</option>
-                <option>Сортировать по цене (по возрастанию)</option>
-                <option>Сортировать по цене (по убыванию)</option>
-                <option>Сортировать по рейтингу</option>
-                <option>Сортировать по дате</option>
+                <option value="popularity">Сортировать по популярности</option>
+                <option value="price_asc">Сортировать по цене (по возрастанию)</option>
+                <option value="price_desc">Сортировать по цене (по убыванию)</option>
+                <option value="rating">Сортировать по рейтингу</option>
+                <option value="date">Сортировать по дате</option>
               </select>
             </div>
 
