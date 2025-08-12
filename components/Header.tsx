@@ -34,7 +34,7 @@ export default function Header() {
                     ? 'bg-yellow-400 text-black shadow-md'
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
                 }`}
-                aria-label={isAccessibilityMode ? 'Отключит�� версию для слабовидящих' : 'Включить версию для слабовидящих'}
+                aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
               >
                 <Eye className="h-4 w-4" />
                 <span>{isAccessibilityMode ? 'Обычная версия' : 'Версия для слабовидящих'}</span>
@@ -63,7 +63,7 @@ export default function Header() {
         </div>
 
         {/* Main Header */}
-        <div className="py-6">
+        <div className="py-5 bg-white">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-4">
               <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3 rounded-xl shadow-md">
