@@ -21,6 +21,7 @@ import { toast } from 'react-hot-toast'
 import ImageUpload from '@/components/ImageUpload'
 import DocumentUpload from '@/components/DocumentUpload'
 import ContentEditor from '@/components/ContentEditor'
+import OrganizationDocuments from '@/components/OrganizationDocuments'
 import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
 
@@ -101,7 +102,7 @@ export default function AdminPage() {
     { id: 'overview', label: 'Обзор', icon: BarChart3 },
     { id: 'courses', label: 'Курсы', icon: BookOpen },
     { id: 'leads', label: 'Заявки', icon: Users },
-    { id: 'content', label: 'Контент', icon: FileText },
+    { id: 'content', label: '��онтент', icon: FileText },
     { id: 'documents', label: 'Сведения об организации', icon: FileText },
     { id: 'settings', label: 'Настройки', icon: Settings },
     { id: 'reports', label: 'Отчёты', icon: Database },
@@ -271,7 +272,7 @@ export default function AdminPage() {
         throw new Error('Ошибка обновления статуса')
       }
 
-      toast.success('Статус обновлен')
+      toast.success('��татус обновлен')
       fetchLeads()
     } catch (error) {
       toast.error('Ошибка обновления статуса')
@@ -561,7 +562,7 @@ export default function AdminPage() {
                   placeholder="Автоматически заполняется на основе названия"
                   readOnly
                 />
-                <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из назван��я курса</p>
+                <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из назван��я кур��а</p>
               </div>
 
               <div className="md:col-span-2">
