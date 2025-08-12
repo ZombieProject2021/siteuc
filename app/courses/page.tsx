@@ -36,7 +36,7 @@ const categories = [
   'Все курсы',
   'Профессиональная переподготовка',
   'Повышение квалификации',
-  'Корпоративное обучение'
+  'Корпоративное обу��ение'
 ]
 
 const formats = [
@@ -76,7 +76,9 @@ export default function CoursesPage() {
         ...(filters.category !== 'Все курсы' && { category: filters.category }),
         ...(filters.format !== 'Все форматы' && { format: filters.format }),
         ...(filters.search && { search: filters.search }),
-        status: filters.status
+        ...(filters.priceRanges.length > 0 && { priceRanges: filters.priceRanges.join(',') }),
+        status: filters.status,
+        sortBy
       })
 
       const response = await fetch(`/api/courses?${params}`)
