@@ -76,12 +76,15 @@ export async function GET(
       ? course.reviews.reduce((sum, review) => sum + review.rating, 0) / course.reviews.length
       : 0
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       ...course,
       avgRating: Number(avgRating.toFixed(1)),
       enrollmentsCount: course._count.enrollments,
       _count: undefined
     })
+
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     console.error('Error fetching course:', error)
     return NextResponse.json(
