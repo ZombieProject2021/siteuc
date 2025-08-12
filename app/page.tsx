@@ -116,7 +116,12 @@ export default function HomePage() {
                   <div className="flex justify-center mb-2">
                     <stat.icon className="h-8 w-8 text-yellow-400" />
                   </div>
-                  <div className="text-2xl md:text-3xl font-bold">{stat.value}</div>
+                  <DynamicContent
+                    contentKey={stat.valueKey}
+                    defaultContent={stat.defaultValue}
+                    tag="div"
+                    className="text-2xl md:text-3xl font-bold"
+                  />
                   <div className="text-blue-200 text-sm">{stat.label}</div>
                 </div>
               ))}
