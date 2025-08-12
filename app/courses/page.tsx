@@ -55,8 +55,10 @@ export default function CoursesPage() {
     category: 'Все курсы',
     format: 'Все форматы',
     search: '',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    priceRanges: [] as string[]
   })
+  const [sortBy, setSortBy] = useState('popularity')
   const [pagination, setPagination] = useState({
     page: 1,
     total: 0,
