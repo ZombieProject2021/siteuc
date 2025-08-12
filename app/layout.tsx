@@ -46,6 +46,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <CookieBanner />
+          <FloatingConsultationButton />
           <Toaster
             position="top-right"
             toastOptions={{
