@@ -345,7 +345,7 @@ export default function AdminPage() {
 
       {/* Content Management */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Управление контентом</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Уп��авление контентом</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div>
@@ -692,7 +692,7 @@ export default function AdminPage() {
                   Клиенты
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Действия
+                  Дейс��вия
                 </th>
               </tr>
             </thead>
@@ -701,7 +701,7 @@ export default function AdminPage() {
                 <tr key={course.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{course.title}</div>
+                      <div className="text-sm font-medium text-gray-900 select-text">{course.title}</div>
                       <div className="text-sm text-gray-500">{course.duration}</div>
                     </div>
                   </td>
