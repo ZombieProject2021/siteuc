@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X, Eye, Settings } from 'lucide-react'
+import { Menu, X, Eye, Settings, BookOpen } from 'lucide-react'
 import { useAccessibility } from '@/components/AccessibilityProvider'
 import AccessibilitySettings from '@/components/AccessibilitySettings'
 
@@ -13,10 +13,10 @@ export default function Header() {
 
   const navigationItems = [
     { href: '/', label: 'Главная' },
-    { href: '/info', label: 'Сведения об организации' },
-    { href: '/education', label: 'Образование' },
-    { href: '/documents', label: 'Документы' },
-    { href: '/staff', label: 'Сотрудники' },
+    { href: '/courses', label: 'Курсы' },
+    { href: '/about', label: 'О нас' },
+    { href: '/info', label: 'Сведения' },
+    { href: '/reviews', label: 'Отзывы' },
     { href: '/contacts', label: 'Контакты' },
   ]
 
@@ -64,8 +64,14 @@ export default function Header() {
         {/* Main Header */}
         <div className="py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-edu-navy">
-              CMS UC
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="bg-blue-600 text-white p-2 rounded-lg">
+                <BookOpen className="h-6 w-6" />
+              </div>
+              <div>
+                <div className="text-xl font-bold text-edu-navy">ООО Учебный Центр</div>
+                <div className="text-xs text-gray-600">Дополнительное образование</div>
+              </div>
             </Link>
 
             {/* Desktop Navigation */}
