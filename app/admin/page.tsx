@@ -197,7 +197,8 @@ export default function AdminPage() {
       maxStudents: 20,
       schedule: '',
       level: 'Средний',
-      format: 'Дистанционно'
+      format: 'Дистанционно',
+      imageSrc: ''
     })
   }
 
@@ -234,7 +235,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('Настройк�� сохранены')
+      toast.success('Настройк�� сохр��нены')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -629,7 +630,7 @@ export default function AdminPage() {
 
   const renderLeads = () => (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-edu-navy">Управление заявками</h2>
+      <h2 className="text-2xl font-bold text-edu-navy">Управлени�� заявками</h2>
       
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <div className="overflow-x-auto">
