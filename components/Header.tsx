@@ -48,7 +48,7 @@ export default function Header() {
                   aria-label="Настройки доступности"
                 >
                   <Settings className="h-4 w-4" />
-                  <span>Настройк��</span>
+                  <span>Настройки</span>
                 </button>
               </div>
             </div>
@@ -110,6 +110,11 @@ export default function Header() {
           )}
         </div>
       </div>
+
+      <AccessibilitySettings
+        isOpen={isAccessibilitySettingsOpen}
+        onClose={() => setIsAccessibilitySettingsOpen(false)}
+      />
     </header>
   )
 }
