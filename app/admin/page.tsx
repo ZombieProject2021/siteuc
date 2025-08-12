@@ -305,7 +305,7 @@ export default function AdminPage() {
 
       {/* Recent Leads */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние з��явки</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние заявки</h3>
         <div className="space-y-3">
           {leads.slice(0, 5).map((lead) => (
             <div key={lead.id} className="flex items-center justify-between py-2 border-b border-gray-100">
@@ -811,9 +811,10 @@ export default function AdminPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="flex">
         {/* Sidebar */}
-        <div className="w-64 bg-white shadow-md min-h-screen">
-          <div className="p-6">
-            <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
+        <div className="w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
+          <div className="p-6 border-b border-gray-200">
+            <h1 className="text-xl font-bold text-edu-navy">Админ-пан��ль</h1>
+            <p className="text-sm text-gray-500 mt-1">Управление контентом</p>
           </div>
           
           <nav className="mt-6">
