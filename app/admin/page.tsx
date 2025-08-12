@@ -1241,8 +1241,9 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Mobile Header */}
+    <AdminAuth>
+      <div className="min-h-screen bg-gray-50">
+        {/* Mobile Header */}
       <div className="lg:hidden bg-white shadow-md border-b border-gray-200 p-4">
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold text-edu-navy">Админ-панел��</h1>
@@ -1303,5 +1304,6 @@ export default function AdminPage() {
         </div>
       </div>
     </div>
+    </AdminAuth>
   )
 }
