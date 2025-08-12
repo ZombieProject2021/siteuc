@@ -11,7 +11,7 @@ const courseSchema = z.object({
   duration: z.string().min(1, 'Длительность обязательна'),
   price: z.number().min(0, 'Цена должна быть положител��ной'),
   oldPrice: z.number().optional(),
-  schedule: z.string().min(1, 'Расписание обязательно'),
+  schedule: z.string().min(1, 'Рас��исание обязательно'),
   level: z.string().min(1, 'Уровень обязателен'),
   format: z.string().min(1, 'Формат обязателен'),
   status: z.enum(['ACTIVE', 'UPCOMING', 'ARCHIVED', 'DRAFT']),
@@ -136,12 +136,15 @@ export async function GET(request: NextRequest) {
       coursesWithRating.sort((a, b) => b.avgRating - a.avgRating)
     }
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       courses: coursesWithRating,
       total,
       page,
       pages: Math.ceil(total / limit)
     })
+
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     console.error('Error fetching courses:', error)
     return NextResponse.json(
