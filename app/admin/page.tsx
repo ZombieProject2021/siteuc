@@ -160,7 +160,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения курса')
       }
 
-      toast.success(editingCourse ? 'Ку��с обновлен' : 'Курс создан')
+      toast.success(editingCourse ? 'Кур�� обновлен' : 'Курс создан')
       setShowCourseForm(false)
       setEditingCourse(null)
       resetCourseForm()
@@ -689,7 +689,7 @@ export default function AdminPage() {
                   Цена
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Студенты
+                  Клиенты
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Действия
