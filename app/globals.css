@@ -122,6 +122,40 @@ a {
   transition: all 0.2s;
 }
 
+/* Scrollbar styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for admin tables */
+.admin-table {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.admin-table::-webkit-scrollbar {
+  height: 8px;
+}
+
+.admin-table::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+.admin-table::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.admin-table::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
 .document-link:hover {
   background-color: #f3f4f6;
   border-color: #9ca3af;
