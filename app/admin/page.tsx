@@ -197,8 +197,8 @@ export default function AdminPage() {
       status: 'DRAFT',
       maxStudents: 20,
       schedule: '',
-      level: 'Средний',
-      format: 'Дистанционно',
+      level: '',
+      format: '',
       imageSrc: ''
     })
   }
@@ -449,7 +449,7 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 >
                   <option>Профессиональная переподготовка</option>
-                  <option>Пов��шение квалификации</option>
+                  <option>Повышение квалификации</option>
                   <option>Корпоративное обучение</option>
                 </select>
               </div>
@@ -589,7 +589,7 @@ export default function AdminPage() {
                 className="px-4 py-2 bg-edu-blue text-white rounded-md hover:bg-edu-navy disabled:opacity-50 flex items-center"
               >
                 <Save className="h-4 w-4 mr-2" />
-                {loading ? 'Сохранение...' : 'Сохр��нить'}
+                {loading ? 'Сохранение...' : 'Сохранить'}
               </button>
             </div>
           </form>
@@ -696,7 +696,7 @@ export default function AdminPage() {
           </table>
           {courses.length === 0 && (
             <div className="text-center py-8 text-gray-500">
-              Курсы не най��ены
+              Курсы не найдены
             </div>
           )}
         </div>
