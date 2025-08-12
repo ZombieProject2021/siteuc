@@ -37,7 +37,7 @@ export default function Header() {
                 aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
               >
                 <Eye className="h-4 w-4" />
-                <span>{isAccessibilityMode ? 'Обычная версия' : 'Верси�� для слабовидящих'}</span>
+                <span>{isAccessibilityMode ? 'Обычная версия' : 'Версия для слабовидящих'}</span>
               </button>
 
               <button
@@ -76,16 +76,24 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex space-x-8">
+            <nav className="hidden lg:flex items-center space-x-1">
               {navigationItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 hover:text-edu-blue transition-colors font-medium"
+                  className="px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all font-medium text-sm"
                 >
                   {item.label}
                 </Link>
               ))}
+              <div className="ml-4 pl-4 border-l border-gray-300">
+                <Link
+                  href="/consultation"
+                  className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-md"
+                >
+                  Консультация
+                </Link>
+              </div>
             </nav>
 
             {/* Mobile Menu Button */}
