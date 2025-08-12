@@ -1,10 +1,6 @@
-'use client'
-
-import { useState, useEffect } from 'react'
 import { notFound } from 'next/navigation'
-import { Star, Clock, Users, Calendar, CheckCircle, Award, BookOpen, ArrowRight, Phone, Mail } from 'lucide-react'
 import { prisma } from '@/lib/db'
-import EnrollmentModal from '@/components/EnrollmentModal'
+import CoursePageClient from '@/components/CoursePageClient'
 
 interface CoursePageProps {
   params: {
