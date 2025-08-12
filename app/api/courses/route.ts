@@ -8,7 +8,7 @@ const courseSchema = z.object({
   description: z.string().min(1, 'Описание обязательно'),
   fullDescription: z.string().optional(),
   category: z.string().min(1, 'Категория обязательна'),
-  duration: z.string().min(1, 'Длительность о��язательна'),
+  duration: z.string().min(1, 'Длительность обязательна'),
   price: z.number().min(0, 'Цена должна быть положител��ной'),
   oldPrice: z.number().optional(),
   schedule: z.string().min(1, 'Расписание обязательно'),
@@ -86,7 +86,21 @@ export async function GET(request: NextRequest) {
             select: { rating: true }
           }
         },
-        orderBy: { createdAt: 'desc' },
+        orderBy: (() => {
+          switch (sortBy) {
+            case 'price_asc':
+              return { price: 'asc' }
+            case 'price_desc':
+              return { price: 'desc' }
+            case 'rating':
+              return { createdAt: 'desc' } // Will sort by avg rating after calculation
+            case 'date':
+              return { createdAt: 'desc' }
+            case 'popularity':
+            default:
+              return { currentStudents: 'desc' }
+          }
+        })(),
         skip: offset,
         take: limit
       }),
