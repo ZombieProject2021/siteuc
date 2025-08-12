@@ -262,6 +262,23 @@ export default function AdminPage() {
     }
   }
 
+  // Initialize content
+  const handleInitializeContent = async () => {
+    try {
+      setLoading(true)
+      toast.loading('Инициализация контента...')
+      await seedInitialContent()
+      toast.dismiss()
+      toast.success('Контент успешно инициализирован!')
+    } catch (error) {
+      toast.dismiss()
+      toast.error('Ошибка при инициализации контента')
+      console.error('Content initialization error:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   // Load data on component mount and section change
   useEffect(() => {
     if (activeSection === 'courses') {
