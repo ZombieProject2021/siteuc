@@ -90,9 +90,9 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
-            <p>© {currentYear} CMS UC. Все права защищены.</p>
+            <p>© {currentYear} ООО «Учебный Центр». Все права защищены.</p>
             <p className="mt-2 md:mt-0">
-              Соответствует требованиям законодательства РФ для образовательных организаций
+              Лицензия на образовательную деятельность. Соответствует требованиям 273-ФЗ.
             </p>
           </div>
         </div>
