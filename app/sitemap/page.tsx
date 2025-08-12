@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { FileText, ChevronRight } from 'lucide-react'
 
@@ -29,7 +27,7 @@ export default function SitemapPage() {
         { name: 'Педагогический состав', href: '/info/staff', description: 'Информация о преподавателях' },
         { name: 'Материально-техническое обеспечение', href: '/info/facilities', description: 'Оснащенность образовательного процесса' },
         { name: 'Стипендии и поддержка', href: '/info/scholarships', description: 'Меры поддержки обучающихся' },
-        { name: 'Платные услуги', href: '/info/paid-services', description: 'Платные образовательные услуги' },
+        { name: 'Платные услуги', href: '/info/paid-services', description: 'Платные образов��тельные услуги' },
         { name: 'Финансовая деятельность', href: '/info/financial', description: 'Финансов��-хозяйственная деятельность' },
         { name: 'Вакантные места', href: '/info/vacancies', description: 'Места для приема обучающихся' },
         { name: 'Доступная среда', href: '/info/accessibility', description: 'Условия для людей с ограниченными возможностями' },
@@ -41,7 +39,7 @@ export default function SitemapPage() {
       title: 'Курсы и программы',
       pages: [
         { name: 'Управление персоналом', href: '/courses/upravlenie-personalom', description: 'Профессиональная переподготовка, 520 ак.ч.' },
-        { name: 'Бухгалтерский учет', href: '/courses/buhgalterskiy-uchet', description: 'Профессиональная переподготовка, 256 ак.ч.' },
+        { name: 'Бухгалтерский учет', href: '/courses/buhgalterskiy-uchet', description: 'Профессиональная переподгот��вка, 256 ак.ч.' },
         { name: 'Проектное управление', href: '/courses/proektnoe-upravlenie', description: 'Повышение ��валификации, 144 ак.ч.' },
       ]
     },
