@@ -509,57 +509,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Additional Resources */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Полезные материалы
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Бесплатные ресурсы для развития профессиональных навыков
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <VideoIcon className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Вебинары</h3>
-              <p className="text-gray-600 text-sm mb-4">Еженедельные открытые лекции экспертов</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Смотреть →
-              </button>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Статьи</h3>
-              <p className="text-gray-600 text-sm mb-4">Актуальные материалы по различным направлениям</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Читать →
-              </button>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <Download className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">Методички</h3>
-              <p className="text-gray-600 text-sm mb-4">Практические руководства и чек-листы</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Скачать →
-              </button>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm text-center">
-              <Calendar className="h-12 w-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold text-gray-900 mb-2">События</h3>
-              <p className="text-gray-600 text-sm mb-4">Семинары, конференции и мастер-классы</p>
-              <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
-                Календарь →
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-blue-600">
