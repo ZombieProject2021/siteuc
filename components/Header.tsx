@@ -22,9 +22,9 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-lg relative z-50">
-      <div className="container mx-auto px-4">
-        {/* Accessibility Bar */}
-        <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-3 text-sm border-b border-gray-700 shadow-sm">
+      {/* Accessibility Bar - Full Width */}
+      <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-3 text-sm border-b border-gray-700 shadow-sm">
+        <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <button
@@ -61,9 +61,11 @@ export default function Header() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Main Header */}
-        <div className="py-5 bg-white">
+      {/* Main Header - Container Width */}
+      <div className="py-5 bg-white">
+        <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
             <Link href="/" className="flex items-center space-x-4">
               <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3 rounded-xl shadow-md">
