@@ -279,7 +279,7 @@ export default function AdminPage() {
   const handleInitializeContent = async () => {
     try {
       setLoading(true)
-      toast.loading('Инициализация конте��та...')
+      toast.loading('Инициализация контента...')
       await seedInitialContent()
       toast.dismiss()
       toast.success('Контент успешно инициализирован!')
@@ -372,7 +372,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ��н��циализация'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -473,15 +473,18 @@ export default function AdminPage() {
                   type="text"
                   value={courseForm.title}
                   onChange={(e) => {
-                    setCourseForm({ ...courseForm, title: e.target.value })
-                    // Auto-generate slug
-                    const slug = e.target.value
-                      .toLowerCase()
-                      .replace(/[^a-zа-я0-9\s-]/g, '')
-                      .replace(/\s+/g, '-')
-                      .replace(/-+/g, '-')
-                      .trim()
-                    setCourseForm(prev => ({ ...prev, slug }))
+                    const title = e.target.value
+                    setCourseForm({ ...courseForm, title })
+                    // Auto-generate slug only if creating new course
+                    if (!editingCourse) {
+                      const slug = title
+                        .toLowerCase()
+                        .replace(/[^a-zа-я0-9\s-]/g, '')
+                        .replace(/\s+/g, '-')
+                        .replace(/-+/g, '-')
+                        .replace(/^-|-$/g, '')
+                      setCourseForm(prev => ({ ...prev, slug }))
+                    }
                   }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                   required
@@ -490,15 +493,16 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  URL (slug) *
+                  URL (slug) - автоматически генерируется
                 </label>
                 <input
                   type="text"
                   value={courseForm.slug}
-                  onChange={(e) => setCourseForm({ ...courseForm, slug: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
-                  required
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-600"
+                  placeholder="Автоматически заполняется на основе названия"
+                  readOnly
                 />
+                <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из названия курса</p>
               </div>
 
               <div className="md:col-span-2">
@@ -634,7 +638,7 @@ export default function AdminPage() {
                   <option value="">Выберите уровень</option>
                   <option value="Начальный">Начальный</option>
                   <option value="Средний">Средний</option>
-                  <option value="Продвинутый">Пр��двинутый</option>
+                  <option value="Продвинутый">Пр��дв��нутый</option>
                   <option value="Профессиональный">Профессиональный</option>
                 </select>
               </div>
