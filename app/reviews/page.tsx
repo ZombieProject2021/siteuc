@@ -270,7 +270,7 @@ export default function ReviewsPage() {
         {/* CTA Section */}
         <div className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-700 text-white p-8 rounded-2xl text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Хотите стать следующим довольным студентом?
+            Хотите стать следующим довольным клиентом?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
             Присоединяйтесь к тысячам выпускников, которые уже достигли своих целей
