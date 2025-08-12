@@ -205,7 +205,7 @@ export default function OrganizationDocuments() {
                 <input
                   type="file"
                   onChange={(e) => setUploadForm({ ...uploadForm, file: e.target.files?.[0] || null })}
-                  accept=".pdf,.doc,.docx,.xls,.xlsx"
+                  accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                   required
                 />
