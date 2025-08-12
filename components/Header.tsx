@@ -28,18 +28,29 @@ export default function Header() {
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-4">
               <span className="text-gray-600">Версия для слабовидящих:</span>
-              <button
-                onClick={toggleAccessibility}
-                className={`flex items-center space-x-2 px-3 py-1 rounded ${
-                  isAccessibilityMode 
-                    ? 'bg-yellow-400 text-black' 
-                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
-                aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
-              >
-                <Eye className="h-4 w-4" />
-                <span>{isAccessibilityMode ? 'Обычная версия' : 'Для слабовидящих'}</span>
-              </button>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={toggleAccessibility}
+                  className={`flex items-center space-x-2 px-3 py-1 rounded ${
+                    isAccessibilityMode
+                      ? 'bg-yellow-400 text-black'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                  }`}
+                  aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
+                >
+                  <Eye className="h-4 w-4" />
+                  <span>{isAccessibilityMode ? 'Обычная версия' : 'Для слабовидящих'}</span>
+                </button>
+
+                <button
+                  onClick={() => setIsAccessibilitySettingsOpen(true)}
+                  className="flex items-center space-x-1 px-3 py-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded"
+                  aria-label="Настройки доступности"
+                >
+                  <Settings className="h-4 w-4" />
+                  <span>Настройк��</span>
+                </button>
+              </div>
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/admin" className="flex items-center space-x-1 text-gray-600 hover:text-edu-blue">
