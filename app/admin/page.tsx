@@ -203,24 +203,32 @@ export default function AdminPage() {
     })
   }
 
-  const handleEditCourse = (course: Course) => {
-    setEditingCourse(course)
-    setCourseForm({
-      title: course.title,
-      slug: course.slug,
-      description: course.description,
-      category: course.category,
-      duration: course.duration,
-      price: course.price,
-      oldPrice: course.oldPrice || 0,
-      status: course.status,
-      maxStudents: course.maxStudents,
-      schedule: '', // Will need to be fetched from course details
-      level: '', // Will need to be fetched from course details
-      format: '', // Will need to be fetched from course details
-      imageSrc: course.imageSrc || ''
-    })
-    setShowCourseForm(true)
+  const handleEditCourse = async (course: Course) => {
+    try {
+      // Fetch full course details to get schedule, level, format
+      const response = await fetch(`/api/courses/${course.id}`)
+      const fullCourse = await response.json()
+
+      setEditingCourse(course)
+      setCourseForm({
+        title: fullCourse.title,
+        slug: fullCourse.slug,
+        description: fullCourse.description,
+        category: fullCourse.category,
+        duration: fullCourse.duration,
+        price: fullCourse.price,
+        oldPrice: fullCourse.oldPrice || 0,
+        status: fullCourse.status,
+        maxStudents: fullCourse.maxStudents,
+        schedule: fullCourse.schedule || '',
+        level: fullCourse.level || '',
+        format: fullCourse.format || '',
+        imageSrc: fullCourse.imageSrc || ''
+      })
+      setShowCourseForm(true)
+    } catch (error) {
+      toast.error('Ошибка загрузки данных курса')
+    }
   }
 
   // Settings management
@@ -714,7 +722,7 @@ export default function AdminPage() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Контакт
+                  Конт��кт
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Курс
