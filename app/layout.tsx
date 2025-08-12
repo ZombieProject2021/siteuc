@@ -5,6 +5,7 @@ import { AccessibilityProvider } from '@/components/AccessibilityProvider'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
+import FloatingConsultationButton from '@/components/FloatingConsultationButton'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
