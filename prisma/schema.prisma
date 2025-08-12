@@ -21,7 +21,7 @@ model Course {
   price        Decimal  @db.Decimal(10, 2)
   oldPrice     Decimal? @db.Decimal(10, 2)
   schedule     String   @db.VarChar(255)
-  level        String   @db.VarChar(50)
+  level        String   @db.VarChar(100)
   format       String   @db.VarChar(50) // online, offline, hybrid
   status       CourseStatus @default(ACTIVE)
   maxStudents  Int      @default(20)
