@@ -36,7 +36,7 @@ const categories = [
   'Все курсы',
   'Профессиональная переподготовка',
   'Повышение квалификации',
-  'Корпоративное обу��ение'
+  'Корпоративное обучение'
 ]
 
 const formats = [
@@ -103,7 +103,7 @@ export default function CoursesPage() {
 
   useEffect(() => {
     fetchCourses()
-  }, [filters, pagination.page])
+  }, [filters, pagination.page, sortBy])
 
   const handleFilterChange = (key: string, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }))
