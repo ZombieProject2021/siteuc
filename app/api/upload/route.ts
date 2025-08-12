@@ -18,13 +18,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate file type based on folder
-    const allowedTypes = folder === 'documents'
-      ? ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png']
+    const allowedTypes = folder === 'documents' || folder === 'organization-docs'
+      ? ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']
       : ['image/jpeg', 'image/jpg', 'image/png', 'image/webp']
 
     if (!allowedTypes.includes(file.type)) {
-      const allowedFormats = folder === 'documents'
-        ? 'PDF, JPEG, PNG'
+      const allowedFormats = folder === 'documents' || folder === 'organization-docs'
+        ? 'PDF, DOC, DOCX, XLS, XLSX, JPEG, PNG'
         : 'JPEG, PNG, WebP'
       return NextResponse.json(
         { error: `Недопустимый тип файла. Разрешены: ${allowedFormats}` },
