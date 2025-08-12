@@ -134,12 +134,18 @@ export default function HomePage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Популярные программы обучения
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Выберите направление, которое поможет вам достичь карьерных целей
-            </p>
+            <DynamicContent
+              contentKey="homepage.programs.title"
+              defaultContent="Популярные программы обучения"
+              tag="h2"
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            />
+            <DynamicContent
+              contentKey="homepage.programs.subtitle"
+              defaultContent="Выберите направление, которое поможет вам достичь карьерных целей"
+              tag="p"
+              className="text-xl text-gray-600 max-w-3xl mx-auto"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -226,7 +232,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Почему выбирают ��ас
+                Почему выбирают нас
               </h2>
               <p className="text-xl text-gray-600">
                 Бо��ее 15 лет готовим квалифицированных специалистов
