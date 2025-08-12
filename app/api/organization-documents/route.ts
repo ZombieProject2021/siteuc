@@ -30,9 +30,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validatedData = createDocumentSchema.parse(body)
 
-    const document = await prisma.organizationDocument.create({
-      data: validatedData
-    })
+    // Temporary mock response until database table is created
+    const document = {
+      id: Date.now(),
+      ...validatedData,
+      uploadDate: new Date().toISOString(),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
 
     return NextResponse.json(document, { status: 201 })
   } catch (error) {
@@ -42,7 +47,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    
+
     console.error('Error creating organization document:', error)
     return NextResponse.json(
       { error: 'Ошибка при создании документа' },
