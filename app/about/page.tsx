@@ -1,3 +1,5 @@
+'use client'
+
 import { Users, Award, Target, Heart, CheckCircle, BookOpen, Calendar, MapPin } from 'lucide-react'
 
 export default function AboutPage() {
@@ -85,7 +87,7 @@ export default function AboutPage() {
         <section className="mb-16">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Наша история
+              Наша исто��ия
             </h2>
             <div className="prose prose-lg max-w-none text-gray-700">
               <p className="text-xl leading-relaxed mb-6">
