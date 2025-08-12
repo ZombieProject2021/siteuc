@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import ImageUpload from '@/components/ImageUpload'
+import DocumentUpload from '@/components/DocumentUpload'
 import ContentEditor from '@/components/ContentEditor'
 import { seedInitialContent } from '@/components/DynamicContent'
 
@@ -281,7 +282,7 @@ export default function AdminPage() {
       toast.loading('Инициализация контента...')
       await seedInitialContent()
       toast.dismiss()
-      toast.success('Контент успешно инициализирован!')
+      toast.success('Контент успешно и��ициализирован!')
     } catch (error) {
       toast.dismiss()
       toast.error('Ошибка при инициализации кон��ента')
