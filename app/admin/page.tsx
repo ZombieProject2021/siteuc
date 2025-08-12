@@ -110,7 +110,7 @@ export default function AdminPage() {
       const data = await response.json()
       setCourses(data.courses || [])
     } catch (error) {
-      toast.error('Ошибка загрузки курсов')
+      toast.error('��шибка загрузки курсов')
     } finally {
       setLoading(false)
     }
@@ -241,7 +241,10 @@ export default function AdminPage() {
         schedule: fullCourse.schedule || '',
         level: fullCourse.level || '',
         format: fullCourse.format || '',
-        imageSrc: fullCourse.imageSrc || ''
+        imageSrc: fullCourse.imageSrc || '',
+        targetAudience: fullCourse.targetAudience || [],
+        learningFormat: fullCourse.learningFormat || '',
+        documentTypes: fullCourse.documentTypes || []
       })
       setShowCourseForm(true)
     } catch (error) {
@@ -281,7 +284,7 @@ export default function AdminPage() {
       toast.success('Контент успешно инициализирован!')
     } catch (error) {
       toast.dismiss()
-      toast.error('Ошибка при инициализации контента')
+      toast.error('Ошибка при инициализации кон��ента')
       console.error('Content initialization error:', error)
     } finally {
       setLoading(false)
@@ -861,7 +864,7 @@ export default function AdminPage() {
           </table>
           {leads.length === 0 && (
             <div className="text-center py-8 text-gray-500">
-              Заявки не найдены
+              Заявки ��е найдены
             </div>
           )}
         </div>
