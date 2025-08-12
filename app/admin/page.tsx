@@ -449,7 +449,7 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 >
                   <option>Профессиональная переподготовка</option>
-                  <option>Повышение квалификации</option>
+                  <option>Пов��шение квалификации</option>
                   <option>Корпоративное обучение</option>
                 </select>
               </div>
@@ -511,7 +511,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Макс. ��тудентов *
+                  Макс. студентов *
                 </label>
                 <input
                   type="number"
@@ -520,6 +520,55 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                   required
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Расписание *
+                </label>
+                <input
+                  type="text"
+                  value={courseForm.schedule}
+                  onChange={(e) => setCourseForm({ ...courseForm, schedule: e.target.value })}
+                  placeholder="Пн-Пт 18:00-21:00"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Уровень *
+                </label>
+                <select
+                  value={courseForm.level}
+                  onChange={(e) => setCourseForm({ ...courseForm, level: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                  required
+                >
+                  <option value="">Выберите уровень</option>
+                  <option value="Начальный">Начальный</option>
+                  <option value="Средний">Средний</option>
+                  <option value="Продвинутый">Продвинутый</option>
+                  <option value="Профессиональный">Профессиональный</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Формат *
+                </label>
+                <select
+                  value={courseForm.format}
+                  onChange={(e) => setCourseForm({ ...courseForm, format: e.target.value })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                  required
+                >
+                  <option value="">Выберите формат</option>
+                  <option value="Дистанционно">Дистанционно</option>
+                  <option value="Очно">Очно</option>
+                  <option value="Смешанный">Смешанный</option>
+                </select>
               </div>
             </div>
 
@@ -540,7 +589,7 @@ export default function AdminPage() {
                 className="px-4 py-2 bg-edu-blue text-white rounded-md hover:bg-edu-navy disabled:opacity-50 flex items-center"
               >
                 <Save className="h-4 w-4 mr-2" />
-                {loading ? 'Сохранение...' : 'Сохранить'}
+                {loading ? 'Сохранение...' : 'Сохр��нить'}
               </button>
             </div>
           </form>
@@ -647,7 +696,7 @@ export default function AdminPage() {
           </table>
           {courses.length === 0 && (
             <div className="text-center py-8 text-gray-500">
-              Курсы не найдены
+              Курсы не най��ены
             </div>
           )}
         </div>
