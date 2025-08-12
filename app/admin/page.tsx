@@ -218,7 +218,7 @@ export default function AdminPage() {
       imageSrc: '',
       targetAudience: [] as string[],
       learningFormat: '',
-      documentTypes: [] as string[]
+      documentTypes: [] as Array<{name: string, file?: string}>
     })
   }
 
