@@ -8,6 +8,7 @@ interface ImageUploadProps {
   currentImage?: string
   maxSize?: number
   aspectRatio?: 'square' | 'wide' | 'tall' | 'any'
+  courseId?: string
 }
 
 export default function ImageUpload({ 
