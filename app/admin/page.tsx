@@ -39,6 +39,9 @@ interface Course {
   avgRating: number
   reviewsCount: number
   imageSrc?: string
+  targetAudience?: string[]
+  learningFormat?: string
+  documentTypes?: string[]
   createdAt: string
 }
 
@@ -638,7 +641,7 @@ export default function AdminPage() {
                   <option value="">Выберите формат</option>
                   <option value="Дистанционно">Дистанционно</option>
                   <option value="Очно">Очно</option>
-                  <option value="Смешанный">Смешанный</option>
+                  <option value="Смешанный">С��ешанный</option>
                 </select>
               </div>
             </div>
