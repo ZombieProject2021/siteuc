@@ -45,7 +45,10 @@ export default function SeedAllPage() {
           await seedInitialContent()
         } else if (operation.endpoint) {
           const response = await fetch(operation.endpoint, { method: 'POST' })
-          if (!response.ok) throw new Error(`Failed to seed ${operation.name}`)
+          if (!response.ok) {
+            const errorText = await response.text().catch(() => 'Unknown error')
+            throw new Error(`Failed to seed ${operation.name}: ${errorText}`)
+          }
         }
         
         setResults(prev => ({ ...prev, [operation.id]: 'success' }))
