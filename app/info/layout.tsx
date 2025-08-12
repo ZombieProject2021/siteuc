@@ -11,7 +11,7 @@ const infoSections = [
     href: '/info/basic', 
     label: 'Основные сведения', 
     icon: Building,
-    description: 'Основная инфор��ация об организации'
+    description: 'Основная информация об организации'
   },
   { 
     href: '/info/structure', 
@@ -51,7 +51,7 @@ const infoSections = [
   },
   { 
     href: '/info/facilities', 
-    label: 'Материально-техническое ��беспечение', 
+    label: 'Материально-техническое обеспечение', 
     icon: Building,
     description: 'Оснащённость образовательного процесса'
   },
@@ -88,7 +88,7 @@ const infoSections = [
   {
     href: '/info/food',
     label: 'Организация питания',
-    icon: Heart,
+    icon: Utensils,
     description: 'Питание в образовательной организации'
   }
 ]
