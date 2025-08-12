@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import DynamicContent from '@/components/DynamicContent'
 import { 
   BookOpen, 
   Users, 
@@ -218,7 +219,7 @@ export default function HomePage() {
                 Почему выбирают нас
               </h2>
               <p className="text-xl text-gray-600">
-                Более 15 лет готовим квалифицированных специалистов
+                Бо��ее 15 лет готовим квалифицированных специалистов
               </p>
             </div>
 
