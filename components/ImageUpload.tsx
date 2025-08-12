@@ -11,11 +11,12 @@ interface ImageUploadProps {
   courseId?: string
 }
 
-export default function ImageUpload({ 
-  onUpload, 
+export default function ImageUpload({
+  onUpload,
   currentImage,
   maxSize = 5 * 1024 * 1024, // 5MB
-  aspectRatio = 'wide'
+  aspectRatio = 'wide',
+  courseId = 'general'
 }: ImageUploadProps) {
   const [dragActive, setDragActive] = useState(false)
   const [uploading, setUploading] = useState(false)
