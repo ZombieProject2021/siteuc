@@ -231,7 +231,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('Настройки сохранены')
+      toast.success('Настройк�� сохранены')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -809,6 +809,24 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Mobile Header */}
+      <div className="lg:hidden bg-white shadow-md border-b border-gray-200 p-4">
+        <div className="flex items-center justify-between">
+          <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
+          <select
+            value={activeSection}
+            onChange={(e) => setActiveSection(e.target.value as AdminSection)}
+            className="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue"
+          >
+            {menuItems.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="flex">
         {/* Sidebar */}
         <div className="hidden lg:block w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
