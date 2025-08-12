@@ -8,6 +8,7 @@ import AccessibilitySettings from '@/components/AccessibilitySettings'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isAccessibilitySettingsOpen, setIsAccessibilitySettingsOpen] = useState(false)
   const { isAccessibilityMode, toggleAccessibility } = useAccessibility()
 
   const navigationItems = [
