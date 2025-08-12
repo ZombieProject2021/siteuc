@@ -27,7 +27,7 @@ interface Course {
   outcomes?: string[]
   targetAudience?: string[]
   learningFormat?: string
-  documentTypes?: string[]
+  documentTypes?: Array<{name: string, file?: string}>
   imageSrc?: string
   certificate: boolean
   avgRating: number
@@ -443,7 +443,7 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
                   <li>• {course.certificate ? 'Диплом государственного образца' : 'Сертификат об окончании'}</li>
                   <li>• Доступ к материалам на 6 месяцев</li>
                   <li>• Поддержка преподавателя</li>
-                  <li>�� Практические задания</li>
+                  <li>• Практические задания</li>
                   <li>• Помощь в трудоустройстве</li>
                 </ul>
               </div>
