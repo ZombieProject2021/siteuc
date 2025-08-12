@@ -14,25 +14,51 @@ export default function SafetyCoursesPage() {
     try {
       setLoading(true)
       setCompleted(false)
-      
+
       toast.loading('Создание курсов по охране труда...', { id: 'safety-courses' })
-      
+
+      console.log('Starting fetch to /api/courses/seed-safety')
+
       const response = await fetch('/api/courses/seed-safety', {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
 
+      console.log('Response status:', response.status, response.statusText)
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: 'Неизвестная ошибка' }))
-        throw new Error(errorData.error || 'Ошибка при создании курсов')
+        console.log('Response not ok, trying to read error data...')
+        let errorMessage = `HTTP ${response.status}: ${response.statusText}`
+
+        try {
+          const errorData = await response.json()
+          console.log('Error data:', errorData)
+          errorMessage = errorData.error || errorMessage
+        } catch (jsonError) {
+          console.log('Failed to parse error as JSON, trying text...')
+          try {
+            const errorText = await response.text()
+            console.log('Error text:', errorText)
+            if (errorText) errorMessage = errorText
+          } catch (textError) {
+            console.log('Failed to read error as text:', textError)
+          }
+        }
+
+        throw new Error(errorMessage)
       }
 
       const data = await response.json()
-      
+      console.log('Success data:', data)
+
       setResults(data)
       toast.success('Курсы по охране труда успешно созданы!', { id: 'safety-courses' })
       setCompleted(true)
     } catch (error: any) {
       console.error('Safety courses creation error:', error)
+      console.error('Error stack:', error.stack)
       toast.error(error.message || 'Ошибка при создании курсов', { id: 'safety-courses' })
     } finally {
       setLoading(false)
