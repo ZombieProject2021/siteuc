@@ -511,7 +511,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Макс. студентов *
+                  Макс. ��тудентов *
                 </label>
                 <input
                   type="number"
@@ -824,7 +824,23 @@ export default function AdminPage() {
   )
 
   const renderContentManagement = () => (
-    <ContentEditor />
+    <div className="space-y-6">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
+        <p className="text-blue-800 text-sm mb-3">
+          Если это первый запуск, создайте начальный набор редактируемых текстов.
+        </p>
+        <a
+          href="/admin/seed-content"
+          className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+        >
+          <Database className="h-4 w-4 mr-2" />
+          Создать начальный контент
+        </a>
+      </div>
+
+      <ContentEditor />
+    </div>
   )
 
   const renderContent = () => {
@@ -868,7 +884,7 @@ export default function AdminPage() {
         {/* Sidebar */}
         <div className="hidden lg:block w-64 bg-white shadow-lg min-h-screen border-r border-gray-200">
           <div className="p-6 border-b border-gray-200">
-            <h1 className="text-xl font-bold text-edu-navy">Админ-пан��ль</h1>
+            <h1 className="text-xl font-bold text-edu-navy">Админ-панель</h1>
             <p className="text-sm text-gray-500 mt-1">Управление контентом</p>
           </div>
           
