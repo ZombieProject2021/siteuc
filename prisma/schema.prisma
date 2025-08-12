@@ -1,0 +1,181 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(255)
+  slug         String   @unique @db.VarChar(100)
+  description  String   @db.Text
+  fullDescription String? @db.LongText
+  category     String   @db.VarChar(100)
+  duration     String   @db.VarChar(50)
+  price        Decimal  @db.Decimal(10, 2)
+  oldPrice     Decimal? @db.Decimal(10, 2)
+  schedule     String   @db.VarChar(255)
+  level        String   @db.VarChar(50)
+  format       String   @db.VarChar(50) // online, offline, hybrid
+  status       CourseStatus @default(ACTIVE)
+  maxStudents  Int      @default(20)
+  currentStudents Int   @default(0)
+  startDate    DateTime?
+  endDate      DateTime?
+  features     Json?    // JSON array of course features
+  requirements Json?    // JSON array of requirements
+  outcomes     Json?    // JSON array of learning outcomes
+  imageSrc     String?  @db.VarChar(255)
+  certificate  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  // Relations
+  lessons      Lesson[]
+  enrollments  Enrollment[]
+  reviews      Review[]
+  
+  @@map("courses")
+}
+
+model Lesson {
+  id          Int     @id @default(autoincrement())
+  courseId    Int
+  title       String  @db.VarChar(255)
+  description String? @db.Text
+  content     String? @db.LongText
+  duration    Int     // minutes
+  order       Int
+  isPublic    Boolean @default(false)
+  videoUrl    String? @db.VarChar(255)
+  materials   Json?   // JSON array of materials
+  
+  course      Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  @@map("lessons")
+}
+
+model Lead {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  email       String   @db.VarChar(100)
+  phone       String?  @db.VarChar(20)
+  courseId    Int?
+  message     String?  @db.Text
+  source      String   @db.VarChar(50) @default("website")
+  status      LeadStatus @default(NEW)
+  utm_source  String?  @db.VarChar(50)
+  utm_medium  String?  @db.VarChar(50)
+  utm_campaign String? @db.VarChar(50)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  course      Course?  @relation("CourseLeads", fields: [courseId], references: [id])
+  
+  @@map("leads")
+}
+
+model Enrollment {
+  id          Int      @id @default(autoincrement())
+  studentName String   @db.VarChar(100)
+  studentEmail String  @db.VarChar(100)
+  studentPhone String? @db.VarChar(20)
+  courseId    Int
+  status      EnrollmentStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  amount      Decimal  @db.Decimal(10, 2)
+  enrolledAt  DateTime @default(now())
+  completedAt DateTime?
+  
+  course      Course   @relation(fields: [courseId], references: [id])
+  
+  @@map("enrollments")
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  courseId    Int
+  studentName String   @db.VarChar(100)
+  rating      Int      // 1-5
+  comment     String   @db.Text
+  isApproved  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  
+  course      Course   @relation(fields: [courseId], references: [id])
+  
+  @@map("reviews")
+}
+
+model BlogPost {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(255)
+  slug        String   @unique @db.VarChar(100)
+  excerpt     String   @db.VarChar(500)
+  content     String   @db.LongText
+  authorName  String   @db.VarChar(100)
+  imageSrc    String?  @db.VarChar(255)
+  tags        Json?    // JSON array of tags
+  isPublished Boolean  @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("blog_posts")
+}
+
+model ContactForm {
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(100)
+  email       String   @db.VarChar(100)
+  phone       String?  @db.VarChar(20)
+  subject     String   @db.VarChar(255)
+  message     String   @db.Text
+  isProcessed Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  
+  @@map("contact_forms")
+}
+
+model Setting {
+  id    Int    @id @default(autoincrement())
+  key   String @unique @db.VarChar(100)
+  value String @db.Text
+  
+  @@map("settings")
+}
+
+enum CourseStatus {
+  ACTIVE
+  UPCOMING
+  ARCHIVED
+  DRAFT
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  LOST
+}
+
+enum EnrollmentStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
