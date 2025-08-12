@@ -65,12 +65,12 @@ export default function HomePage() {
   ]
 
   const benefits = [
-    'Лицензированные программы',
-    'Государственные дипломы',
-    'Рассрочка без переплат',
-    'Помо��ь в трудоустройстве',
-    'Гибкий график обучения',
-    'Практикующие преподаватели'
+    { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы' },
+    { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы' },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат' },
+    { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве' },
+    { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения' },
+    { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели' },
   ]
 
   return (
@@ -226,7 +226,7 @@ export default function HomePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Почему выбирают нас
+                Почему выбирают ��ас
               </h2>
               <p className="text-xl text-gray-600">
                 Бо��ее 15 лет готовим квалифицированных специалистов
