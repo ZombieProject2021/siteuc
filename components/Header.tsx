@@ -29,10 +29,10 @@ export default function Header() {
             <div className="flex items-center space-x-3">
               <button
                 onClick={toggleAccessibility}
-                className={`flex items-center space-x-2 px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg text-xs font-medium transition-all border ${
                   isAccessibilityMode
-                    ? 'bg-yellow-400 text-black shadow-md'
-                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                    ? 'bg-yellow-400 text-black shadow-lg border-yellow-500'
+                    : 'bg-gray-800 text-gray-200 hover:bg-gray-700 hover:text-white border-gray-600 hover:border-gray-500'
                 }`}
                 aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
               >
@@ -42,10 +42,10 @@ export default function Header() {
 
               <button
                 onClick={() => setIsAccessibilitySettingsOpen(true)}
-                className="flex items-center space-x-1 px-3 py-1.5 bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white rounded-full text-xs font-medium transition-all"
+                className="flex items-center space-x-1 px-3 py-2 bg-gray-800 text-gray-200 hover:bg-gray-700 hover:text-white rounded-lg text-xs font-medium transition-all border border-gray-600 hover:border-gray-500"
                 aria-label="Настройки доступности"
               >
-                <Settings className="h-3 w-3" />
+                <Settings className="h-4 w-4" />
                 <span className="hidden sm:inline">Настройки</span>
               </button>
             </div>
