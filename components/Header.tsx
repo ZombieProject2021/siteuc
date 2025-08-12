@@ -117,17 +117,26 @@ export default function Header() {
           {/* Mobile Navigation */}
           {isMenuOpen && (
             <nav className="lg:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {navigationItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block py-2 px-4 text-gray-700 hover:text-edu-blue hover:bg-gray-50 rounded transition-colors"
+                    className="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
                   </Link>
                 ))}
+                <div className="pt-3 mt-3 border-t border-gray-200">
+                  <Link
+                    href="/consultation"
+                    className="block w-full bg-yellow-500 hover:bg-yellow-600 text-black py-3 px-4 rounded-lg font-semibold text-center transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Бесплатная консультация
+                  </Link>
+                </div>
               </div>
             </nav>
           )}
