@@ -10,8 +10,8 @@ export default function FloatingConsultationButton() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show button after scrolling 300px
-      setIsVisible(window.scrollY > 300)
+      // Show button after scrolling 100px
+      setIsVisible(window.scrollY > 100)
     }
 
     window.addEventListener('scroll', handleScroll)
