@@ -279,7 +279,7 @@ export default function AdminPage() {
   const handleInitializeContent = async () => {
     try {
       setLoading(true)
-      toast.loading('Инициализация контента...')
+      toast.loading('Инициализация конте��та...')
       await seedInitialContent()
       toast.dismiss()
       toast.success('Контент успешно инициализирован!')
@@ -358,7 +358,7 @@ export default function AdminPage() {
 
       {/* Content Management */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Уп��авл��ние контентом</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Уп��авление контентом</h3>
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <div>
@@ -693,17 +693,11 @@ export default function AdminPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Виды выдаваемых документов
                 </label>
-                <textarea
-                  value={courseForm.documentTypes.join('\n')}
-                  onChange={(e) => setCourseForm({
-                    ...courseForm,
-                    documentTypes: e.target.value.split('\n').filter(item => item.trim())
-                  })}
-                  rows={3}
-                  placeholder="Диплом о профессиональной переподготовке&#10;Удостоверение о повышении квалификации&#10;Сертификат"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+                <DocumentUpload
+                  documents={courseForm.documentTypes}
+                  onChange={(documents) => setCourseForm({ ...courseForm, documentTypes: documents })}
+                  courseId={editingCourse?.id.toString() || 'new'}
                 />
-                <p className="text-xs text-gray-500 mt-1">Каждый документ с новой строки</p>
               </div>
             </div>
 
