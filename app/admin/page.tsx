@@ -20,6 +20,7 @@ import {
 import { toast } from 'react-hot-toast'
 import ImageUpload from '@/components/ImageUpload'
 import ContentEditor from '@/components/ContentEditor'
+import { seedInitialContent } from '@/components/DynamicContent'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'reports'
 
