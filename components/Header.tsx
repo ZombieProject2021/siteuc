@@ -50,14 +50,6 @@ export default function Header() {
               </button>
             </div>
             <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-4 text-gray-400 text-xs">
-                <a href="tel:+74951234567" className="hover:text-yellow-400 transition-colors">
-                  📞 +7 (495) 123-45-67
-                </a>
-                <a href="mailto:info@uchebnycentr.ru" className="hover:text-yellow-400 transition-colors">
-                  ✉️ info@uchebnycentr.ru
-                </a>
-              </div>
               <Link href="/admin" className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 transition-colors text-xs">
                 <Settings className="h-3 w-3" />
                 <span className="hidden sm:inline">Админ</span>
