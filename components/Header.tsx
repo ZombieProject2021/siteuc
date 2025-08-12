@@ -24,7 +24,7 @@ export default function Header() {
     <header className="bg-white shadow-lg relative z-50">
       <div className="container mx-auto px-4">
         {/* Accessibility Bar */}
-        <div className="bg-gray-900 py-3 text-sm border-b border-gray-700">
+        <div className="bg-gradient-to-r from-gray-900 to-gray-800 py-3 text-sm border-b border-gray-700 shadow-sm">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
               <button
