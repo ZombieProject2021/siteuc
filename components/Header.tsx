@@ -51,8 +51,12 @@ export default function Header() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-4 text-gray-400 text-xs">
-                <span>📞 +7 (495) 123-45-67</span>
-                <span>✉️ info@uchebnycentr.ru</span>
+                <a href="tel:+74951234567" className="hover:text-yellow-400 transition-colors">
+                  📞 +7 (495) 123-45-67
+                </a>
+                <a href="mailto:info@uchebnycentr.ru" className="hover:text-yellow-400 transition-colors">
+                  ✉️ info@uchebnycentr.ru
+                </a>
               </div>
               <Link href="/admin" className="flex items-center space-x-1 text-gray-400 hover:text-yellow-400 transition-colors text-xs">
                 <Settings className="h-3 w-3" />
@@ -88,13 +92,13 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
-              <div className="ml-4 pl-4 border-l border-gray-300">
-                <Link
-                  href="/consultation"
-                  className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-2.5 rounded-lg font-semibold text-sm transition-colors shadow-md"
-                >
-                  Консультация
-                </Link>
+              <div className="ml-4 pl-4 border-l border-gray-300 flex flex-col space-y-1">
+                <a href="tel:+74951234567" className="text-blue-600 hover:text-blue-800 text-sm font-semibold">
+                  +7 (495) 123-45-67
+                </a>
+                <a href="mailto:info@uchebnycentr.ru" className="text-blue-600 hover:text-blue-800 text-xs">
+                  info@uchebnycentr.ru
+                </a>
               </div>
             </nav>
 
