@@ -236,7 +236,7 @@ export default function AdminPage() {
         throw new Error('Ошибка сохранения настроек')
       }
 
-      toast.success('Настройк�� сохранены')
+      toast.success('На��тройк�� сохранены')
     } catch (error) {
       toast.error('Ошибка сохранения настроек')
     } finally {
@@ -455,7 +455,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Длительность *
+                  Длител��ность *
                 </label>
                 <input
                   type="text"
@@ -822,6 +822,205 @@ export default function AdminPage() {
     </div>
   )
 
+  const renderContentManagement = () => (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-edu-navy">Управление контентом</h2>
+
+      {/* Statistics */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <div className="flex items-center">
+            <FileText className="h-8 w-8 text-blue-600" />
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Всего страниц</p>
+              <p className="text-2xl font-bold text-gray-900">25</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <div className="flex items-center">
+            <BookOpen className="h-8 w-8 text-green-600" />
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Активные курсы</p>
+              <p className="text-2xl font-bold text-gray-900">{courses.filter(c => c.status === 'ACTIVE').length}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <div className="flex items-center">
+            <Upload className="h-8 w-8 text-purple-600" />
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Загружено файлов</p>
+              <p className="text-2xl font-bold text-gray-900">156</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+          <div className="flex items-center">
+            <Settings className="h-8 w-8 text-orange-600" />
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Обновлений</p>
+              <p className="text-2xl font-bold text-gray-900">12</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Content Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Website Content */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <FileText className="h-5 w-5 mr-2 text-blue-600" />
+            Контент сайта
+          </h3>
+          <div className="space-y-3">
+            <a href="/info" target="_blank" className="block p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">Сведения об организации</div>
+              <div className="text-sm text-gray-600">14 обязательных разделов</div>
+            </a>
+            <a href="/courses" target="_blank" className="block p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">Каталог курсов</div>
+              <div className="text-sm text-gray-600">Все образовательные программы</div>
+            </a>
+            <a href="/about" target="_blank" className="block p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
+              <div className="font-medium text-gray-900">О нас</div>
+              <div className="text-sm text-gray-600">Информация о компании</div>
+            </a>
+          </div>
+        </div>
+
+        {/* Media Management */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <Upload className="h-5 w-5 mr-2 text-purple-600" />
+            Медиафайлы
+          </h3>
+          <div className="space-y-3">
+            <div className="p-3 bg-purple-50 rounded">
+              <div className="font-medium text-purple-900">Изображения курсов</div>
+              <div className="text-sm text-purple-700">Управление через раздел "Курсы"</div>
+            </div>
+            <div className="p-3 bg-purple-50 rounded">
+              <div className="font-medium text-purple-900">Документы</div>
+              <div className="text-sm text-purple-700">PDF-файлы для скачивания</div>
+            </div>
+            <div className="p-3 bg-purple-50 rounded">
+              <div className="font-medium text-purple-900">Логотипы и иконки</div>
+              <div className="text-sm text-purple-700">Графи��еские элементы сайта</div>
+            </div>
+          </div>
+        </div>
+
+        {/* SEO Management */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <BarChart3 className="h-5 w-5 mr-2 text-green-600" />
+            SEO и аналитика
+          </h3>
+          <div className="space-y-3">
+            <div className="p-3 bg-green-50 rounded">
+              <div className="font-medium text-green-900">Мета-теги</div>
+              <div className="text-sm text-green-700">Настройка через код страниц</div>
+            </div>
+            <div className="p-3 bg-green-50 rounded">
+              <div className="font-medium text-green-900">Карта сайта</div>
+              <div className="text-sm text-green-700">
+                <a href="/sitemap" target="_blank" className="text-green-600 hover:underline">Просмотр карты сайта</a>
+              </div>
+            </div>
+            <div className="p-3 bg-green-50 rounded">
+              <div className="font-medium text-green-900">Производительность</div>
+              <div className="text-sm text-green-700">Опти��изация загрузки</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Быстрые действия</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <button
+            onClick={() => setActiveSection('courses')}
+            className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left"
+          >
+            <BookOpen className="h-8 w-8 text-blue-600 mb-2" />
+            <div className="font-medium text-gray-900">Добавить курс</div>
+            <div className="text-sm text-gray-600">Создать новую программу</div>
+          </button>
+
+          <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
+            <Upload className="h-8 w-8 text-purple-600 mb-2" />
+            <div className="font-medium text-gray-900">Загрузить файл</div>
+            <div className="text-sm text-gray-600">Добавить документ</div>
+          </button>
+
+          <button
+            onClick={() => setActiveSection('settings')}
+            className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left"
+          >
+            <Settings className="h-8 w-8 text-orange-600 mb-2" />
+            <div className="font-medium text-gray-900">Настройки</div>
+            <div className="text-sm text-gray-600">Конфигурация сайта</div>
+          </button>
+
+          <a
+            href="/"
+            target="_blank"
+            className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left block"
+          >
+            <Eye className="h-8 w-8 text-green-600 mb-2" />
+            <div className="font-medium text-gray-900">Просмотр сайта</div>
+            <div className="text-sm text-gray-600">Открыть в новой вкладке</div>
+          </a>
+        </div>
+      </div>
+
+      {/* Recent Updates */}
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Последние изменения</h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
+            <div className="flex items-center space-x-3">
+              <BookOpen className="h-5 w-5 text-blue-600" />
+              <div>
+                <div className="font-medium text-gray-900">Курс "Менеджмент в образовании"</div>
+                <div className="text-sm text-gray-600">Добавлено изображение курса</div>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">2 часа назад</div>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
+            <div className="flex items-center space-x-3">
+              <FileText className="h-5 w-5 text-green-600" />
+              <div>
+                <div className="font-medium text-gray-900">Раздел "Сведения об организации"</div>
+                <div className="text-sm text-gray-600">Обновлены все 14 разделов</div>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">1 день назад</div>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-gray-50 rounded">
+            <div className="flex items-center space-x-3">
+              <Settings className="h-5 w-5 text-orange-600" />
+              <div>
+                <div className="font-medium text-gray-900">Настройки ��айта</div>
+                <div className="text-sm text-gray-600">Обновлена контактная информация</div>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">3 дня назад</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+
   const renderContent = () => {
     switch (activeSection) {
       case 'overview':
@@ -830,6 +1029,8 @@ export default function AdminPage() {
         return renderCourses()
       case 'leads':
         return renderLeads()
+      case 'content':
+        return renderContentManagement()
       case 'settings':
         return renderSettings()
       default:
