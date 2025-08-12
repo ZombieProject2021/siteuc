@@ -37,7 +37,7 @@ export default function Header() {
                 aria-label={isAccessibilityMode ? 'Отключить версию для слабовидящих' : 'Включить версию для слабовидящих'}
               >
                 <Eye className="h-4 w-4" />
-                <span>{isAccessibilityMode ? 'Обычная версия' : 'Версия для слабовидящих'}</span>
+                <span>{isAccessibilityMode ? 'Обычная версия' : 'Верси�� для слабовидящих'}</span>
               </button>
 
               <button
@@ -63,15 +63,15 @@ export default function Header() {
         </div>
 
         {/* Main Header */}
-        <div className="py-4">
+        <div className="py-6">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="bg-blue-600 text-white p-2 rounded-lg">
-                <BookOpen className="h-6 w-6" />
+            <Link href="/" className="flex items-center space-x-4">
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-3 rounded-xl shadow-md">
+                <BookOpen className="h-7 w-7" />
               </div>
               <div>
-                <div className="text-xl font-bold text-edu-navy">ООО Учебный Центр</div>
-                <div className="text-xs text-gray-600">Дополнительное образование</div>
+                <div className="text-2xl font-bold text-gray-900">ООО Учебный Центр</div>
+                <div className="text-sm text-gray-600 font-medium">Профессиональное образование с 2008 года</div>
               </div>
             </Link>
 
