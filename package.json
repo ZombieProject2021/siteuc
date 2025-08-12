@@ -1,13 +1,16 @@
 {
-  "name": "cms-uc",
+  "name": "ooo-uchebnyy-centr",
   "version": "1.0.0",
-  "description": "CMS для учебных центров с соблюдением требований РФ",
+  "description": "Официальный сайт ООО Учебный Центр - дополнительное профессиональное образование",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
     "next": "14.0.4",
@@ -22,7 +25,15 @@
     "postcss": "8.4.32",
     "lucide-react": "0.302.0",
     "date-fns": "3.0.6",
-    "clsx": "2.0.0"
+    "clsx": "2.0.0",
+    "@prisma/client": "5.7.1",
+    "prisma": "5.7.1",
+    "mysql2": "3.6.5",
+    "react-hook-form": "7.48.2",
+    "@hookform/resolvers": "3.3.2",
+    "zod": "3.22.4",
+    "react-hot-toast": "2.4.1",
+    "framer-motion": "10.16.16"
   },
   "devDependencies": {
     "eslint": "8.56.0",
