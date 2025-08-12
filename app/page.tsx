@@ -41,7 +41,7 @@ export default function HomePage() {
     },
     {
       id: 2,
-      title: 'Бухгалтерский учет и налог��обложение',
+      title: 'Бухгалтерский учет и налогообложение',
       duration: '256 ак.ч.',
       price: '32000',
       oldPrice: '38000',
@@ -67,7 +67,7 @@ export default function HomePage() {
     'Лицензированные программы',
     'Государственные дипломы',
     'Рассрочка без переплат',
-    'Помощь в трудоустройстве',
+    'Помо��ь в трудоустройстве',
     'Гибкий график обучения',
     'Практикующие преподаватели'
   ]
@@ -78,12 +78,12 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          <div className="max-w-5xl mx-auto text-center">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Получите новую профессию
               <span className="text-yellow-400"> за 2-6 месяцев</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto">
               Дополнительное профессиональное образование с выдачей документов государственного образца
             </p>
             
