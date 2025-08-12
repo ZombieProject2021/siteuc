@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Star, Clock, Users, Calendar, CheckCircle, Award, BookOpen, ArrowRight, Phone, Mail } from 'lucide-react'
+import { Star, Clock, Users, Calendar, CheckCircle, Award, BookOpen, ArrowRight, Phone, Mail, FileText } from 'lucide-react'
 import EnrollmentModal from './EnrollmentModal'
 
 interface Course {
