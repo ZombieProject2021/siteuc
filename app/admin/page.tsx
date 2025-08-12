@@ -21,6 +21,7 @@ import { toast } from 'react-hot-toast'
 import ImageUpload from '@/components/ImageUpload'
 import DocumentUpload from '@/components/DocumentUpload'
 import ContentEditor from '@/components/ContentEditor'
+import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'reports'
@@ -402,7 +403,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ин��циализация'}
+                {loading ? 'Инициализация...' : 'Быстрая ин��циализ��ция'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -559,7 +560,7 @@ export default function AdminPage() {
                   placeholder="Автоматически заполняется на основе названия"
                   readOnly
                 />
-                <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из названия курса</p>
+                <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из назван��я курса</p>
               </div>
 
               <div className="md:col-span-2">
