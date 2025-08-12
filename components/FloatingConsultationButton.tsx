@@ -14,6 +14,9 @@ export default function FloatingConsultationButton() {
       setIsVisible(window.scrollY > 100)
     }
 
+    // Show immediately for debugging
+    setIsVisible(true)
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
