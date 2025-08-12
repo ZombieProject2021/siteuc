@@ -263,14 +263,27 @@ export default function CoursePageClient({ course }: CoursePageClientProps) {
               {course.documentTypes && course.documentTypes.length > 0 && (
                 <div className="bg-white rounded-2xl shadow-lg p-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">Виды выдаваемых документов</h2>
-                  <ul className="space-y-3">
+                  <div className="space-y-4">
                     {course.documentTypes.map((docType, index) => (
-                      <li key={index} className="flex items-start space-x-3">
-                        <Award className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">{docType}</span>
-                      </li>
+                      <div key={index} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                        <div className="flex items-center space-x-3">
+                          <Award className="h-5 w-5 text-yellow-500 flex-shrink-0" />
+                          <span className="text-gray-700">{docType.name}</span>
+                        </div>
+                        {docType.file && (
+                          <a
+                            href={docType.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center px-3 py-1 text-sm text-blue-600 hover:text-blue-800 border border-blue-200 rounded-md hover:bg-blue-50"
+                          >
+                            <FileText className="h-4 w-4 mr-1" />
+                            Образец
+                          </a>
+                        )}
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
 
