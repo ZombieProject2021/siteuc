@@ -54,7 +54,7 @@ export default function HomePage() {
       duration: '520 ак.ч.',
       price: '45000',
       oldPrice: '55000',
-      level: 'Профессиональная переподготовка',
+      level: 'Профе��сиональная переподготовка',
       students: 156,
       rating: 4.8,
       features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
@@ -133,7 +133,7 @@ export default function HomePage() {
       position: 'Проект-менеджер, IT-компания',
       photo: '/api/placeholder/60/60',
       rating: 5,
-      text: 'Курс по проектному управлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
+      text: 'Курс по проектному у��равлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
     }
   ]
 
@@ -175,7 +175,7 @@ export default function HomePage() {
               contentKey="homepage.hero.title"
               defaultContent="Получите новую профессию за 2-6 месяцев"
               tag="h1"
-              className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight"
             />
             <DynamicContent
               contentKey="homepage.hero.description"
@@ -233,7 +233,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Выберите направление, которое поможет вам достичь карьерных целей"
+              defaultContent="Выберите направлен��е, которое поможет вам достичь карьерных целей"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
