@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 
-const safetyCourses = [
+const safetyCoursesRaw = [
   {
     title: 'Безопасные методы и приемы выполнения работ повышенной опасности',
     slug: 'bezopasnye-metody-rabot-povyshennoy-opasnosti',
@@ -13,8 +13,8 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 8,
     schedule: 'Еженедельно: Пн, Ср с 18:00 до 21:00',
-    level: 'Специалисты',
-    format: 'Очно-заочное'
+    level: 'Повышенная опасность',
+    format: 'Очно-заочное обучение'
   },
   {
     title: 'Программа «В». Безопасные методы и приемы выполнения работ при воздействии вредных факторов',
@@ -26,9 +26,9 @@ const safetyCourses = [
     status: 'ACTIVE' as const,
     maxStudents: 25,
     currentStudents: 12,
-    schedule: 'Интенсив: 2 дня по 8 часов',
-    level: 'Все категории',
-    format: 'Очное'
+    schedule: 'Интенсив: 2 дн�� по 8 часов',
+    level: 'Вредные факторы',
+    format: 'Очное обучение'
   },
   {
     title: 'Программа «Б». Безопасные методы и приемы выполнения работ',
@@ -42,7 +42,7 @@ const safetyCourses = [
     currentStudents: 18,
     schedule: 'Выходные: Сб-Вс с 9:00 до 17:00',
     level: 'Базовый',
-    format: 'Очное'
+    format: 'Очное обучение'
   },
   {
     title: 'Внеплановое обучение и проверка знаний требований охраны труда',
@@ -55,8 +55,8 @@ const safetyCourses = [
     maxStudents: 30,
     currentStudents: 5,
     schedule: 'По мере необходимости',
-    level: 'Все категории',
-    format: 'Очное/дистанционное'
+    level: 'Для всех работников',
+    format: 'Дистанционное обучение'
   },
   {
     title: 'Инструктор по охране труда (ГОСТ 12.0.004-2015)',
@@ -69,8 +69,8 @@ const safetyCourses = [
     maxStudents: 15,
     currentStudents: 9,
     schedule: 'Будни: Пн-Пт с 9:00 до 18:00',
-    level: 'Специалисты ОТ',
-    format: 'Очное'
+    level: 'Для специалистов ОТ',
+    format: 'Очное обучение'
   },
   {
     title: 'Корпоративный тренинг «Осознанная безопасность»',
@@ -83,8 +83,8 @@ const safetyCourses = [
     maxStudents: 30,
     currentStudents: 0,
     schedule: 'Корпоративный формат по согласованию',
-    level: 'Корпоративный',
-    format: 'Выездное'
+    level: 'Корпоративные группы',
+    format: 'Выездное обучение'
   },
   {
     title: 'Лидерство в охране труда и культура безопасности',
@@ -97,8 +97,8 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 7,
     schedule: 'Модульное обучение: 3 дня по 8 часов',
-    level: 'Руководители',
-    format: 'Интерактивное'
+    level: 'Для руководителей',
+    format: 'Интерактивное обучение'
   },
   {
     title: 'Обучение по использованию средств индивидуальной защиты',
@@ -111,8 +111,8 @@ const safetyCourses = [
     maxStudents: 25,
     currentStudents: 20,
     schedule: 'Ежемесячно в первый понедельник',
-    level: 'Все работники',
-    format: 'Практическое'
+    level: 'Пользователи СИЗ',
+    format: 'Практическое обучение'
   },
   {
     title: 'Программа В. Водолазные работы',
@@ -125,13 +125,13 @@ const safetyCourses = [
     maxStudents: 10,
     currentStudents: 3,
     schedule: 'Специализированные группы по заявкам',
-    level: 'Водолазы',
-    format: 'Теория и практика'
+    level: 'Для водолазов',
+    format: 'Теоретическое и практическое'
   },
   {
     title: 'Программа В. Газоопасные работы',
     slug: 'programma-v-gazoopasnyye-raboty',
-    description: 'Обучение б��зопасным методам выполнения газоопасных работ. Программа включает изучение требований безопасности при работах в газоопасных средах.',
+    description: 'Обучение безопасным методам выполнения газоопасных работ. Программа включает изучение требований безопасности при работах в газоопасных средах.',
     category: 'Охрана труда',
     duration: '32 ак.ч.',
     price: 20000,
@@ -139,8 +139,8 @@ const safetyCourses = [
     maxStudents: 15,
     currentStudents: 11,
     schedule: 'Еженедельно: Вт, Чт с 14:00 до 18:00',
-    level: 'Газоопасные работы',
-    format: 'Очное'
+    level: 'Газоопасные объекты',
+    format: 'Очное обучение'
   },
   {
     title: 'Программа В. Земляные работы',
@@ -154,7 +154,7 @@ const safetyCourses = [
     currentStudents: 14,
     schedule: 'Выходные: Сб с 9:00 до 18:00',
     level: 'Земляные работы',
-    format: 'Очное'
+    format: 'Очное обучение'
   },
   {
     title: 'Программа В. Огневые работы',
@@ -167,8 +167,8 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 16,
     schedule: 'Будни: Пн, Ср, Пт с 15:00 до 19:00',
-    level: 'Сварщики',
-    format: 'Теория и практика'
+    level: 'Огневые работы',
+    format: 'Теоретическое и практическое'
   },
   {
     title: 'Программа В. Работы в электроустановках',
@@ -181,8 +181,8 @@ const safetyCourses = [
     maxStudents: 15,
     currentStudents: 12,
     schedule: 'Вечерние занятия: Вт, Чт с 18:00 до 22:00',
-    level: 'Электротехники',
-    format: 'Очное'
+    level: 'Электротехника',
+    format: 'Очное обучение'
   },
   {
     title: 'Программа В. Работы на высоте',
@@ -195,8 +195,8 @@ const safetyCourses = [
     maxStudents: 12,
     currentStudents: 8,
     schedule: 'Интенсив: 4 дня по 8 часов',
-    level: 'Высотные работы',
-    format: 'Практика'
+    level: 'Работы на высоте',
+    format: 'Практическое обучение'
   },
   {
     title: 'Программа В. Работы с подъемными сооружениями',
@@ -209,8 +209,8 @@ const safetyCourses = [
     maxStudents: 15,
     currentStudents: 6,
     schedule: 'Будни: Пн-Пт с 9:00 до 14:00',
-    level: 'Операторы кранов',
-    format: 'Теория и практика'
+    level: 'Подъемные сооружения',
+    format: 'Теоретическое и практическое'
   },
   {
     title: 'Программа В. Строительные работы',
@@ -223,8 +223,8 @@ const safetyCourses = [
     maxStudents: 25,
     currentStudents: 19,
     schedule: 'Выходные: Сб-Вс с 9:00 до 18:00',
-    level: 'Строители',
-    format: 'Очное с выездом'
+    level: 'Строительные работы',
+    format: 'Очное обучение'
   },
   {
     title: 'Общие вопросы охраны труда и функционирования СУОТ',
@@ -237,8 +237,8 @@ const safetyCourses = [
     maxStudents: 30,
     currentStudents: 25,
     schedule: 'Еженедельно по вторникам с 9:00 до 18:00',
-    level: 'Базовый',
-    format: 'Очно-заочное'
+    level: 'Базовая программа',
+    format: 'Очно-заочное обучение'
   },
   {
     title: 'Организация процессов обеспечения работников СИЗ',
@@ -251,8 +251,8 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 8,
     schedule: 'Модульное обучение: 3 дня по 8 часов',
-    level: 'Специалисты ОТ',
-    format: 'Практика с кейсами'
+    level: 'Для специалистов',
+    format: 'Практическое обучение'
   },
   {
     title: 'Охрана труда на английском языке',
@@ -265,8 +265,8 @@ const safetyCourses = [
     maxStudents: 15,
     currentStudents: 3,
     schedule: 'Начало группы: 1 марта 2024',
-    level: 'Международный',
-    format: 'На английском'
+    level: 'Международные компании',
+    format: 'На английском языке'
   },
   {
     title: 'Оценка профессиональных рисков',
@@ -279,8 +279,8 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 15,
     schedule: 'Будни: Пн-Пт с 14:00 до 19:00',
-    level: 'Специалисты ОТ',
-    format: 'Практика с кейсами'
+    level: 'Для специалистов ОТ',
+    format: 'Практическое обучение'
   },
   {
     title: 'Профессиональная переподготовка специалиста по охране труда',
@@ -295,12 +295,12 @@ const safetyCourses = [
     currentStudents: 18,
     schedule: 'Вечерние занятия: Пн, Ср, Пт с 18:00 до 22:00',
     level: 'Переподготовка',
-    format: 'Очно-заочное'
+    format: 'Очно-заочное обучение'
   },
   {
     title: 'Система управления охраной труда (повышение квалификации)',
     slug: 'sistema-upravleniya-ohranoy-truda-pk',
-    description: 'Система управления охраной труда и обеспечение безопасных условий труда (повышение квалификации). Современные подходы к управлению охраной труда.',
+    description: 'Система управления охраной труда и обеспечение безопасных условий труда (повышение квалификации). Современные подходы к уп��авлению охраной труда.',
     category: 'Охрана труда',
     duration: '72 ак.ч.',
     price: 28000,
@@ -308,43 +308,34 @@ const safetyCourses = [
     maxStudents: 20,
     currentStudents: 12,
     schedule: 'Выходные: Сб-Вс с 9:00 до 18:00',
-    level: 'Повышение квал.',
-    format: 'Очное'
+    level: 'Повышение квалификации',
+    format: 'Очное обучение'
   }
 ]
 
 export async function POST() {
   try {
     console.log('Starting safety courses seeding...')
-    
-    // Check if safety courses already exist
-    console.log('Checking existing safety courses...')
-    const existingSafetyCourses = await prisma.course.count({
+
+    // Clear existing safety courses
+    console.log('Clearing existing safety courses...')
+    await prisma.course.deleteMany({
       where: {
         category: 'Охрана труда'
       }
     })
-    
-    console.log('Existing safety courses count:', existingSafetyCourses)
-    
-    if (existingSafetyCourses > 0) {
-      return NextResponse.json({
-        message: 'Курсы по охране труда уже существуют в базе данных',
-        count: existingSafetyCourses
-      })
-    }
 
     // Create safety courses
     console.log('Creating safety courses...')
     const createdCourses = await Promise.all(
-      safetyCourses.map(async (course, index) => {
-        console.log(`Creating course ${index + 1}/${safetyCourses.length}: ${course.title}`)
+      safetyCoursesRaw.map(async (course, index) => {
+        console.log(`Creating course ${index + 1}/${safetyCoursesRaw.length}: ${course.title}`)
         return await prisma.course.create({
           data: course
         })
       })
     )
-    
+
     console.log('Successfully created', createdCourses.length, 'safety courses')
 
     return NextResponse.json({
@@ -361,9 +352,9 @@ export async function POST() {
     console.error('Error seeding safety courses:', error)
     console.error('Error details:', error instanceof Error ? error.message : String(error))
     console.error('Error stack:', error instanceof Error ? error.stack : 'No stack trace')
-    
+
     return NextResponse.json(
-      { 
+      {
         error: 'Ошибка при создании курсов по охране труда',
         details: error instanceof Error ? error.message : String(error)
       },
