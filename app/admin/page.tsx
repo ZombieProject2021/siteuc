@@ -41,7 +41,7 @@ interface Course {
   imageSrc?: string
   targetAudience?: string[]
   learningFormat?: string
-  documentTypes?: string[]
+  documentTypes?: Array<{name: string, file?: string}>
   createdAt: string
 }
 
