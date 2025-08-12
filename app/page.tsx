@@ -54,7 +54,7 @@ export default function HomePage() {
       duration: '520 ак.ч.',
       price: '45000',
       oldPrice: '55000',
-      level: 'Профессиональная переп��дготовка',
+      level: 'Профессиональная переподготовка',
       students: 156,
       rating: 4.8,
       features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
@@ -86,7 +86,7 @@ export default function HomePage() {
   const benefits = [
     { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
-    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без перепла��', icon: CreditCard },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
     { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения', icon: Clock },
     { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели', icon: Users },
@@ -133,7 +133,7 @@ export default function HomePage() {
       position: 'Проект-менеджер, IT-компания',
       photo: '/api/placeholder/60/60',
       rating: 5,
-      text: 'Курс по проектному управлению дал все ��еобходимые знания для работы. Получила международный сертификат и новую должность.'
+      text: 'Курс по проектному управлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
     }
   ]
 
@@ -152,7 +152,7 @@ export default function HomePage() {
     },
     {
       question: 'Есть ли поддержка во время обучения?',
-      answer: 'Каждому клиенту назначается персональный куратор, который помогает с организационными вопросами и учебным процессом.'
+      answer: 'Каждому клиенту назначается персональный куратор, ��оторый помогает с организационными вопросами и учебным процессом.'
     }
   ]
 
@@ -179,7 +179,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.hero.description"
-              defaultContent="Дополнительное профессиональное образование с выдачей документов государственного образца"
+              defaultContent="Дополнительное профессиональное образование с выдачей документов государ��твенного образца"
               tag="p"
               className="text-lg md:text-xl lg:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto"
             />
@@ -261,7 +261,7 @@ export default function HomePage() {
                     <Clock className="h-4 w-4 mr-2" />
                     <span className="text-sm">{program.duration}</span>
                     <Users className="h-4 w-4 ml-4 mr-2" />
-                    <span className="text-sm">{program.students} студентов</span>
+                    <span className="text-sm">{program.students} клиентов</span>
                   </div>
 
                   <div className="space-y-2 mb-6">
@@ -325,7 +325,7 @@ export default function HomePage() {
               Форматы обучения
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Выберите удобный для вас формат обучения
+              Выберите удобный для вас формат обучен��я
             </p>
           </div>
 
