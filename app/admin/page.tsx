@@ -24,6 +24,7 @@ import ContentEditor from '@/components/ContentEditor'
 import OrganizationDocuments from '@/components/OrganizationDocuments'
 import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
+import OrganizationInfoAdmin from '../organization-info/page'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'reports'
 
@@ -298,7 +299,7 @@ export default function AdminPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Ошибка сохранения на��троек')
+        throw new Error('Ошибка сохранения настроек')
       }
 
       toast.success('Настройк�� сохране��ы')
@@ -606,7 +607,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Дли��ельность *
+                  Длительность *
                 </label>
                 <input
                   type="text"
@@ -1174,7 +1175,7 @@ export default function AdminPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
         <p className="text-blue-800 text-sm mb-3">
-          ��сли контент не отображается или нет курсов, выполните полную инициализацию системы.
+          Если контент не отображается или нет курсов, выполните полную инициализацию системы.
         </p>
         <div className="flex gap-3 flex-wrap">
           <a
