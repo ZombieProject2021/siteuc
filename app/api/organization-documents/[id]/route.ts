@@ -16,8 +16,13 @@ export async function DELETE(
       )
     }
 
-    // Temporary mock response until database table is created
-    return NextResponse.json({ message: 'Документ успешно удален' })
+    await prisma.organizationDocument.delete({
+      where: { id: documentId }
+    })
+
+    const response = NextResponse.json({ message: 'Документ успешно удален' })
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     console.error('Error deleting organization document:', error)
     return NextResponse.json(
