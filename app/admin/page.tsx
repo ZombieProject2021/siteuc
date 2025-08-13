@@ -101,10 +101,10 @@ export default function AdminPage() {
 
   const menuItems = [
     { id: 'overview', label: 'Обзор', icon: BarChart3 },
-    { id: 'courses', label: 'Курсы', icon: BookOpen },
+    { id: 'courses', label: 'Ку��сы', icon: BookOpen },
     { id: 'leads', label: 'Заявки', icon: Users },
     { id: 'content', label: '��онтент', icon: FileText },
-    { id: 'documents', label: 'Докуме��ты организации', icon: FileText },
+    { id: 'documents', label: 'Документы организации', icon: FileText },
     { id: 'organization-info', label: 'Сведения об организации', icon: Settings },
     { id: 'settings', label: 'Настройки', icon: Settings },
     { id: 'reports', label: 'Отчёты', icon: Database },
@@ -187,7 +187,7 @@ export default function AdminPage() {
   }
 
   const handleDeleteCourse = async (courseId: number) => {
-    if (!confirm('Вы уверены, что хотите удалить эт��т курс?')) return
+    if (!confirm('Вы уверены, что хотите удалить этот курс?')) return
 
     try {
       setLoading(true)
@@ -407,7 +407,7 @@ export default function AdminPage() {
                 className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center"
               >
                 <Database className="h-4 w-4 mr-2" />
-                {loading ? 'Инициализация...' : 'Быстрая ин����иализ��ция'}
+                {loading ? 'Инициализация...' : 'Быстрая ин��циализ��ция'}
               </button>
               <a
                 href="/admin/seed-content"
@@ -1005,7 +1005,7 @@ export default function AdminPage() {
             <div className="p-6 space-y-6">
               {/* Contact Information */}
               <div>
-                <h4 className="font-medium text-gray-900 mb-3">Контакт��ая информация</h4>
+                <h4 className="font-medium text-gray-900 mb-3">Контактная информация</h4>
                 <div className="bg-gray-50 rounded-lg p-4 space-y-2">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Имя:</span>
@@ -1247,6 +1247,8 @@ export default function AdminPage() {
         return renderContentManagement()
       case 'documents':
         return renderDocuments()
+      case 'organization-info':
+        return renderOrganizationInfo()
       case 'settings':
         return renderSettings()
       default:
