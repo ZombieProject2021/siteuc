@@ -26,7 +26,7 @@ import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
 import OrganizationInfoAdmin from '../organization-info/page'
 
-type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'reports'
+type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'organization-info' | 'reports'
 
 interface Course {
   id: number
@@ -561,7 +561,7 @@ export default function AdminPage() {
                   type="text"
                   value={courseForm.slug}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-600"
-                  placeholder="Автоматически заполняется на основе названия"
+                  placeholder="Автоматически заполняется на осно��е названия"
                   readOnly
                 />
                 <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из назван��я кур��а</p>
@@ -749,7 +749,7 @@ export default function AdminPage() {
                   value={courseForm.learningFormat}
                   onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
                   rows={2}
-                  placeholder="Описание формата обучения, особенностей п��оведения..."
+                  placeholder="Описание форм��та обучения, особенностей п��оведения..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 />
               </div>
