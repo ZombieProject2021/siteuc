@@ -24,7 +24,7 @@ import ContentEditor from '@/components/ContentEditor'
 import OrganizationDocuments from '@/components/OrganizationDocuments'
 import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
-import OrganizationInfoAdmin from '../organization-info/page'
+import OrganizationInfoAdmin from './organization-info/page'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'organization-info' | 'reports'
 
@@ -91,7 +91,7 @@ export default function AdminPage() {
     status: 'DRAFT' as const,
     maxStudents: 20,
     schedule: '',
-    level: 'Сред��ий',
+    level: 'Сред���ий',
     format: 'Дистанционно',
     imageSrc: '',
     targetAudience: [] as string[],
@@ -101,7 +101,7 @@ export default function AdminPage() {
 
   const menuItems = [
     { id: 'overview', label: 'Обзор', icon: BarChart3 },
-    { id: 'courses', label: 'Ку��сы', icon: BookOpen },
+    { id: 'courses', label: 'Курсы', icon: BookOpen },
     { id: 'leads', label: 'Заявки', icon: Users },
     { id: 'content', label: '��онтент', icon: FileText },
     { id: 'documents', label: 'Документы организации', icon: FileText },
@@ -171,7 +171,7 @@ export default function AdminPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Ошибка сохранения курса')
+        throw new Error('Ошибка сохран��ния курса')
       }
 
       toast.success(editingCourse ? 'Кур�� обновлен' : 'Курс создан')
@@ -256,7 +256,7 @@ export default function AdminPage() {
       })
       setShowCourseForm(true)
     } catch (error) {
-      toast.error('Ошибка загруз��и данных курса')
+      toast.error('Ошиб��а загруз��и данных курса')
     }
   }
 
@@ -743,7 +743,7 @@ export default function AdminPage() {
               {/* Learning Format */}
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Форма�� обучения (подробное описание)
+                  ��орма�� обучения (подробное описание)
                 </label>
                 <textarea
                   value={courseForm.learningFormat}
@@ -1173,7 +1173,7 @@ export default function AdminPage() {
   const renderContentManagement = () => (
     <div className="space-y-6">
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
+        <h3 className="font-semibold text-blue-900 mb-2">На��альная настройка</h3>
         <p className="text-blue-800 text-sm mb-3">
           Если контент не отображается или нет курсов, выполните полную инициализацию системы.
         </p>
