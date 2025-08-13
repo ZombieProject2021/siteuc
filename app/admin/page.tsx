@@ -483,7 +483,7 @@ export default function AdminPage() {
                   toast.error('Ошибка при заполнении контента')
                 }
               } catch (error) {
-                toast.error('Ошибка при заполнении контента')
+                toast.error('Ошибка при запол��ении контента')
               } finally {
                 setLoading(false)
               }
@@ -561,7 +561,7 @@ export default function AdminPage() {
                   type="text"
                   value={courseForm.slug}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-600"
-                  placeholder="Автоматически заполняется на осн��ве названия"
+                  placeholder="Автоматически заполняется на основе названия"
                   readOnly
                 />
                 <p className="text-xs text-gray-500 mt-1">Генерируется автоматически из назван��я кур��а</p>
@@ -749,7 +749,7 @@ export default function AdminPage() {
                   value={courseForm.learningFormat}
                   onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
                   rows={2}
-                  placeholder="Описание ф��рмата обучения, особенностей п��оведения..."
+                  placeholder="Описание формата обучения, особенностей п��оведения..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 />
               </div>
@@ -798,7 +798,7 @@ export default function AdminPage() {
                   Курс
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Изображение
+                  Изоб��ажение
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Категория
@@ -1232,7 +1232,21 @@ export default function AdminPage() {
   )
 
   const renderOrganizationInfo = () => (
-    <OrganizationInfoAdmin />
+    <div className="space-y-6">
+      <h1 className="text-2xl font-bold text-edu-navy">
+        Редактирование сведений об организации
+      </h1>
+
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+        <h3 className="text-lg font-semibold text-blue-900 mb-2">
+          Функция в разработке
+        </h3>
+        <p className="text-blue-800">
+          Полноценный редактор сведений об организации будет добавлен в следующих обновлениях.
+          Сейчас вы можете управлять документами организации в разделе "Документы организации".
+        </p>
+      </div>
+    </div>
   )
 
   const renderContent = () => {
