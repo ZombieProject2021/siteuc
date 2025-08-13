@@ -1,93 +1,50 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import { FileText, Download, Shield, Calendar } from 'lucide-react'
 
 interface Document {
-  id: string
+  id: number
   title: string
   category: string
-  date: string
-  size: string
-  hasSignature: boolean
-  downloadUrl: string
+  filename: string
+  fileUrl: string
+  uploadDate: string | Date
+  createdAt: string | Date
+  updatedAt: string | Date
 }
 
-const documents: Document[] = [
-  {
-    id: '1',
-    title: 'Устав образовательной организации',
-    category: 'Учредительные документы',
-    date: '15.01.2020',
-    size: '1.2 МБ',
-    hasSignature: true,
-    downloadUrl: '/documents/charter.pdf'
-  },
-  {
-    id: '2',
-    title: 'Лицензия на осуществление образовательной деятельности',
-    category: 'Разрешительные документы',
-    date: '20.01.2020',
-    size: '856 КБ',
-    hasSignature: true,
-    downloadUrl: '/documents/license.pdf'
-  },
-  {
-    id: '3',
-    title: 'Правила приема обучающихся',
-    category: 'Локальные нормативные акты',
-    date: '01.09.2023',
-    size: '654 КБ',
-    hasSignature: true,
-    downloadUrl: '/documents/admission-rules.pdf'
-  },
-  {
-    id: '4',
-    title: 'Режим занятий обучающихся',
-    category: 'Локальные нормативные акты',
-    date: '01.09.2023',
-    size: '423 КБ',
-    hasSignature: true,
-    downloadUrl: '/documents/schedule-rules.pdf'
-  },
-  {
-    id: '5',
-    title: 'Порядок и основания перевода, отчисления и восстановления обучающихся',
-    category: 'Локальные нормативные акты',
-    date: '01.09.2023',
-    size: '789 КБ',
-    hasSignature: true,
-    downloadUrl: '/documents/transfer-rules.pdf'
-  },
-  {
-    id: '6',
-    title: 'Порядок оформления возникновения, приостановления и прекращения отношений',
-    category: 'Локальные нормативные акты',
-    date: '01.09.2023',
-    size: '567 КБ',
-    hasSignature: true,
-    downloadUrl: '/documents/relations-rules.pdf'
-  },
-  {
-    id: '7',
-    title: 'Отчет о результатах самообследования',
-    category: 'Отчетные документы',
-    date: '31.03.2024',
-    size: '2.1 МБ',
-    hasSignature: true,
-    downloadUrl: '/documents/self-examination-2024.pdf'
-  },
-  {
-    id: '8',
-    title: 'Предписания органов, осуществляющих государственный контроль',
-    category: 'Контрольно-надзорные документы',
-    date: 'Не имеется',
-    size: '-',
-    hasSignature: false,
-    downloadUrl: ''
-  }
-]
-
-const categories = Array.from(new Set(documents.map(doc => doc.category)))
-
 export default function DocumentsPage() {
+  const [documents, setDocuments] = useState<Document[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetchDocuments()
+  }, [])
+
+  const fetchDocuments = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch('/api/organization-documents')
+      const data = await response.json()
+      setDocuments(data.documents || [])
+    } catch (error) {
+      console.error('Error fetching documents:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const categories = Array.from(new Set(documents.map(doc => doc.category)))
+
+  const formatFileSize = (bytes: number): string => {
+    if (bytes === 0) return '0 Б'
+    const k = 1024
+    const sizes = ['Б', 'КБ', 'МБ', 'ГБ']
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+  }
+
   return (
     <div>
       <h2 className="text-2xl font-bold text-edu-navy mb-6">
@@ -103,87 +60,90 @@ export default function DocumentsPage() {
                 Информация о документах
               </h3>
               <ul className="text-amber-800 space-y-1 text-sm">
-                <li>• Все документы представлены в формате PDF</li>
-                <li>• Документы подписаны усиленной квалифицированной электронной подписью (ЭЦП)</li>
-                <li>• Информация актуализируется в соответствии с требованиями законодательства</li>
+                <li>• Все документы представлены в цифровом формате</li>
+                <li>• Документы актуализируются в соответствии с требованиями законодательства</li>
                 <li>• При отсутствии документов указывается информация об отсутствии</li>
+                <li>• Документы размещаются согласно требованиям информационной открытости</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="space-y-8">
-        {categories.map((category) => (
-          <div key={category}>
-            <h3 className="text-xl font-semibold text-edu-navy mb-4">
-              {category}
-            </h3>
-            
-            <div className="space-y-4">
-              {documents
-                .filter(doc => doc.category === category)
-                .map((document) => (
-                  <div 
-                    key={document.id}
-                    className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-start space-x-3">
-                          <FileText className="h-5 w-5 text-edu-blue mt-1 flex-shrink-0" />
-                          <div>
-                            <h4 className="text-lg font-medium text-gray-900 mb-2">
-                              {document.title}
-                            </h4>
-                            
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
-                              <div className="flex items-center space-x-1">
-                                <Calendar className="h-4 w-4" />
-                                <span>Дата: {document.date}</span>
+      {loading ? (
+        <div className="text-center py-12">
+          <div className="text-gray-500">Загрузка документов...</div>
+        </div>
+      ) : (
+        <div className="space-y-8">
+          {categories.length === 0 ? (
+            <div className="text-center py-12">
+              <FileText className="h-16 w-16 mx-auto mb-4 text-gray-400" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                Документы пока не загружены
+              </h3>
+              <p className="text-gray-500">
+                Документы будут размещены в ближайшее время
+              </p>
+            </div>
+          ) : (
+            categories.map((category) => (
+              <div key={category}>
+                <h3 className="text-xl font-semibold text-edu-navy mb-4">
+                  {category}
+                </h3>
+                
+                <div className="space-y-4">
+                  {documents
+                    .filter(doc => doc.category === category)
+                    .map((document) => (
+                      <div 
+                        key={document.id}
+                        className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-start space-x-3">
+                              <FileText className="h-5 w-5 text-edu-blue mt-1 flex-shrink-0" />
+                              <div>
+                                <h4 className="text-lg font-medium text-gray-900 mb-2">
+                                  {document.title}
+                                </h4>
+                                
+                                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                                  <div className="flex items-center space-x-1">
+                                    <Calendar className="h-4 w-4" />
+                                    <span>Дата: {new Date(document.uploadDate).toLocaleDateString('ru-RU')}</span>
+                                  </div>
+                                  
+                                  <div>
+                                    <span>Файл: {document.filename}</span>
+                                  </div>
+                                </div>
                               </div>
-                              
-                              {document.size !== '-' && (
-                                <div>
-                                  <span>Размер: {document.size}</span>
-                                </div>
-                              )}
-                              
-                              {document.hasSignature && (
-                                <div className="flex items-center space-x-1 text-green-600">
-                                  <Shield className="h-4 w-4" />
-                                  <span>Подписано ЭЦП</span>
-                                </div>
-                              )}
                             </div>
+                          </div>
+                          
+                          <div className="mt-4 lg:mt-0 lg:ml-6">
+                            <a
+                              href={document.fileUrl}
+                              className="inline-flex items-center space-x-2 px-4 py-2 bg-edu-blue text-white font-medium rounded-lg hover:bg-edu-navy transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Download className="h-4 w-4" />
+                              <span>Скачать</span>
+                            </a>
                           </div>
                         </div>
                       </div>
-                      
-                      <div className="mt-4 lg:mt-0 lg:ml-6">
-                        {document.downloadUrl ? (
-                          <a
-                            href={document.downloadUrl}
-                            className="inline-flex items-center space-x-2 px-4 py-2 bg-edu-blue text-white font-medium rounded-lg hover:bg-edu-navy transition-colors"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <Download className="h-4 w-4" />
-                            <span>Скачать</span>
-                          </a>
-                        ) : (
-                          <span className="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-600 font-medium rounded-lg">
-                            Документ отсутствует
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))}
-      </div>
+                    ))}
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      )}
 
       {/* Legal Note */}
       <div className="mt-12 bg-gray-50 border border-gray-200 rounded-lg p-6">
@@ -199,7 +159,7 @@ export default function DocumentsPage() {
             <strong>Постановление Правительства РФ от 20.10.2021 № 1802</strong> 
             «Об утверждении Правил размещения на официальном сайте образовательной организации 
             в информационно-телекоммуникационной сети «Интернет» и обновления информации 
-            об образовательной орг��низации»
+            об образовательной организации»
           </p>
           <p>
             <strong>Приказ Федеральной службы по надзору в сфере образования и науки 
