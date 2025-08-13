@@ -46,7 +46,9 @@ export async function GET(request: NextRequest) {
       ]
     })
 
-    return NextResponse.json({ contents })
+    const response = NextResponse.json({ content: contents })
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     console.error('Error fetching content:', error)
     return NextResponse.json(
