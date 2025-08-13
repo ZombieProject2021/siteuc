@@ -10,7 +10,9 @@ interface Document {
   filename: string
   fileUrl: string
   category: string
-  uploadDate: string
+  uploadDate: string | Date
+  createdAt: string | Date
+  updatedAt: string | Date
 }
 
 const DOCUMENT_CATEGORIES = [
