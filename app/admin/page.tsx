@@ -103,7 +103,8 @@ export default function AdminPage() {
     { id: 'courses', label: 'Курсы', icon: BookOpen },
     { id: 'leads', label: 'Заявки', icon: Users },
     { id: 'content', label: '��онтент', icon: FileText },
-    { id: 'documents', label: 'Сведения об организации', icon: FileText },
+    { id: 'documents', label: 'Документы организации', icon: FileText },
+    { id: 'organization-info', label: 'Сведения об организации', icon: Settings },
     { id: 'settings', label: 'Настройки', icon: Settings },
     { id: 'reports', label: 'Отчёты', icon: Database },
   ]
@@ -297,7 +298,7 @@ export default function AdminPage() {
       })
 
       if (!response.ok) {
-        throw new Error('Ошибка сохранения настроек')
+        throw new Error('Ошибка сохранения на��троек')
       }
 
       toast.success('Настройк�� сохране��ы')
@@ -605,7 +606,7 @@ export default function AdminPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Длительность *
+                  Дли��ельность *
                 </label>
                 <input
                   type="text"
@@ -1173,7 +1174,7 @@ export default function AdminPage() {
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
         <h3 className="font-semibold text-blue-900 mb-2">Начальная настройка</h3>
         <p className="text-blue-800 text-sm mb-3">
-          Если контент не отображается или нет курсов, выполните полную инициализацию системы.
+          ��сли контент не отображается или нет курсов, выполните полную инициализацию системы.
         </p>
         <div className="flex gap-3 flex-wrap">
           <a
