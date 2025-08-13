@@ -12,9 +12,15 @@ const createDocumentSchema = z.object({
 // GET /api/organization-documents - Get all documents
 export async function GET() {
   try {
-    // Return empty array until database table is created
-    const documents: any[] = []
-    return NextResponse.json({ documents })
+    const documents = await prisma.organizationDocument.findMany({
+      orderBy: {
+        createdAt: 'desc'
+      }
+    })
+
+    const response = NextResponse.json({ documents })
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     console.error('Error fetching organization documents:', error)
     return NextResponse.json(
@@ -30,16 +36,19 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validatedData = createDocumentSchema.parse(body)
 
-    // Temporary mock response until database table is created
-    const document = {
-      id: Date.now(),
-      ...validatedData,
-      uploadDate: new Date().toISOString(),
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    }
+    const document = await prisma.organizationDocument.create({
+      data: {
+        title: validatedData.title,
+        category: validatedData.category,
+        filename: validatedData.filename,
+        fileUrl: validatedData.fileUrl,
+        uploadDate: new Date()
+      }
+    })
 
-    return NextResponse.json(document, { status: 201 })
+    const response = NextResponse.json(document, { status: 201 })
+    response.headers.set('Content-Type', 'application/json; charset=utf-8')
+    return response
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
