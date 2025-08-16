@@ -1,6 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import InlineEditable from './InlineEditable'
+import { useAdminAuth } from '@/hooks/useAdminAuth'
 
 interface DynamicContentProps {
   contentKey: string
@@ -8,6 +10,9 @@ interface DynamicContentProps {
   className?: string
   tag?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div'
   isHtml?: boolean
+  editable?: boolean // Новый пропс для включения/отключения редактирования
+  multiline?: boolean
+  placeholder?: string
 }
 
 export default function DynamicContent({ 
@@ -229,7 +234,7 @@ export const seedInitialContent = async () => {
     {
       key: 'contacts.address',
       title: 'Адрес в контактах',
-      content: 'г. Москва, ул. Пр��мерная, д. 123, оф. 456',
+      content: 'г. Москва, ул. Примерная, д. 123, оф. 456',
       type: 'TEXT',
       page: 'contacts',
       section: 'info'
