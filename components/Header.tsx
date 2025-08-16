@@ -80,8 +80,18 @@ export default function Header() {
                 <BookOpen className="h-7 w-7" />
               </div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">ООО Учебный Центр</div>
-                <div className="text-sm text-gray-600 font-medium">Профессиональное образование с 2008 года</div>
+                <DynamicContent
+                  contentKey="site_name"
+                  defaultContent="ООО Учебный Центр"
+                  tag="div"
+                  className="text-2xl font-bold text-gray-900"
+                />
+                <DynamicContent
+                  contentKey="site_tagline"
+                  defaultContent="Профессиональное образование с 2008 года"
+                  tag="div"
+                  className="text-sm text-gray-600 font-medium"
+                />
               </div>
             </Link>
 
