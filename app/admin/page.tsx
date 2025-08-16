@@ -24,7 +24,7 @@ import ContentEditor from '@/components/ContentEditor'
 import OrganizationDocuments from '@/components/OrganizationDocuments'
 import AdminAuth from '@/components/AdminAuth'
 import { seedInitialContent } from '@/components/DynamicContent'
-// OrganizationInfoAdmin component will be defined inline
+import OrganizationInfoAdmin from './organization-info/page'
 
 type AdminSection = 'overview' | 'courses' | 'content' | 'leads' | 'settings' | 'documents' | 'organization-info' | 'reports'
 
@@ -700,7 +700,7 @@ export default function AdminPage() {
                   <option value="">Выберите уровень</option>
                   <option value="Начал��ный">Начальный</option>
                   <option value="Средний">Средний</option>
-                  <option value="Продвинутый">Пр��двинутый</option>
+                  <option value="Продвинутый">Пр��дви��утый</option>
                   <option value="Профессиональный">Профессиональный</option>
                 </select>
               </div>
@@ -749,7 +749,7 @@ export default function AdminPage() {
                   value={courseForm.learningFormat}
                   onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
                   rows={2}
-                  placeholder="Описание формата обучения, особенностей п���оведения..."
+                  placeholder="Описание формата обучения, особенностей п��оведения..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 />
               </div>
