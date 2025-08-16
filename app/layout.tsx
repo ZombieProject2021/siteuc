@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <AccessibilityProvider>
           <div className="min-h-screen flex flex-col">
             <Header />
