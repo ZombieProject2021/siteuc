@@ -600,7 +600,7 @@ export default function AdminPage() {
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 >
                   <option>Профессиональная переподготовка</option>
-                  <option>Повыш��ние квалификации</option>
+                  <option>Повыш����ие квалификации</option>
                   <option>Корпоративное обучение</option>
                 </select>
               </div>
@@ -700,7 +700,7 @@ export default function AdminPage() {
                   <option value="">Выберите уровень</option>
                   <option value="Начал��ный">Начальный</option>
                   <option value="Средний">Средний</option>
-                  <option value="Продвинутый">Пр��дви��утый</option>
+                  <option value="Продвинутый">Пр��двинутый</option>
                   <option value="Профессиональный">Профессиональный</option>
                 </select>
               </div>
@@ -1063,7 +1063,7 @@ export default function AdminPage() {
                 >
                   <option value="NEW">Новая</option>
                   <option value="CONTACTED">Связались</option>
-                  <option value="QUALIFIED">Квалифицирована</option>
+                  <option value="QUALIFIED">Квалифици��ована</option>
                   <option value="CONVERTED">Конвертирована</option>
                   <option value="LOST">Потеряна</option>
                 </select>
@@ -1195,7 +1195,7 @@ export default function AdminPage() {
             className="inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             <Database className="h-4 w-4 mr-2" />
-            Полная инициализация
+            Полн��я инициализация
           </a>
           <a
             href="/admin/seed-content"
@@ -1223,7 +1223,7 @@ export default function AdminPage() {
             className="inline-flex items-center bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
           >
             <BookOpen className="h-4 w-4 mr-2" />
-            Обогащение курсов
+            О��огащение курсов
           </a>
           <a
             href="/admin/add-content"
@@ -1244,21 +1244,7 @@ export default function AdminPage() {
   )
 
   const renderOrganizationInfo = () => (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-edu-navy">
-        Редактирование сведений об организации
-      </h1>
-
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-        <h3 className="text-lg font-semibold text-blue-900 mb-2">
-          Функция в разработке
-        </h3>
-        <p className="text-blue-800">
-          Полноценный редактор сведений об организации будет добавлен в следующих обновлениях.
-          Сейчас вы можете управлять документами организации в разделе "Документы организации".
-        </p>
-      </div>
-    </div>
+    <OrganizationInfoAdmin />
   )
 
   const renderContent = () => {
