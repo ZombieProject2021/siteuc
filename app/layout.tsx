@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     title: 'ООО Учебный Центр - Профессиональные курсы в Москве',
-    description: 'Получите новую специальность или повысьте квалификацию. Лицензированные программы обучения с выдачей государственных дипломов.',
+    description: 'Получите нову�� специальность или повысьте квалификацию. Лицензированные программы обучения с выдачей государственных дипломов.',
     type: 'website',
     locale: 'ru_RU',
     siteName: 'ООО Учебный Центр',
@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className} suppressHydrationWarning={true}>
         <AccessibilityProvider>
-          <div className="min-h-screen flex flex-col">
+          <div className="min-h-screen flex flex-col" suppressHydrationWarning={true}>
             <Header />
             <main className="flex-1">
               {children}
