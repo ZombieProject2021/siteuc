@@ -68,9 +68,25 @@ export default function DynamicContent({
     fetchContent()
   }, [contentKey, defaultContent])
 
+  // Если включено редактирование и пользователь админ
+  if (editable && isAdmin) {
+    return (
+      <InlineEditable
+        contentKey={contentKey}
+        defaultContent={defaultContent}
+        className={className}
+        tag={tag}
+        isHtml={isHtml}
+        multiline={multiline}
+        placeholder={placeholder}
+        saveToSettings={false} // DynamicContent сохраняет в content API
+      />
+    )
+  }
+
   if (loading) {
-    return React.createElement(tag, { 
-      className: `${className} animate-pulse bg-gray-200 rounded` 
+    return React.createElement(tag, {
+      className: `${className} animate-pulse bg-gray-200 rounded`
     }, ' ')
   }
 
@@ -165,7 +181,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefits.title',
       title: 'Заголовок секции преимуществ',
-      content: 'Почему выбирают нас',
+      content: 'Почему выбирают ��ас',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
@@ -194,7 +210,7 @@ export const seedInitialContent = async () => {
       page: 'homepage',
       section: 'cta'
     },
-    // Конта��тная информация
+    // Контактная информация
     {
       key: 'contacts.phone',
       title: 'Номер телефона',
