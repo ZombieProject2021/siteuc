@@ -749,7 +749,7 @@ export default function AdminPage() {
                   value={courseForm.learningFormat}
                   onChange={(e) => setCourseForm({ ...courseForm, learningFormat: e.target.value })}
                   rows={2}
-                  placeholder="Описание формата обучения, особенностей п��оведения..."
+                  placeholder="Описание формата обучения, особенностей п���оведения..."
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
                 />
               </div>
@@ -1101,6 +1101,18 @@ export default function AdminPage() {
               type="text"
               value={settings.site_name || ''}
               onChange={(e) => setSettings({ ...settings, site_name: e.target.value })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Слоган сайта
+            </label>
+            <input
+              type="text"
+              value={settings.site_tagline || ''}
+              onChange={(e) => setSettings({ ...settings, site_tagline: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-edu-blue"
             />
           </div>
