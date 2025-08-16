@@ -6,7 +6,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 import FloatingConsultationButton from '@/components/FloatingConsultationButton'
-import AdminIndicator from '@/components/AdminIndicator'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
@@ -14,7 +13,7 @@ const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 export const metadata: Metadata = {
   title: 'ООО Учебный Центр - Дополнительное профессио��альное образование в Москве',
   description: 'Курсы повышения квалификации и профессиональной переподготовки. Лицензированные программы, опытные преподаватели, государственные дипломы. Запишитесь на обучение!',
-  keywords: 'курсы повышения квалификации, профессиональная переподготовка, дополнительное образование, обучение москва, дипломы государственного образца, курсы для специалистов',
+  keywords: 'курсы повышения квалификации, профессиональная переподготовка, дополнительное образование, обучение москва, ди��ломы государственного образца, курсы для специалистов',
   authors: [{ name: 'ООО Учебный Центр' }],
   robots: 'index, follow',
   openGraph: {
