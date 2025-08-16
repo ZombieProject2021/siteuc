@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, FileText } from 'lucide-react'
+import DynamicContent from './DynamicContent'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -62,7 +63,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sitemap" className="text-gray-300 hover:text-white transition-colors">
-                  Карта сайта
+                  ��арта сайта
                 </Link>
               </li>
             </ul>
@@ -92,7 +93,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
             <p>© {currentYear} ООО «Учебный Центр». Все права защищены.</p>
             <p className="mt-2 md:mt-0">
-              Лицензия на образовательную деятельность. Соответствует требованиям 273-ФЗ.
+              Лицензия на образовате��ьную деятельность. Соответствует требованиям 273-ФЗ.
             </p>
           </div>
         </div>
