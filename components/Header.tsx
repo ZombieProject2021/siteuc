@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Menu, X, Eye, Settings, BookOpen } from 'lucide-react'
 import { useAccessibility } from '@/components/AccessibilityProvider'
 import AccessibilitySettings from '@/components/AccessibilitySettings'
+import DynamicContent from '@/components/DynamicContent'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
