@@ -84,7 +84,7 @@ export default function HomePage() {
   ]
 
   const benefits = [
-    { key: 'homepage.benefit.1', defaultText: 'Лицензированные программы', icon: Shield },
+    { key: 'homepage.benefit.1', defaultText: 'Лицензированные ��рограммы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
     { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
@@ -148,7 +148,7 @@ export default function HomePage() {
     },
     {
       question: 'Сколько времени занимает обучение?',
-      answer: 'Длительность зависит от программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
+      answer: 'Дл��тельность зависит от программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
     },
     {
       question: 'Есть ли поддержка во время обучения?',
@@ -176,6 +176,8 @@ export default function HomePage() {
               defaultContent="Получите новую профессию за 2-6 месяцев"
               tag="h1"
               className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 leading-tight"
+              editable={true}
+              placeholder="Введите заголовок главной страницы"
             />
             <DynamicContent
               contentKey="homepage.hero.description"
@@ -387,7 +389,7 @@ export default function HomePage() {
                       {benefit.defaultText === 'Лицензированные программы' && 'Все программы имеют государственную лицензию'}
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
                       {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
-                      {benefit.defaultText === 'Помощь в трудоустройстве' && 'Содействие в поиске работы'}
+                      {benefit.defaultText === 'Помощь в трудоуст��ойстве' && 'Содействие в поиске работы'}
                       {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
                     </p>
