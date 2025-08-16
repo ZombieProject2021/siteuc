@@ -63,7 +63,7 @@ export default function ContentEditor({ onClose }: ContentEditorProps) {
       setLoading(true)
       const response = await fetch('/api/content')
       const data = await response.json()
-      setContents(data.contents || [])
+      setContents(data.content || [])
     } catch (error) {
       toast.error('Ошибка загрузки контента')
     } finally {
