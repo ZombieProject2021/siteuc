@@ -67,6 +67,7 @@ export default function Header() {
                 <Settings className="h-3 w-3" />
                 <span className="hidden sm:inline">Админ</span>
               </Link>
+              <HeaderAdminIndicator />
             </div>
           </div>
         </div>
