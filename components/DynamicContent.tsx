@@ -15,13 +15,17 @@ interface DynamicContentProps {
   placeholder?: string
 }
 
-export default function DynamicContent({ 
-  contentKey, 
+export default function DynamicContent({
+  contentKey,
   defaultContent = '',
   className = '',
   tag = 'div',
-  isHtml = false
+  isHtml = false,
+  editable = false,
+  multiline = false,
+  placeholder = 'Кликните для редактирования...'
 }: DynamicContentProps) {
+  const { isAdmin } = useAdminAuth()
   const [content, setContent] = useState<string>(defaultContent)
   const [loading, setLoading] = useState(true)
 
@@ -190,7 +194,7 @@ export const seedInitialContent = async () => {
       page: 'homepage',
       section: 'cta'
     },
-    // Контактная информация
+    // Конта��тная информация
     {
       key: 'contacts.phone',
       title: 'Номер телефона',
