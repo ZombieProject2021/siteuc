@@ -11,11 +11,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Organization Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">ООО Учебный Центр</h3>
-            <p className="text-gray-300 text-sm mb-4">
-              Дополнительное профессиональное образование с выдачей документов
-              государственного образца. Лицензированные программы с 2008 года.
-            </p>
+            <DynamicContent
+              contentKey="site_name"
+              defaultContent="ООО Учебный Центр"
+              tag="h3"
+              className="text-lg font-semibold mb-4"
+            />
+            <DynamicContent
+              contentKey="site_description"
+              defaultContent="Дополнительное профессиональное образование с выдачей документов государственного образца. Лицензированные программы с 2008 года."
+              tag="p"
+              className="text-gray-300 text-sm mb-4"
+            />
           </div>
 
           {/* Quick Links */}
@@ -63,7 +70,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sitemap" className="text-gray-300 hover:text-white transition-colors">
-                  ��арта сайта
+                  Карта сайта
                 </Link>
               </li>
             </ul>
@@ -75,15 +82,27 @@ export default function Footer() {
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 mr-2" />
-                <span>+7 (xxx) xxx-xx-xx</span>
+                <DynamicContent
+                  contentKey="contact_phone"
+                  defaultContent="+7 (xxx) xxx-xx-xx"
+                  tag="span"
+                />
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2" />
-                <span>info@example.ru</span>
+                <DynamicContent
+                  contentKey="contact_email"
+                  defaultContent="info@example.ru"
+                  tag="span"
+                />
               </div>
               <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-2 mt-1 flex-shrink-0" />
-                <span>г. Москва, ул. Примерная, д. 1</span>
+                <DynamicContent
+                  contentKey="contact_address"
+                  defaultContent="г. Москва, ул. Примерная, д. 1"
+                  tag="span"
+                />
               </div>
             </div>
           </div>
@@ -91,9 +110,17 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-300">
-            <p>© {currentYear} ООО «Учебный Центр». Все права защищены.</p>
+            <p>
+              © {currentYear}{' '}
+              <DynamicContent
+                contentKey="site_name"
+                defaultContent="ООО «Учебный Центр»"
+                tag="span"
+              />
+              . Все права защищены.
+            </p>
             <p className="mt-2 md:mt-0">
-              Лицензия на образовате��ьную деятельность. Соответствует требованиям 273-ФЗ.
+              Лицензия на образовательную деятельность. Соответствует требованиям 273-ФЗ.
             </p>
           </div>
         </div>
