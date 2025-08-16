@@ -48,6 +48,7 @@ export default function RootLayout({
           </div>
           <CookieBanner />
           <FloatingConsultationButton />
+          <AdminIndicator />
           <Toaster
             position="top-right"
             toastOptions={{
