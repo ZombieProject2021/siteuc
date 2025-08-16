@@ -1,99 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Building, Phone, Mail, MapPin, Calendar, FileText, Download } from 'lucide-react'
-
-interface OrganizationData {
-  org_full_name: string
-  org_short_name: string
-  org_founding_date: string
-  org_founder: string
-  org_legal_address: string
-  org_actual_address: string
-  org_phone: string
-  org_email: string
-  org_ogrn: string
-  org_inn: string
-  org_kpp: string
-  org_okved: string
-  org_license_series: string
-  org_license_number: string
-  org_license_date: string
-  org_license_issued_by: string
-  org_license_validity: string
-  org_license_file_url: string
-  org_work_schedule: string
-  org_vacation_schedule: string
-}
-
-const defaultData: OrganizationData = {
-  org_full_name: 'Общество с ограниченной ответственностью «Учебный центр»',
-  org_short_name: 'ООО «УЦ»',
-  org_founding_date: '15 января 2020 года',
-  org_founder: 'Иванов Иван Иванович',
-  org_legal_address: '123456, г. Москва, ул. Примерная, д. 1, оф. 10',
-  org_actual_address: '123456, г. Москва, ул. Примерная, д. 1, оф. 10',
-  org_phone: '+7 (495) 123-45-67',
-  org_email: 'info@example.ru',
-  org_ogrn: '1234567890123',
-  org_inn: '1234567890',
-  org_kpp: '123456789',
-  org_okved: '85.41 - Образование дополнительное детей и взрослых',
-  org_license_series: '77Л01',
-  org_license_number: '0123456',
-  org_license_date: '20 января 2020 года',
-  org_license_issued_by: 'Департамент образования и науки города Москвы',
-  org_license_validity: 'Бессрочно',
-  org_license_file_url: '',
-  org_work_schedule: 'Понедельник-пятница: 09:00 - 18:00\nСуббота: 10:00 - 16:00\nВоскресенье: выходной',
-  org_vacation_schedule: 'в соответствии с календарным учебным графиком'
-}
+import InlineEditable from '@/components/InlineEditable'
 
 export default function BasicInfoPage() {
-  const [data, setData] = useState<OrganizationData>(defaultData)
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    loadData()
-  }, [])
-
-  const loadData = async () => {
-    try {
-      const response = await fetch('/api/settings')
-      if (response.ok) {
-        const settings = await response.json()
-        
-        // Объединяем настройки с данными по умолчанию
-        const loadedData = { ...defaultData }
-        Object.keys(defaultData).forEach(key => {
-          if (settings[key]) {
-            (loadedData as any)[key] = settings[key]
-          }
-        })
-        
-        setData(loadedData)
-      }
-    } catch (error) {
-      console.error('Error loading organization data:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const formatWorkSchedule = (schedule: string) => {
-    return schedule.split('\n').map((line, index) => (
-      <p key={index}>{line}</p>
-    ))
-  }
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-gray-500">Загрузка данных...</div>
-      </div>
-    )
-  }
-
   return (
     <div>
       <h2 className="text-2xl font-bold text-edu-navy mb-6">
@@ -114,37 +24,57 @@ export default function BasicInfoPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Полное наименование
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                  {data.org_full_name}
-                </p>
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                  <InlineEditable
+                    contentKey="org_full_name"
+                    defaultContent="Общество с ограниченной ответственностью «Учебный центр»"
+                    saveToSettings={true}
+                    placeholder="Введите полное наименование организации"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Сокращенное наименование
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                  {data.org_short_name}
-                </p>
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                  <InlineEditable
+                    contentKey="org_short_name"
+                    defaultContent="ООО «УЦ»"
+                    saveToSettings={true}
+                    placeholder="Введите сокращенное наименование"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Дата создания
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
                   <Calendar className="h-4 w-4 mr-2 text-gray-500" />
-                  {data.org_founding_date}
-                </p>
+                  <InlineEditable
+                    contentKey="org_founding_date"
+                    defaultContent="15 января 2020 года"
+                    saveToSettings={true}
+                    placeholder="Введите дату создания"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Учредитель
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                  {data.org_founder}
-                </p>
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                  <InlineEditable
+                    contentKey="org_founder"
+                    defaultContent="Иванов Иван Иванович"
+                    saveToSettings={true}
+                    placeholder="Введите данные учредителя"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -160,42 +90,62 @@ export default function BasicInfoPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Юридический адрес
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                  {data.org_legal_address}
-                </p>
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                  <InlineEditable
+                    contentKey="org_legal_address"
+                    defaultContent="123456, г. Москва, ул. Примерная, д. 1, оф. 10"
+                    saveToSettings={true}
+                    multiline={true}
+                    placeholder="Введите юридический адрес"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Фактический адрес
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                  {data.org_actual_address}
-                </p>
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                  <InlineEditable
+                    contentKey="org_actual_address"
+                    defaultContent="123456, г. Москва, ул. Примерная, д. 1, оф. 10"
+                    saveToSettings={true}
+                    multiline={true}
+                    placeholder="Введите фактический адрес"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Телефон
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
                   <Phone className="h-4 w-4 mr-2 text-gray-500" />
-                  <a href={`tel:${data.org_phone}`} className="hover:text-blue-600">
-                    {data.org_phone}
-                  </a>
-                </p>
+                  <InlineEditable
+                    contentKey="org_phone"
+                    defaultContent="+7 (495) 123-45-67"
+                    saveToSettings={true}
+                    placeholder="Введите номер телефона"
+                    tag="span"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Электронная почта
                 </label>
-                <p className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
+                <div className="text-gray-900 bg-gray-50 p-3 rounded border flex items-center">
                   <Mail className="h-4 w-4 mr-2 text-gray-500" />
-                  <a href={`mailto:${data.org_email}`} className="hover:text-blue-600">
-                    {data.org_email}
-                  </a>
-                </p>
+                  <InlineEditable
+                    contentKey="org_email"
+                    defaultContent="info@example.ru"
+                    saveToSettings={true}
+                    placeholder="Введите email адрес"
+                    tag="span"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -212,36 +162,56 @@ export default function BasicInfoPage() {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 ОГРН
               </label>
-              <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                {data.org_ogrn}
-              </p>
+              <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                <InlineEditable
+                  contentKey="org_ogrn"
+                  defaultContent="1234567890123"
+                  saveToSettings={true}
+                  placeholder="Введите ОГРН"
+                />
+              </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 ИНН
               </label>
-              <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                {data.org_inn}
-              </p>
+              <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                <InlineEditable
+                  contentKey="org_inn"
+                  defaultContent="1234567890"
+                  saveToSettings={true}
+                  placeholder="Введите ИНН"
+                />
+              </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 КПП
               </label>
-              <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                {data.org_kpp}
-              </p>
+              <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                <InlineEditable
+                  contentKey="org_kpp"
+                  defaultContent="123456789"
+                  saveToSettings={true}
+                  placeholder="Введите КПП"
+                />
+              </div>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 ОКВЭД
               </label>
-              <p className="text-gray-900 bg-gray-50 p-3 rounded border">
-                {data.org_okved}
-              </p>
+              <div className="text-gray-900 bg-gray-50 p-3 rounded border">
+                <InlineEditable
+                  contentKey="org_okved"
+                  defaultContent="85.41 - Образование дополнительное детей и взрослых"
+                  saveToSettings={true}
+                  placeholder="Введите ОКВЭД"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -258,65 +228,105 @@ export default function BasicInfoPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Серия и номер
                 </label>
-                <p className="text-gray-900 font-semibold">
-                  {data.org_license_series} № {data.org_license_number}
-                </p>
+                <div className="text-gray-900 font-semibold">
+                  <InlineEditable
+                    contentKey="org_license_series"
+                    defaultContent="77Л01"
+                    saveToSettings={true}
+                    placeholder="Серия"
+                    tag="span"
+                  />
+                  <span> № </span>
+                  <InlineEditable
+                    contentKey="org_license_number"
+                    defaultContent="0123456"
+                    saveToSettings={true}
+                    placeholder="Номер"
+                    tag="span"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Дата выдачи
                 </label>
-                <p className="text-gray-900">
-                  {data.org_license_date}
-                </p>
+                <div className="text-gray-900">
+                  <InlineEditable
+                    contentKey="org_license_date"
+                    defaultContent="20 января 2020 года"
+                    saveToSettings={true}
+                    placeholder="Введите дату выдачи"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Кем выдана
                 </label>
-                <p className="text-gray-900">
-                  {data.org_license_issued_by}
-                </p>
+                <div className="text-gray-900">
+                  <InlineEditable
+                    contentKey="org_license_issued_by"
+                    defaultContent="Департамент образования и науки города Москвы"
+                    saveToSettings={true}
+                    multiline={true}
+                    placeholder="Введите орган, выдавший лицензию"
+                  />
+                </div>
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Срок действия
                 </label>
-                <p className="text-gray-900">
-                  {data.org_license_validity}
-                </p>
+                <div className="text-gray-900">
+                  <InlineEditable
+                    contentKey="org_license_validity"
+                    defaultContent="Бессрочно"
+                    saveToSettings={true}
+                    placeholder="Введите срок действия"
+                  />
+                </div>
               </div>
             </div>
 
-            {data.org_license_file_url && (
-              <div className="mt-4">
-                <a 
-                  href={data.org_license_file_url} 
-                  className="inline-flex items-center space-x-2 px-4 py-2 bg-white border border-green-300 text-green-700 hover:bg-green-50 rounded-lg font-medium transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Скачать копию лицензии (PDF)</span>
-                </a>
-              </div>
-            )}
+            <div className="mt-4">
+              <InlineEditable
+                contentKey="org_license_file_url"
+                defaultContent=""
+                saveToSettings={true}
+                placeholder="URL файла лицензии (загрузите через админку)"
+                tag="div"
+              />
+            </div>
           </div>
         </div>
 
         {/* Work Schedule */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
           <h3 className="text-lg font-semibold text-blue-900 mb-3">
-            Режим работы
+            Режим ра��оты
           </h3>
           <div className="text-blue-800 space-y-2">
-            {formatWorkSchedule(data.org_work_schedule)}
-            <p className="mt-4 text-sm">
-              <strong>График каникул:</strong> {data.org_vacation_schedule}
-            </p>
+            <InlineEditable
+              contentKey="org_work_schedule"
+              defaultContent="Понедельник-пятница: 09:00 - 18:00&#10;Суббота: 10:00 - 16:00&#10;Воскресенье: выходной"
+              saveToSettings={true}
+              multiline={true}
+              placeholder="Введите график работы"
+              isHtml={true}
+            />
+            <div className="mt-4 text-sm">
+              <strong>График каникул: </strong>
+              <InlineEditable
+                contentKey="org_vacation_schedule"
+                defaultContent="в соответствии с календарным учебным графиком"
+                saveToSettings={true}
+                placeholder="Введите график каникул"
+                tag="span"
+              />
+            </div>
           </div>
         </div>
 
@@ -339,7 +349,7 @@ export default function BasicInfoPage() {
             <p>
               <strong>Приказ Федеральной службы по надзору в сфере образования и науки 
               от 14.08.2020 № 831</strong> «Об утверждении Требований к структуре официального 
-              сайта образовательной организации в информационно-телекоммуникационной сети 
+              сайта образовательной организации в ��нформационно-телекоммуникационной сети 
               «Интернет» и формату представления информации»
             </p>
           </div>
