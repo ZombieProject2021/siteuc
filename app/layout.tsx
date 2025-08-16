@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 import FloatingConsultationButton from '@/components/FloatingConsultationButton'
+import AdminIndicator from '@/components/AdminIndicator'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   robots: 'index, follow',
   openGraph: {
     title: 'ООО Учебный Центр - Профессиональные курсы в Москве',
-    description: 'Получите нову�� специальность или повысьте квалификацию. Лицензированные программы обучения с выдачей государственных дипломов.',
+    description: 'Получите новую специальность или повысьте квалификацию. Лицензированные программы обучения с выдачей государственных дипломов.',
     type: 'website',
     locale: 'ru_RU',
     siteName: 'ООО Учебный Центр',
