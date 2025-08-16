@@ -23,17 +23,31 @@ export default function DynamicContent({
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch(`/api/content?key=${encodeURIComponent(contentKey)}`)
-        
-        if (response.ok) {
-          const data = await response.json()
-          if (data.isActive) {
-            setContent(data.content)
+        // First try to get from content API
+        const contentResponse = await fetch(`/api/content?key=${encodeURIComponent(contentKey)}`)
+
+        if (contentResponse.ok) {
+          const contentData = await contentResponse.json()
+          if (contentData.isActive) {
+            setContent(contentData.content)
+            setLoading(false)
+            return
           }
-        } else {
-          // If content not found, use default
-          setContent(defaultContent)
         }
+
+        // If not found in content, try settings API
+        const settingsResponse = await fetch('/api/settings')
+        if (settingsResponse.ok) {
+          const settingsData = await settingsResponse.json()
+          if (settingsData[contentKey]) {
+            setContent(settingsData[contentKey])
+            setLoading(false)
+            return
+          }
+        }
+
+        // If not found anywhere, use default
+        setContent(defaultContent)
       } catch (error) {
         console.error('Error fetching content:', error)
         setContent(defaultContent)
@@ -215,7 +229,7 @@ export const seedInitialContent = async () => {
     {
       key: 'contacts.address',
       title: 'Адрес в контактах',
-      content: 'г. Москва, ул. Примерная, д. 123, оф. 456',
+      content: 'г. Москва, ул. Пр��мерная, д. 123, оф. 456',
       type: 'TEXT',
       page: 'contacts',
       section: 'info'
