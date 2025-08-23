@@ -109,7 +109,7 @@ export default function HomePage() {
       title: 'Корпоративное обучение',
       description: 'Индивидуальные программы для команд и организаций',
       icon: Users,
-      features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
+      features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидк��']
     }
   ]
 
@@ -165,7 +165,7 @@ export default function HomePage() {
   }
 
   return (
-    <div>
+    <div suppressHydrationWarning={true}>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-20"></div>
@@ -235,7 +235,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Выберите направлен��е, которое поможет вам достичь карьерных целей"
+              defaultContent="Вы��ерите направлен��е, которое поможет вам достичь карьерных целей"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
