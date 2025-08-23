@@ -1,12 +1,18 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { Edit } from 'lucide-react'
 import { useAdminAuth } from '@/hooks/useAdminAuth'
 
 export default function HeaderAdminIndicator() {
   const { isAdmin } = useAdminAuth()
+  const [mounted, setMounted] = useState(false)
 
-  if (!isAdmin) return null
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted || !isAdmin) return null
 
   return (
     <div className="flex items-center space-x-1 text-green-400">
