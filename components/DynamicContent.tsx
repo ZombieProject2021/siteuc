@@ -71,23 +71,28 @@ export default function DynamicContent({
     fetchContent()
   }, [contentKey, defaultContent])
 
-  // Временно отключено для устранения проблем с гидратацией
-  // if (editable) {
-  //   return (
-  //     <NoSSR fallback={React.createElement(tag, { className }, loading ? ' ' : content)}>
-  //       <InlineEditable
-  //         contentKey={contentKey}
-  //         defaultContent={defaultContent}
-  //         className={className}
-  //         tag={tag}
-  //         isHtml={isHtml}
-  //         multiline={multiline}
-  //         placeholder={placeholder}
-  //         saveToSettings={false} // DynamicContent сохраняет в content API
-  //       />
-  //     </NoSSR>
-  //   )
-  // }
+  // Если включено редактирование - обернуто в NoSSR для предотвращения гидратационных проблем
+  if (editable) {
+    return (
+      <NoSSR fallback={React.createElement(tag, {
+        className,
+        suppressHydrationWarning: true
+      }, loading ? defaultContent : content)}>
+        <div suppressHydrationWarning={true}>
+          <InlineEditable
+            contentKey={contentKey}
+            defaultContent={defaultContent}
+            className={className}
+            tag={tag}
+            isHtml={isHtml}
+            multiline={multiline}
+            placeholder={placeholder}
+            saveToSettings={false}
+          />
+        </div>
+      </NoSSR>
+    )
+  }
 
   if (loading) {
     return React.createElement(tag, {
@@ -234,7 +239,7 @@ export const seedInitialContent = async () => {
     },
     {
       key: 'about.title',
-      title: '��аголовок страницы О нас',
+      title: 'Заголовок страницы О нас',
       content: 'О нашем образовательном центре',
       type: 'TEXT',
       page: 'about',
@@ -308,7 +313,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.6',
       title: 'Преимущество 6',
-      content: 'Практикующие пре��одаватели',
+      content: 'Практикующие преподаватели',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
