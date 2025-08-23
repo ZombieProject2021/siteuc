@@ -3,6 +3,8 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  // Отключаем строгий режим React для предотвращения двойного рендеринга
+  reactStrictMode: false,
   // Отключаем атрибуты отладки в development режиме
   compiler: {
     removeConsole: false,
@@ -12,6 +14,8 @@ const nextConfig = {
   // Оптимизируем гидратацию
   experimental: {
     optimizeCss: false,
+    // Отключаем prefetch для уменьшения гидратационных конфликтов
+    appDir: true,
   },
   async headers() {
     return [
