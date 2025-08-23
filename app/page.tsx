@@ -107,7 +107,7 @@ export default function HomePage() {
       features: ['Вебинары с экспертами', 'Практические семинары', 'Нетворкинг']
     },
     {
-      title: 'Корпоративное обучение',
+      title: 'Корпоративное о��учение',
       description: 'Индивидуальные программы для команд и организаций',
       icon: Users,
       features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
@@ -131,7 +131,7 @@ export default function HomePage() {
     },
     {
       name: 'Елена Сидорова',
-      position: 'Проект-менеджер, IT-компания',
+      position: 'Пр��ект-менеджер, IT-компания',
       photo: '/api/placeholder/60/60',
       rating: 5,
       text: 'Курс по проектному у��равлению дал все необходимые знания для работы. Получила международный сертификат и новую должность.'
@@ -149,7 +149,7 @@ export default function HomePage() {
     },
     {
       question: 'Сколько времени занимает обучение?',
-      answer: 'Дл��тельность зависит о�� программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
+      answer: 'Дл��тельность зависит от ��рограммы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
     },
     {
       question: 'Есть ли поддержка во время обучения?',
@@ -204,22 +204,24 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="flex justify-center mb-2">
-                    <stat.icon className="h-8 w-8 text-yellow-400" />
+            <ClientOnly>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="flex justify-center mb-2">
+                      <stat.icon className="h-8 w-8 text-yellow-400" />
+                    </div>
+                    <DynamicContent
+                      contentKey={stat.valueKey}
+                      defaultContent={stat.defaultValue}
+                      tag="div"
+                      className="text-2xl md:text-3xl font-bold"
+                    />
+                    <div className="text-blue-200 text-sm">{stat.label}</div>
                   </div>
-                  <DynamicContent
-                    contentKey={stat.valueKey}
-                    defaultContent={stat.defaultValue}
-                    tag="div"
-                    className="text-2xl md:text-3xl font-bold"
-                  />
-                  <div className="text-blue-200 text-sm">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </ClientOnly>
           </div>
         </div>
       </section>
@@ -390,7 +392,7 @@ export default function HomePage() {
                       {benefit.defaultText === 'Лицензированные программы' && 'Все программы имеют государственную лицензию'}
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
                       {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
-                      {benefit.defaultText === 'Пом��щь в трудоуст��ойстве' && 'Содействие в поиске работы'}
+                      {benefit.defaultText === 'Помощь в трудоуст��ойстве' && 'Содействие в поиске работы'}
                       {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
                     </p>
