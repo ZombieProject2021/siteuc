@@ -38,7 +38,9 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    // Apply accessibility classes to body
+    // Apply accessibility classes to body only on client side
+    if (typeof window === 'undefined') return
+
     const body = document.body
     
     if (isAccessibilityMode) {
