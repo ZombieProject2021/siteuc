@@ -57,10 +57,15 @@ export default function DynamicContent({
         // Add a small delay to avoid race conditions during hot reloads
         await new Promise(resolve => setTimeout(resolve, 100))
 
-        // First try to get from content API
+        // First try to get from content API with deduplication
         try {
-          const contentResponse = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
-          const contentData = await contentResponse.json()
+          const contentData = await getCachedRequest(
+            `content-${contentKey}`,
+            async () => {
+              const response = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
+              return response.json()
+            }
+          )
           if (contentData.isActive) {
             setContent(contentData.content)
             setLoading(false)
@@ -70,10 +75,15 @@ export default function DynamicContent({
           console.warn('Content API failed, trying settings:', error)
         }
 
-        // If not found in content, try settings API
+        // If not found in content, try settings API with deduplication
         try {
-          const settingsResponse = await fetchWithRetry('/api/settings')
-          const settingsData = await settingsResponse.json()
+          const settingsData = await getCachedRequest(
+            'settings-all',
+            async () => {
+              const response = await fetchWithRetry('/api/settings')
+              return response.json()
+            }
+          )
           if (settingsData[contentKey]) {
             setContent(settingsData[contentKey])
             setLoading(false)
@@ -159,7 +169,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.hero.description',
       title: 'Описание на главной странице',
-      content: 'Лицензированные программы дополни��ельного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
+      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
       type: 'TEXT',
       page: 'homepage',
       section: 'hero'
@@ -199,7 +209,7 @@ export const seedInitialContent = async () => {
     // Главная страница - заголовки секций
     {
       key: 'homepage.programs.title',
-      title: 'Заголовок се��ции популярных программ',
+      title: 'Заголовок секции популярных программ',
       content: 'Популярные программы обучения',
       type: 'TEXT',
       page: 'homepage',
@@ -216,7 +226,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefits.title',
       title: 'Заголовок секции преимуществ',
-      content: 'Почему выбирают нас',
+      content: 'Почему ��ыбирают нас',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
@@ -273,7 +283,7 @@ export const seedInitialContent = async () => {
     {
       key: 'about.description',
       title: 'Описание на странице О нас',
-      content: 'Мы специализируемся на предоставлении качественного дополнительного профес��ионального образования для специали��тов различных сфер деятельности.',
+      content: 'Мы специализируемся на предоставлении качественного дополнительного профессионального образования для специали��тов различных сфер деятельности.',
       type: 'TEXT',
       page: 'about',
       section: 'main'
