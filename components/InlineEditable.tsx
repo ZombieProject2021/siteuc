@@ -24,7 +24,7 @@ export default function InlineEditable({
   tag = 'div',
   isHtml = false,
   multiline = false,
-  placeholder = 'Кликните для редактирования...',
+  placeholder = 'Клик��ите для редактирования...',
   saveToSettings = false
 }: InlineEditableProps) {
   const { isAdmin } = useAdminAuth()
@@ -77,10 +77,15 @@ export default function InlineEditable({
       await new Promise(resolve => setTimeout(resolve, 150))
 
       if (saveToSettings) {
-        // Загружаем из settings
+        // Загружаем из settings с дедупликацией
         try {
-          const response = await fetchWithRetry('/api/settings')
-          const settings = await response.json()
+          const settings = await getCachedRequest(
+            'settings-all',
+            async () => {
+              const response = await fetchWithRetry('/api/settings')
+              return response.json()
+            }
+          )
           if (settings[contentKey]) {
             setContent(settings[contentKey])
           } else {
@@ -91,10 +96,15 @@ export default function InlineEditable({
           setContent(defaultContent)
         }
       } else {
-        // Загружаем из content API
+        // Загружаем из content API с дедупликацией
         try {
-          const response = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
-          const data = await response.json()
+          const data = await getCachedRequest(
+            `content-${contentKey}`,
+            async () => {
+              const response = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
+              return response.json()
+            }
+          )
           if (data.isActive) {
             setContent(data.content)
           } else {
