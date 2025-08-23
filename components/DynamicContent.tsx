@@ -33,29 +33,53 @@ export default function DynamicContent({
 
   useEffect(() => {
     setMounted(true)
+
+    const fetchWithRetry = async (url: string, retries = 3, delay = 1000): Promise<Response> => {
+      for (let i = 0; i < retries; i++) {
+        try {
+          const response = await fetch(url)
+          if (response.ok) return response
+          if (response.status >= 400 && response.status < 500) {
+            // Don't retry client errors
+            throw new Error(`HTTP ${response.status}`)
+          }
+        } catch (error) {
+          if (i === retries - 1) throw error
+          await new Promise(resolve => setTimeout(resolve, delay * (i + 1)))
+        }
+      }
+      throw new Error('Max retries exceeded')
+    }
+
     const fetchContent = async () => {
       try {
-        // First try to get from content API
-        const contentResponse = await fetch(`/api/content?key=${encodeURIComponent(contentKey)}`)
+        // Add a small delay to avoid race conditions during hot reloads
+        await new Promise(resolve => setTimeout(resolve, 100))
 
-        if (contentResponse.ok) {
+        // First try to get from content API
+        try {
+          const contentResponse = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
           const contentData = await contentResponse.json()
           if (contentData.isActive) {
             setContent(contentData.content)
             setLoading(false)
             return
           }
+        } catch (error) {
+          console.warn('Content API failed, trying settings:', error)
         }
 
         // If not found in content, try settings API
-        const settingsResponse = await fetch('/api/settings')
-        if (settingsResponse.ok) {
+        try {
+          const settingsResponse = await fetchWithRetry('/api/settings')
           const settingsData = await settingsResponse.json()
           if (settingsData[contentKey]) {
             setContent(settingsData[contentKey])
             setLoading(false)
             return
           }
+        } catch (error) {
+          console.warn('Settings API failed:', error)
         }
 
         // If not found anywhere, use default
@@ -273,7 +297,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.1',
       title: 'Преимущество 1',
-      content: 'Лицензированные программы',
+      content: 'Лицензирован��ые программы',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
