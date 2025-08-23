@@ -31,6 +31,7 @@ export default function DynamicContent({
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const fetchContent = async () => {
       try {
         // First try to get from content API
@@ -125,7 +126,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.hero.description',
       title: 'Описание на главной странице',
-      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
+      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное об��чение с применением современных технологий.',
       type: 'TEXT',
       page: 'homepage',
       section: 'hero'
@@ -206,7 +207,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.cta.subtitle',
       title: 'Подзаголовок призыва к действию',
-      content: 'Получите бесплатную консультацию и узнайте, какая программа подходит именно вам',
+      content: 'Получите бес��латную консультацию и узнайте, какая программа подходит именно вам',
       type: 'TEXT',
       page: 'homepage',
       section: 'cta'
