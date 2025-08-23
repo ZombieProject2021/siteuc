@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import DynamicContent from '@/components/DynamicContent'
+import ClientOnly from '@/components/ClientOnly'
 import { 
   BookOpen, 
   Users, 
@@ -54,7 +55,7 @@ export default function HomePage() {
       duration: '520 ак.ч.',
       price: '45000',
       oldPrice: '55000',
-      level: 'Профе��сиональная переп��дготовка',
+      level: 'Профе��сиональная переподготовка',
       students: 156,
       rating: 4.8,
       features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
@@ -86,7 +87,7 @@ export default function HomePage() {
   const benefits = [
     { key: 'homepage.benefit.1', defaultText: 'Лицензированные ��рограммы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
-    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переп��ат', icon: CreditCard },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
     { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения', icon: Clock },
     { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели', icon: Users },
@@ -109,7 +110,7 @@ export default function HomePage() {
       title: 'Корпоративное обучение',
       description: 'Индивидуальные программы для команд и организаций',
       icon: Users,
-      features: ['Програм��ы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
+      features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
     }
   ]
 
@@ -148,7 +149,7 @@ export default function HomePage() {
     },
     {
       question: 'Сколько времени занимает обучение?',
-      answer: 'Дл��тельность зависит от программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
+      answer: 'Дл��тельность зависит о�� программы: курсы повышения квалификации - от 2 недель до 3 месяцев, профессиональная переподготовка - от 2 до 6 месяцев.'
     },
     {
       question: 'Есть ли поддержка во время обучения?',
@@ -389,7 +390,7 @@ export default function HomePage() {
                       {benefit.defaultText === 'Лицензированные программы' && 'Все программы имеют государственную лицензию'}
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
                       {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
-                      {benefit.defaultText === 'Помощь в трудоуст��ойстве' && 'Содействие в поиске работы'}
+                      {benefit.defaultText === 'Пом��щь в трудоуст��ойстве' && 'Содействие в поиске работы'}
                       {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
                     </p>
@@ -480,7 +481,7 @@ export default function HomePage() {
               Часто задаваемые вопросы
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ответы на популярные вопросы о наших программах о��учения
+              Ответы на популярные вопросы о наших программах обучения
             </p>
           </div>
 
