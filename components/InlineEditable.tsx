@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Edit, Save, X } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 import { useAdminAuth } from '@/hooks/useAdminAuth'
+import { getCachedRequest } from '@/lib/requestCache'
 
 interface InlineEditableProps {
   contentKey: string
@@ -220,7 +221,7 @@ export default function InlineEditable({
     return React.createElement(Component, { className }, hasContent ? displayContent : defaultContent)
   }
 
-  // Админское ред��ктируемое отображение
+  // Админское редактируемое отображение
   if (isEditing) {
     return (
       <div className="relative inline-block w-full">
