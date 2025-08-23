@@ -71,23 +71,23 @@ export default function DynamicContent({
     fetchContent()
   }, [contentKey, defaultContent])
 
-  // Если включено редактирование и пользователь админ (обернуто в NoSSR)
-  if (editable) {
-    return (
-      <NoSSR fallback={React.createElement(tag, { className }, loading ? ' ' : content)}>
-        <InlineEditable
-          contentKey={contentKey}
-          defaultContent={defaultContent}
-          className={className}
-          tag={tag}
-          isHtml={isHtml}
-          multiline={multiline}
-          placeholder={placeholder}
-          saveToSettings={false} // DynamicContent сохраняет в content API
-        />
-      </NoSSR>
-    )
-  }
+  // Временно отключено для устранения проблем с гидратацией
+  // if (editable) {
+  //   return (
+  //     <NoSSR fallback={React.createElement(tag, { className }, loading ? ' ' : content)}>
+  //       <InlineEditable
+  //         contentKey={contentKey}
+  //         defaultContent={defaultContent}
+  //         className={className}
+  //         tag={tag}
+  //         isHtml={isHtml}
+  //         multiline={multiline}
+  //         placeholder={placeholder}
+  //         saveToSettings={false} // DynamicContent сохраняет в content API
+  //       />
+  //     </NoSSR>
+  //   )
+  // }
 
   if (loading) {
     return React.createElement(tag, {
@@ -178,7 +178,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.programs.subtitle',
       title: 'Подзаголовок секции программ',
-      content: 'Выберите направление, которое по��ожет вам достичь карьерных целей',
+      content: 'Выберите направление, которое поможет вам достичь карьерных целей',
       type: 'TEXT',
       page: 'homepage',
       section: 'programs'
@@ -234,7 +234,7 @@ export const seedInitialContent = async () => {
     },
     {
       key: 'about.title',
-      title: 'Заголовок страницы О нас',
+      title: '��аголовок страницы О нас',
       content: 'О нашем образовательном центре',
       type: 'TEXT',
       page: 'about',
@@ -292,7 +292,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.4',
       title: 'Преимущество 4',
-      content: 'Помощь �� трудоустройстве',
+      content: 'Помощь в трудоустройстве',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
@@ -308,7 +308,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.6',
       title: 'Преимущество 6',
-      content: 'Практикующие преподаватели',
+      content: 'Практикующие пре��одаватели',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
