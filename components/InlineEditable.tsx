@@ -171,7 +171,7 @@ export default function InlineEditable({
   const displayContent = content || placeholder
   const hasContent = content && content.trim() !== ''
 
-  if (!isAdmin) {
+  if (!isAdmin || !mounted) {
     // Обычное отображение для не-админов
     const Component = tag
     if (isHtml && hasContent) {
@@ -213,7 +213,7 @@ export default function InlineEditable({
             onClick={saveContent}
             disabled={saving}
             className="p-1 bg-green-500 hover:bg-green-600 text-white rounded disabled:opacity-50"
-            title="Сохранить (Ctrl+Enter)"
+            title="Сохран��ть (Ctrl+Enter)"
           >
             <Save className="h-3 w-3" />
           </button>
