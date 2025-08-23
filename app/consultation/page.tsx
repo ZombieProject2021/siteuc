@@ -39,7 +39,7 @@ export default function ConsultationPage() {
   const benefits = [
     {
       icon: Target,
-      title: 'Персональный подход',
+      title: '��ерсональный подход',
       description: 'Учитываем ваши цели, опыт и предпочтения при выборе программы обучения'
     },
     {
@@ -110,7 +110,7 @@ export default function ConsultationPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
+      <HydrationSafe tag="section" className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <HydrationSafe tag="h1" className="text-4xl md:text-5xl font-bold mb-6">
@@ -134,7 +134,7 @@ export default function ConsultationPage() {
             </div>
           </div>
         </div>
-      </section>
+      </HydrationSafe>
 
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
