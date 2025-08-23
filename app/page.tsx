@@ -86,7 +86,7 @@ export default function HomePage() {
   ]
 
   const benefits = [
-    { key: 'homepage.benefit.1', defaultText: 'Лицензированные ��рограммы', icon: Shield },
+    { key: 'homepage.benefit.1', defaultText: 'Лицензированные ����рограммы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
     { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
@@ -131,7 +131,7 @@ export default function HomePage() {
       text: 'Программа переподготовки по бухучету превзошла ожидания. Преподаватели-практики, актуальные материалы, отличная поддержка клиентов.'
     },
     {
-      name: 'Елена Сидорова',
+      name: 'Е��ена Сидорова',
       position: 'Проект-менеджер, IT-компания',
       photo: '/api/placeholder/60/60',
       rating: 5,
@@ -172,7 +172,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden" suppressHydrationWarning={true}>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-20">
-          <div className="max-w-5xl mx-auto text-center">
+          <HydrationSafe className="max-w-5xl mx-auto text-center">
             <DynamicContent
               contentKey="homepage.hero.title"
               defaultContent="Получите новую профессию за 2-6 месяцев"
@@ -223,7 +223,7 @@ export default function HomePage() {
                 ))}
               </div>
             </ClientOnly>
-          </div>
+          </HydrationSafe>
         </div>
       </section>
 
@@ -392,7 +392,7 @@ export default function HomePage() {
                     <p className="text-gray-600 text-sm">
                       {benefit.defaultText === 'Лицензированные программы' && 'Все программы имеют государственную лицензию'}
                       {benefit.defaultText === 'Государственные дипломы' && 'Документы признаются по всей России'}
-                      {benefit.defaultText === 'Рассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
+                      {benefit.defaultText === '��ассрочка без переплат' && 'Удобная оплата до 12 месяцев'}
                       {benefit.defaultText === 'Помощь в трудоуст��ойстве' && 'Содействие в поиске работы'}
                       {benefit.defaultText === 'Гибкий график обучения' && 'Учитесь в удобное время'}
                       {benefit.defaultText === 'Практикующие преподаватели' && 'Эксперты с большим опытом'}
@@ -509,7 +509,7 @@ export default function HomePage() {
               className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors"
             >
               <MessageSquare className="mr-2 h-5 w-5" />
-              Задать свой вопрос
+              Задать свой воп��ос
             </Link>
           </div>
         </div>
