@@ -3,6 +3,16 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  // Отключаем атрибуты отладки в development режиме
+  compiler: {
+    removeConsole: false,
+  },
+  // Отключаем source maps для уменьшения различий между сервером и клиентом
+  productionBrowserSourceMaps: false,
+  // Оптимизируем гидратацию
+  experimental: {
+    optimizeCss: false,
+  },
   async headers() {
     return [
       {
