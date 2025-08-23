@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import InlineEditable from './InlineEditable'
 import { useAdminAuth } from '@/hooks/useAdminAuth'
+import NoSSR from './NoSSR'
 
 interface DynamicContentProps {
   contentKey: string
@@ -81,7 +82,7 @@ export default function DynamicContent({
         isHtml={isHtml}
         multiline={multiline}
         placeholder={placeholder}
-        saveToSettings={false} // DynamicContent сохраняет в content API
+        saveToSettings={false} // DynamicContent со��раняет в content API
       />
     )
   }
@@ -199,7 +200,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.cta.title',
       title: 'Заголовок призыва к действию',
-      content: 'Готовы начать ��бучение?',
+      content: 'Готовы н��чать обучение?',
       type: 'TEXT',
       page: 'homepage',
       section: 'cta'
