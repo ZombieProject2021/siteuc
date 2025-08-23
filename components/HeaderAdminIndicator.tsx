@@ -5,16 +5,19 @@ import { useAdminAuth } from '@/hooks/useAdminAuth'
 import NoSSR from './NoSSR'
 
 export default function HeaderAdminIndicator() {
-  const { isAdmin } = useAdminAuth()
+  // Temporarily disabled to fix hydration issues
+  return null
 
-  if (!isAdmin) return null
+  // const { isAdmin } = useAdminAuth()
 
-  return (
-    <NoSSR>
-      <div className="flex items-center space-x-1 text-green-400">
-        <Edit className="h-3 w-3" />
-        <span className="hidden sm:inline text-xs">Редактирование</span>
-      </div>
-    </NoSSR>
-  )
+  // if (!isAdmin) return null
+
+  // return (
+  //   <NoSSR>
+  //     <div className="flex items-center space-x-1 text-green-400">
+  //       <Edit className="h-3 w-3" />
+  //       <span className="hidden sm:inline text-xs">Редактирование</span>
+  //     </div>
+  //   </NoSSR>
+  // )
 }
