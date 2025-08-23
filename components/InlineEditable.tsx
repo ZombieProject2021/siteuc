@@ -38,6 +38,7 @@ export default function InlineEditable({
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    setMounted(true)
     fetchContent()
   }, [contentKey])
 
