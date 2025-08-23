@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Phone, Mail, MessageSquare, Clock, CheckCircle, Users, Award, Target, Calendar } from 'lucide-react'
 import { toast } from 'react-hot-toast'
+import HydrationSafe from '@/components/HydrationSafe'
 
 export default function ConsultationPage() {
   const [formData, setFormData] = useState({
