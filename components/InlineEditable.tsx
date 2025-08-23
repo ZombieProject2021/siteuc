@@ -53,33 +53,54 @@ export default function InlineEditable({
     }
   }, [isEditing])
 
+  const fetchWithRetry = async (url: string, retries = 3, delay = 1000): Promise<Response> => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url)
+        if (response.ok) return response
+        if (response.status >= 400 && response.status < 500) {
+          // Don't retry client errors
+          throw new Error(`HTTP ${response.status}`)
+        }
+      } catch (error) {
+        if (i === retries - 1) throw error
+        await new Promise(resolve => setTimeout(resolve, delay * (i + 1)))
+      }
+    }
+    throw new Error('Max retries exceeded')
+  }
+
   const fetchContent = async () => {
     try {
+      // Add a small delay to avoid race conditions during hot reloads
+      await new Promise(resolve => setTimeout(resolve, 150))
+
       if (saveToSettings) {
         // Загружаем из settings
-        const response = await fetch('/api/settings')
-        if (response.ok) {
+        try {
+          const response = await fetchWithRetry('/api/settings')
           const settings = await response.json()
           if (settings[contentKey]) {
             setContent(settings[contentKey])
           } else {
             setContent(defaultContent)
           }
-        } else {
+        } catch (error) {
+          console.warn('Settings API failed:', error)
           setContent(defaultContent)
         }
       } else {
         // Загружаем из content API
-        const response = await fetch(`/api/content?key=${encodeURIComponent(contentKey)}`)
-        
-        if (response.ok) {
+        try {
+          const response = await fetchWithRetry(`/api/content?key=${encodeURIComponent(contentKey)}`)
           const data = await response.json()
           if (data.isActive) {
             setContent(data.content)
           } else {
             setContent(defaultContent)
           }
-        } else {
+        } catch (error) {
+          console.warn('Content API failed:', error)
           setContent(defaultContent)
         }
       }
