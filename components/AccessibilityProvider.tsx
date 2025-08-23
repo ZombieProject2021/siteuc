@@ -64,10 +64,12 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
       body.classList.remove('high-contrast')
     }
 
-    // Save preferences to localStorage
-    localStorage.setItem('accessibility-mode', isAccessibilityMode.toString())
-    localStorage.setItem('accessibility-font-size', fontSize)
-    localStorage.setItem('accessibility-contrast', contrast)
+    // Save preferences to localStorage only on client side
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('accessibility-mode', isAccessibilityMode.toString())
+      localStorage.setItem('accessibility-font-size', fontSize)
+      localStorage.setItem('accessibility-contrast', contrast)
+    }
   }, [isAccessibilityMode, fontSize, contrast])
 
   const toggleAccessibility = () => {
