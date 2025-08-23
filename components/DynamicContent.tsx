@@ -28,6 +28,7 @@ export default function DynamicContent({
   const { isAdmin } = useAdminAuth()
   const [content, setContent] = useState<string>(defaultContent)
   const [loading, setLoading] = useState(true)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -181,7 +182,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefits.title',
       title: 'Заголовок секции преимуществ',
-      content: 'Почему выбирают ��ас',
+      content: 'Почему выбирают нас',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
