@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import InlineEditable from './InlineEditable'
 import { useAdminAuth } from '@/hooks/useAdminAuth'
 import NoSSR from './NoSSR'
+import { getCachedRequest } from '@/lib/requestCache'
 
 interface DynamicContentProps {
   contentKey: string
@@ -158,7 +159,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.hero.description',
       title: 'Описание на главной странице',
-      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
+      content: 'Лицензированные программы дополни��ельного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
       type: 'TEXT',
       page: 'homepage',
       section: 'hero'
@@ -198,7 +199,7 @@ export const seedInitialContent = async () => {
     // Главная страница - заголовки секций
     {
       key: 'homepage.programs.title',
-      title: 'Заголовок секции популярных программ',
+      title: 'Заголовок се��ции популярных программ',
       content: 'Популярные программы обучения',
       type: 'TEXT',
       page: 'homepage',
@@ -272,7 +273,7 @@ export const seedInitialContent = async () => {
     {
       key: 'about.description',
       title: 'Описание на странице О нас',
-      content: 'Мы специализируемся на предоставлении качественного дополнительного профессионального образования для специали��тов различных сфер деятельности.',
+      content: 'Мы специализируемся на предоставлении качественного дополнительного профес��ионального образования для специали��тов различных сфер деятельности.',
       type: 'TEXT',
       page: 'about',
       section: 'main'
@@ -297,7 +298,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.1',
       title: 'Преимущество 1',
-      content: 'Лицензирован��ые программы',
+      content: 'Лицензированные программы',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
