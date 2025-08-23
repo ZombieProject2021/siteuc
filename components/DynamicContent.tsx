@@ -70,8 +70,8 @@ export default function DynamicContent({
     fetchContent()
   }, [contentKey, defaultContent])
 
-  // Если включено редактирование и пользователь админ
-  if (editable && isAdmin) {
+  // Если включено редактирование и пользователь админ (только после монтирования)
+  if (editable && isAdmin && mounted) {
     return (
       <InlineEditable
         contentKey={contentKey}
@@ -126,7 +126,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.hero.description',
       title: 'Описание на главной странице',
-      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное об��чение с применением современных технологий.',
+      content: 'Лицензированные программы дополнительного профессионального образования с выдачей документов государственного образца. Дистанционное обучение с применением современных технологий.',
       type: 'TEXT',
       page: 'homepage',
       section: 'hero'
@@ -199,7 +199,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.cta.title',
       title: 'Заголовок призыва к действию',
-      content: 'Готовы начать обучение?',
+      content: 'Готовы начать ��бучение?',
       type: 'TEXT',
       page: 'homepage',
       section: 'cta'
@@ -207,7 +207,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.cta.subtitle',
       title: 'Подзаголовок призыва к действию',
-      content: 'Получите бес��латную консультацию и узнайте, какая программа подходит именно вам',
+      content: 'Получите бесплатную консультацию и узнайте, какая программа подходит именно вам',
       type: 'TEXT',
       page: 'homepage',
       section: 'cta'
