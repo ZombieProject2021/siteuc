@@ -71,19 +71,21 @@ export default function DynamicContent({
     fetchContent()
   }, [contentKey, defaultContent])
 
-  // Если включено редактирование и пользователь админ (только после монтирования)
-  if (editable && isAdmin && mounted) {
+  // Если включено редактирование и пользователь админ (обернуто в NoSSR)
+  if (editable) {
     return (
-      <InlineEditable
-        contentKey={contentKey}
-        defaultContent={defaultContent}
-        className={className}
-        tag={tag}
-        isHtml={isHtml}
-        multiline={multiline}
-        placeholder={placeholder}
-        saveToSettings={false} // DynamicContent со��раняет в content API
-      />
+      <NoSSR fallback={React.createElement(tag, { className }, loading ? ' ' : content)}>
+        <InlineEditable
+          contentKey={contentKey}
+          defaultContent={defaultContent}
+          className={className}
+          tag={tag}
+          isHtml={isHtml}
+          multiline={multiline}
+          placeholder={placeholder}
+          saveToSettings={false} // DynamicContent сохраняет в content API
+        />
+      </NoSSR>
     )
   }
 
@@ -176,7 +178,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.programs.subtitle',
       title: 'Подзаголовок секции программ',
-      content: 'Выберите направление, которое поможет вам достичь карьерных целей',
+      content: 'Выберите направление, которое по��ожет вам достичь карьерных целей',
       type: 'TEXT',
       page: 'homepage',
       section: 'programs'
@@ -200,7 +202,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.cta.title',
       title: 'Заголовок призыва к действию',
-      content: 'Готовы н��чать обучение?',
+      content: 'Готовы начать обучение?',
       type: 'TEXT',
       page: 'homepage',
       section: 'cta'
@@ -290,7 +292,7 @@ export const seedInitialContent = async () => {
     {
       key: 'homepage.benefit.4',
       title: 'Преимущество 4',
-      content: 'Помощь в трудоустройстве',
+      content: 'Помощь �� трудоустройстве',
       type: 'TEXT',
       page: 'homepage',
       section: 'benefits'
