@@ -33,6 +33,7 @@ export default function InlineEditable({
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
