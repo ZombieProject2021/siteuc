@@ -19,19 +19,21 @@ export function AccessibilityProvider({ children }: { children: ReactNode }) {
   const [contrast, setContrast] = useState<'normal' | 'high'>('normal')
 
   useEffect(() => {
-    // Load saved preferences from localStorage
-    const savedMode = localStorage.getItem('accessibility-mode')
-    const savedFontSize = localStorage.getItem('accessibility-font-size')
-    const savedContrast = localStorage.getItem('accessibility-contrast')
+    // Load saved preferences from localStorage only on client side
+    if (typeof window !== 'undefined') {
+      const savedMode = localStorage.getItem('accessibility-mode')
+      const savedFontSize = localStorage.getItem('accessibility-font-size')
+      const savedContrast = localStorage.getItem('accessibility-contrast')
 
-    if (savedMode === 'true') {
-      setIsAccessibilityMode(true)
-    }
-    if (savedFontSize) {
-      setFontSize(savedFontSize as 'normal' | 'large' | 'extra-large')
-    }
-    if (savedContrast) {
-      setContrast(savedContrast as 'normal' | 'high')
+      if (savedMode === 'true') {
+        setIsAccessibilityMode(true)
+      }
+      if (savedFontSize) {
+        setFontSize(savedFontSize as 'normal' | 'large' | 'extra-large')
+      }
+      if (savedContrast) {
+        setContrast(savedContrast as 'normal' | 'high')
+      }
     }
   }, [])
 
