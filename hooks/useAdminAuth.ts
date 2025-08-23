@@ -1,17 +1,38 @@
 import { useState, useEffect } from 'react'
 
 export function useAdminAuth() {
-  // Temporarily simplified to fix hydration issues
-  const [isAdmin] = useState(false)
-  const [loading] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+
+    // Задержка для предотвращения гидратационных проблем
+    const timer = setTimeout(() => {
+      checkAdminAuth()
+    }, 100)
+
+    return () => clearTimeout(timer)
+  }, [])
 
   const checkAdminAuth = () => {
-    // Temporarily disabled
+    try {
+      if (typeof window !== 'undefined') {
+        const adminToken = localStorage.getItem('admin-auth')
+        const isAuthenticated = adminToken === 'authenticated'
+        setIsAdmin(isAuthenticated)
+      }
+    } catch (error) {
+      setIsAdmin(false)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return {
-    isAdmin: false,
-    loading: false,
+    isAdmin: mounted ? isAdmin : false,
+    loading: mounted ? loading : true,
     checkAdminAuth
   }
 
