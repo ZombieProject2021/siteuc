@@ -14,8 +14,6 @@ const nextConfig = {
   // Оптимизируем гидратацию
   experimental: {
     optimizeCss: false,
-    // Отключаем prefetch для уменьшения гидратационных конфликтов
-    appDir: true,
   },
   async headers() {
     return [
