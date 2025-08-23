@@ -125,10 +125,26 @@ export default function InlineEditable({
   const saveContent = async () => {
     try {
       setSaving(true)
-      
+
+      const saveWithRetry = async (url: string, options: RequestInit, retries = 2): Promise<Response> => {
+        for (let i = 0; i < retries; i++) {
+          try {
+            const response = await fetch(url, options)
+            if (response.ok) return response
+            if (response.status >= 400 && response.status < 500) {
+              throw new Error(`HTTP ${response.status}`)
+            }
+          } catch (error) {
+            if (i === retries - 1) throw error
+            await new Promise(resolve => setTimeout(resolve, 1000))
+          }
+        }
+        throw new Error('Save failed after retries')
+      }
+
       if (saveToSettings) {
         // Сохраняем в settings
-        const response = await fetch('/api/settings', {
+        const response = await saveWithRetry('/api/settings', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ [contentKey]: editValue })
@@ -141,8 +157,8 @@ export default function InlineEditable({
         // Сохраняем в content API
         const method = content === defaultContent ? 'POST' : 'PUT'
         const url = content === defaultContent ? '/api/content' : `/api/content/${contentKey}`
-        
-        const response = await fetch(url, {
+
+        const response = await saveWithRetry(url, {
           method,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -165,7 +181,7 @@ export default function InlineEditable({
       toast.success('Изменения сохранены')
     } catch (error) {
       console.error('Error saving content:', error)
-      toast.error('Ошибка сохранения')
+      toast.error('Ошибка сохранения. Попробуйте еще раз.')
     } finally {
       setSaving(false)
     }
@@ -204,7 +220,7 @@ export default function InlineEditable({
     return React.createElement(Component, { className }, hasContent ? displayContent : defaultContent)
   }
 
-  // Админское редактируемое отображение
+  // Админское ред��ктируемое отображение
   if (isEditing) {
     return (
       <div className="relative inline-block w-full">
