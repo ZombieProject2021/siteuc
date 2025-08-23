@@ -54,7 +54,7 @@ export default function HomePage() {
       duration: '520 ак.ч.',
       price: '45000',
       oldPrice: '55000',
-      level: 'Профе��сиональная переподготовка',
+      level: 'Профе��сиональная переп��дготовка',
       students: 156,
       rating: 4.8,
       features: ['Диплом гос. образца', 'Дистанционно', 'Практические кейсы']
@@ -86,7 +86,7 @@ export default function HomePage() {
   const benefits = [
     { key: 'homepage.benefit.1', defaultText: 'Лицензированные ��рограммы', icon: Shield },
     { key: 'homepage.benefit.2', defaultText: 'Государственные дипломы', icon: Award },
-    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переплат', icon: CreditCard },
+    { key: 'homepage.benefit.3', defaultText: 'Рассрочка без переп��ат', icon: CreditCard },
     { key: 'homepage.benefit.4', defaultText: 'Помощь в трудоустройстве', icon: Briefcase },
     { key: 'homepage.benefit.5', defaultText: 'Гибкий график обучения', icon: Clock },
     { key: 'homepage.benefit.6', defaultText: 'Практикующие преподаватели', icon: Users },
@@ -109,7 +109,7 @@ export default function HomePage() {
       title: 'Корпоративное обучение',
       description: 'Индивидуальные программы для команд и организаций',
       icon: Users,
-      features: ['Программы под задачи', 'Обучение на рабочем месте', 'Групповые скидк��']
+      features: ['Програм��ы под задачи', 'Обучение на рабочем месте', 'Групповые скидки']
     }
   ]
 
@@ -167,7 +167,7 @@ export default function HomePage() {
   return (
     <div suppressHydrationWarning={true}>
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white relative overflow-hidden" suppressHydrationWarning={true}>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative container mx-auto px-4 py-16 md:py-20">
           <div className="max-w-5xl mx-auto text-center">
@@ -235,7 +235,7 @@ export default function HomePage() {
             />
             <DynamicContent
               contentKey="homepage.programs.subtitle"
-              defaultContent="Вы��ерите направлен��е, которое поможет вам достичь карьерных целей"
+              defaultContent="Выберите направлен��е, которое поможет вам достичь карьерных целей"
               tag="p"
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             />
@@ -480,7 +480,7 @@ export default function HomePage() {
               Часто задаваемые вопросы
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Ответы на популярные вопросы о наших программах обучения
+              Ответы на популярные вопросы о наших программах о��учения
             </p>
           </div>
 
