@@ -113,9 +113,9 @@ export default function ConsultationPage() {
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <HydrationSafe tag="h1" className="text-4xl md:text-5xl font-bold mb-6">
               Бесплатная консультация
-            </h1>
+            </HydrationSafe>
             <p className="text-xl md:text-2xl text-blue-100 mb-8">
               Получите персональную консультацию по выбору образовательной программы
             </p>
@@ -220,7 +220,7 @@ export default function ConsultationPage() {
                   value={formData.courseInterest}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Название курса или направление"
+                  placeholder="��азвание курса или направление"
                 />
               </div>
 
